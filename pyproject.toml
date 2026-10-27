@@ -11,7 +11,7 @@ dependencies = [
     "scikit-learn",
     "scikit-optimize",
     "seaborn", "pandas-stubs", "scipy-stubs", "tabulate",
-    "plotly", "pydantic"
+    "plotly", "pydantic", "tensorflow", "folium"
 ]
 
 [project.optional-dependencies]
