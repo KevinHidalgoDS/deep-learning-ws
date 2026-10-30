@@ -133,6 +133,8 @@ protobuf==7.36.2
     # via tensorflow
 pyaml==26.7.0
     # via scikit-optimize
+pyarrow==26.0.0
+    # via deep-learning-ws (pyproject.toml)
 pydantic==2.14.1
     # via deep-learning-ws (pyproject.toml)
 pydantic-core==2.50.1
