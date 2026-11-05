@@ -219,3 +219,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Datasets descargados por torchvision en los notebooks
+notebooks/**/MNIST/
+notebooks/**/FashionMNIST/
