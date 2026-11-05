@@ -17,7 +17,7 @@ como CNNs, GANs, RNNs, GNNs y Transformers/LLMs.
 
 ## Informacion del Docente
 
-* **Profesor:** John R. Ballesteros, Ph.D.  
+* **Profesor:** John R. Ballesteros, Ph.D.
   * **Formacion:** Ph.D. en Informatica, MSc. en Geoinformatica, Ingeniero Geologo.
 
 ---
