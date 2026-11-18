@@ -1,42 +1,21 @@
 [project]
-name = "deep-learning-ws"
+name = "simem-energy-price-forecast"
 version = "0.1.0"
-description = "Este repositorio establece la estructura estándar y las mejores prácticas para los proyectos, prácticas y talleres del curso **Optimización e Inteligencia Artificial** del Departamento de Ciencias de la Computación y la Decisión de la **Universidad Nacional de Colombia, Sede Medellín**."
+description = "Pronóstico del precio de bolsa de energía en Colombia con datos del portal SIMEM."
 requires-python = ">=3.14"
 dependencies = [
-    # Agrega aquí tus dependencias de producción (ej. pandas, scikit-learn, etc.)
-    "pandas",
-    "numpy",
-    "dotenv",
-    "scikit-learn",
-    "scikit-optimize",
-    "seaborn", "pandas-stubs", "scipy-stubs", "tabulate",
-    "plotly", "pydantic", "tensorflow", "folium", "torch",
-    "pyarrow"
-]
-
-[project.optional-dependencies]
-dev = [
-    "pip-tools",
-    "black",
-    "coverage",
-    "flake8",
-    "mkdocs",
-    "mkdocs-jupyter",
-    "mkdocs-material",
-    "mkdocstrings-python",
-    "mkdocs-dracula-theme",
-    "mypy",
-    "nbconvert",
-    # "notebook",
-    "pydocstyle",
-    "pylint",
-    "pyrefly",
-    "pytest",
-    "pytest-cov",
-    "ruff",
-    "taskipy",
-    "unittest-xml-reporting",
+    "numpy==2.5.2",
+    "pandas==2.3.3",
+    "polars==1.33.1",
+    "scikit-learn==1.9.1",
+    "torch==2.15.0",
+    "optuna==4.5.0",
+    "PyYAML==6.0.3",
+    "requests==2.34.2",
+    "pytest==9.1.1",
+    "ruff==0.17.3",
+    "mkdocs-material==9.8.0",
+    "streamlit==1.52.2",
 ]
 
 [tool.black]

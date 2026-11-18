@@ -1,8 +1,7 @@
-# Configuración central del proyecto — rutas, parámetros y opciones del pipeline
-
+# Configuración central del pronóstico del precio de bolsa de energía en Colombia.
 project:
-  name: "deep-learning-ws"
-  version: "0.2.0"
+  name: "simem-energy-price-forecast"
+  version: "0.1.0"
   seed: 42
 
 paths:
@@ -16,6 +15,39 @@ paths:
     checkpoints: "models/checkpoints/"
   reports:
     figures: "reports/figures/"
+
+simem:
+  portal_url: "https://www.simem.co/"
+  api_base_url: null
+  endpoint: null
+  dataset_id: null
+  token_env_var: "SIMEM_API_TOKEN"
+  timeout_seconds: 30
+  max_retries: 3
+
+data:
+  target_column: "precio_bolsa"
+  timestamp_column: "fecha"
+  frequency: "1h"
+  timezone: "America/Bogota"
+  window:
+    start: null
+    end: null
+
+training:
+  seed: 42
+  lookback_steps: 168
+  forecast_horizon: 24
+  train_fraction: 0.70
+  validation_fraction: 0.15
+  test_fraction: 0.15
+  batch_size: 64
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  num_workers: 0
+  device: "auto"
 
 environment:
   nombre: "PRB"  # PRD
