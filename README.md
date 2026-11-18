@@ -42,6 +42,7 @@ pipelines de datos, se recomienda la siguiente jerarquía de archivos:
 ├── src/                 # Código fuente principal del proyecto.
 │   ├── __init__.py
 │   ├── data/            # Scripts para ingesta y transformación de datos.
+│   ├── utils/           # Funciones utilitarias y helpers.
 │   ├── features/        # Scripts de feature engineering.
 │   ├── models/          # Scripts para entrenamiento, optimización y predicción.
 │   └── visualization/   # Generación de gráficos y pósteres digitales.

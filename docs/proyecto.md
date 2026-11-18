@@ -176,7 +176,7 @@ gantt
     A1 Configuración repo, config.yaml y CI/CD       :done, a1, 2026-11-19, 2d
 
     section Sprint 1 - Obtención y Exploración
-    A2 Ingesta datos SIMEM (make_dataset.py)         :crit, a2, after a1, 3d
+    A2 Ingesta datos SIMEM (make_dataset.py)         :done, a2, after a1, 3d
     A3 EDA Precio Bolsa y Pruebas Ingesta            :done, a3, after a2, 2d
 
     section Sprint 2 - Transformación y Features
