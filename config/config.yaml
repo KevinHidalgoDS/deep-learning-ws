@@ -1,8 +1,7 @@
-# Configuración central del proyecto — rutas, parámetros y opciones del pipeline
-
+# Configuración central del pronóstico del precio de bolsa de energía en Colombia.
 project:
-  name: "deep-learning-ws"
-  version: "0.2.0"
+  name: "simem-energy-price-forecast"
+  version: "0.1.0"
   seed: 42
 
 paths:
@@ -16,6 +15,75 @@ paths:
     checkpoints: "models/checkpoints/"
   reports:
     figures: "reports/figures/"
+
+simem:
+  portal_url: "https://www.simem.co/"
+  api_base_url: "https://www.simem.co"
+  endpoint: "/backend-files/api/PublicData"
+  timeout_seconds: 30
+  max_retries: 3
+  chunk_days: 14
+  datasets:
+    precio_bolsa:
+      dataset_id: EC6945
+      timestamp: FechaHora
+      value: Valor
+      frequency: "1h"
+      filters: {CodigoVariable: PB_Nal, CodigoDuracion: PT1H, UnidadMedida: COP/kWh}
+      revision: Version
+      revision_calendar_id: "24914F"
+      revision_as_of: null
+    demanda_nacional:
+      dataset_id: 14fabb
+      timestamp: FechaHora
+      value: Valor
+      frequency: "1h"
+      filters: {CodigoVariable: DdaReal, CodigoDuracion: PT1H, UnidadMedida: kWh}
+      revision: Version
+      revision_calendar_id: "24914F"
+      revision_as_of: null  # Opcional: fecha de corte AAAA-MM-DD inclusive, hora de Colombia.
+      revision_fallback: true  # Una sola revisión publicada con cobertura para todo el mes.
+      dimensions: [CodigoSICAgente, TipoMercado]
+      aggregate: true
+    aportes_hidricos:
+      dataset_id: BA1C55
+      timestamp: Fecha
+      value: AportesHidricosEnergia
+      frequency: "1D"
+      dimensions: [CodigoSerieHidrologica]
+    generacion_real:
+      dataset_id: E17D25
+      timestamp: Fecha
+      value: GeneracionRealEstimada
+      frequency: "1D"
+      filters: {TipoGeneracion: [Hidraulica, Termica]}
+      dimensions: [TipoGeneracion, CodigoPlanta]
+      group_by: [TipoGeneracion]
+      aggregate: true
+
+data:
+  target_column: "precio_bolsa"
+  timestamp_column: "fecha"
+  frequency: "1h"
+  timezone: "America/Bogota"
+  window:
+    start: "2026-06-01"
+    end: "2026-09-30"
+
+training:
+  seed: 42
+  lookback_steps: 168
+  forecast_horizon: 24
+  train_fraction: 0.70
+  validation_fraction: 0.15
+  test_fraction: 0.15
+  batch_size: 64
+  epochs: 100
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  early_stopping_patience: 10
+  num_workers: 0
+  device: "auto"
 
 environment:
   nombre: "PRB"  # PRD

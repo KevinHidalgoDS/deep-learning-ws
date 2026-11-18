@@ -219,6 +219,13 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# Parquet files
+*.parquet
+
+# Snapshots locales de SIMEM y gráficas regenerables del Sprint 1
+/data/raw/simem/
+/reports/figures/simem/
+/reports/figures/xm/
 # Datasets descargados por torchvision en los notebooks
 notebooks/**/MNIST/
 notebooks/**/FashionMNIST/

@@ -33,10 +33,11 @@ __status__ = "Desarrollo"
 __version__ = "1.0.0"
 __date__ = "2026-09-02"
 
+import json
 import logging
 import re
 import sys
-from datetime import datetime
+from datetime import UTC, datetime
 from enum import Enum
 from functools import wraps
 from pathlib import Path
@@ -108,6 +109,18 @@ LOGGER.setLevel(config.LOG_LEVEL.upper())
 LOGGER.handlers.clear()  # limpia duplicados
 LOGGER.addHandler(console_handler)
 LOGGER.addHandler(file_handler)
+LOGGER.propagate = False
+
+
+def log_event(level: int, event: str, **fields: object) -> None:
+    """Registra un evento con cuerpo JSON mediante los handlers compartidos."""
+    payload = {
+        **fields,
+        "timestamp": datetime.now(UTC).isoformat(),
+        "level": logging.getLevelName(level),
+        "event": event,
+    }
+    LOGGER.log(level, json.dumps(payload, ensure_ascii=False, default=str))
 
 # -------------------------------------------------------------------------
 # Control de tiempo
@@ -268,4 +281,3 @@ def bomper(file_path: str, mode: OutputMode = OutputMode.LOG) -> None:  # pragma
         LOGGER.info(separator)
         LOGGER.info(var_bomper)
         LOGGER.info(separator)
-

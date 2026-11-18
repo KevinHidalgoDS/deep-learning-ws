@@ -17,7 +17,7 @@ como CNNs, GANs, RNNs, GNNs y Transformers/LLMs.
 
 ## Informacion del Docente
 
-* **Profesor:** John R. Ballesteros, Ph.D.  
+* **Profesor:** John R. Ballesteros, Ph.D.
   * **Formacion:** Ph.D. en Informatica, MSc. en Geoinformatica, Ingeniero Geologo.
 
 ---
@@ -109,6 +109,58 @@ pip install -r requirements.txt
 ---
 
 ## 💻 Uso y Ejecución
+
+### Sprint 1 — SIMEM y precio de bolsa
+
+Desde la raíz, ejecuta `python -m src.data.make_dataset`. El rango de ejemplo
+es marzo–abril de 2024; cámbialo en `config/config.yaml` o pasa
+`--start 2024-04-01 --end 2024-04-30` (ambas fechas inclusive). La
+[API pública de XM](https://github.com/EquipoAnaliticaXM/API_XM#simem-1)
+no requiere token. Para trabajar sin red, añade `--local-dir RUTA` con
+un archivo por fuente, `<nombre>.csv` en UTF-8 y separado por comas con las
+columnas originales, o `<nombre>.json` con la respuesta `PublicData`.
+Los nombres y columnas esperados están en `simem.datasets`.
+
+| Fuente | Dataset | Serie devuelta por `read_snapshot` |
+|---|---|---|
+| `precio_bolsa` | `EC6945` | Nacional (`PB_Nal`), horaria, COP/kWh |
+| `demanda_nacional` | `14fabb` | Horaria, kWh; suma por agente y tipo de mercado |
+| `aportes_hidricos` | `BA1C55` | Diaria por serie hidrológica; no se suman series potencialmente solapadas |
+| `generacion_real` | `E17D25` | Generación real estimada SCADA, diaria, por tipo hidráulico/térmico |
+
+Para el precio y la demanda, la ingesta selecciona una revisión por mes
+con el calendario oficial SIMEM `24914F`. Obtiene un único precio por hora
+sin promediar revisiones, y suma la demanda solo después de seleccionar la
+revisión. Por defecto usa la revisión marcada como
+vigente (`EsMaximaVersion=1`). Si se configura `revision_as_of` en
+la fuente correspondiente de `simem.datasets`, usa la última revisión publicada hasta
+esa fecha de corte inclusive. El corte es fijo para toda la ingesta: para un
+backtest con varios orígenes, aplícalo por origen según los datos disponibles.
+Si la revisión oficial no cubre todas las horas observadas de la demanda,
+`revision_fallback` permite elegir la revisión más reciente del calendario
+que sí las cubre. El manifiesto registra la revisión preferida y la usada.
+Para el precio no se aplica esa alternativa. Se rechazan revisiones nulas o
+ambiguas; no se mezclan revisiones dentro de un mes ni se imputan huecos. El calendario y la selección se
+guardan en el snapshot, junto con la cobertura horaria del precio. En modo
+local, incluye `calendario_liquidacion_24914F.csv`
+o `.json` junto a las exportaciones.
+Para pronosticar, verifica también las fechas
+de publicación de las revisiones y exógenas para evitar fuga de información.
+
+Cada ejecución válida crea un snapshot nuevo en
+`data/raw/simem/<fecha UTC>/<id>/`. Contiene bytes de origen sin modificar,
+un manifiesto con parámetros y SHA-256 por archivo. `read_snapshot` verifica
+las huellas y aplica el esquema guardado sin escribir en `raw/`.
+Abre `notebooks/01_eda_simem_precio_bolsa.ipynb` con el kernel del entorno.
+El cuaderno usa el último snapshot completo por defecto (se puede fijar con
+`SIMEM_SNAPSHOT`) y exporta sus figuras a `reports/figures/simem/`.
+Para ejecutar también el análisis de contraste con XM (SINERGOX), establece
+`XM_ENABLED = True` en la sección 7 del cuaderno. La consulta usa `ReadDB` y
+`PrecBolsNaci` para 2025 por defecto. También puedes indicar `XM_WIDE_CSV`
+con la ruta de una exportación XM en formato ancho; no se mezcla con SIMEM.
+La ingesta y el cuaderno envían eventos con cuerpo JSON a la consola y a
+`logs\` mediante el logger compartido. El nivel se controla con `LOG_LEVEL`.
+Para las pruebas sin red: `python -m pytest tests/test_data_ingestion.py`.
 
 El código está modularizado para separar las pruebas interactivas de la ejecución en lotes.
 
@@ -228,4 +280,3 @@ Sede Medellín**.
 **Licencia sugerida para el código:** MIT License (permite uso, modificación y distribución). Por
 favor, asegúrate de referenciar adecuadamente la literatura o los fragmentos de código reutilizados
 en tus módulos u optimizadores.
-

@@ -85,6 +85,18 @@ LOG_DIRECTORY = (
 DEFAULT_CONFIG_PATH = PROJECT_PATH / "config" / "config.yaml"
 
 
+def read_config_mapping(path: str | Path = DEFAULT_CONFIG_PATH) -> dict:
+    """Lee un YAML explícito sin descartar secciones no modeladas ni usar otro archivo."""
+    config_path = Path(path)
+    if not config_path.is_absolute() and not config_path.is_file():
+        config_path = PROJECT_PATH / config_path
+    with config_path.open(encoding="utf-8") as config_file:
+        raw = yaml.safe_load(config_file)
+    if not isinstance(raw, dict):
+        raise ValueError(f"Se esperaba una configuración YAML de tipo mapa: {config_path}")
+    return raw
+
+
 def load_config(path: str | Path = "config/config.yaml") -> Config:
     config_path = Path(path)
 
@@ -99,10 +111,7 @@ def load_config(path: str | Path = "config/config.yaml") -> Config:
             if ruta_config.is_file():
                 config_path = ruta_config
 
-    with open(config_path, "r", encoding="utf-8") as f:
-        raw = yaml.safe_load(f)
-
-    return Config(**raw)
+    return Config(**read_config_mapping(config_path))
 
 
 CONFIG = load_config()
