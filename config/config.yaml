@@ -18,12 +18,42 @@ paths:
 
 simem:
   portal_url: "https://www.simem.co/"
-  api_base_url: null
-  endpoint: null
-  dataset_id: null
-  token_env_var: "SIMEM_API_TOKEN"
+  api_base_url: "https://www.simem.co"
+  endpoint: "/backend-files/api/PublicData"
   timeout_seconds: 30
   max_retries: 3
+  chunk_days: 14
+  datasets:
+    precio_bolsa:
+      dataset_id: EC6945
+      timestamp: FechaHora
+      value: Valor
+      frequency: "1h"
+      filters: {CodigoVariable: PB_Nal, Version: TX5, CodigoDuracion: PT1H, UnidadMedida: COP/kWh}
+    demanda_nacional:
+      dataset_id: 14fabb
+      timestamp: FechaHora
+      value: Valor
+      frequency: "1h"
+      filters: {CodigoVariable: DdaReal, CodigoDuracion: PT1H, UnidadMedida: kWh}
+      revision: Version
+      dimensions: [CodigoSICAgente, TipoMercado]
+      aggregate: true
+    aportes_hidricos:
+      dataset_id: BA1C55
+      timestamp: Fecha
+      value: AportesHidricosEnergia
+      frequency: "1D"
+      dimensions: [CodigoSerieHidrologica]
+    generacion_real:
+      dataset_id: E17D25
+      timestamp: Fecha
+      value: GeneracionRealEstimada
+      frequency: "1D"
+      filters: {TipoGeneracion: [Hidraulica, Termica]}
+      dimensions: [TipoGeneracion, CodigoPlanta]
+      group_by: [TipoGeneracion]
+      aggregate: true
 
 data:
   target_column: "precio_bolsa"
@@ -31,8 +61,8 @@ data:
   frequency: "1h"
   timezone: "America/Bogota"
   window:
-    start: null
-    end: null
+    start: "2025-01-01"
+    end: "2025-12-31"
 
 training:
   seed: 42

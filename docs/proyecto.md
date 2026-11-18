@@ -16,8 +16,8 @@
 </div>
 
 <h2 align="center" style="font-size:1.4em; margin:6px 0;">Deep Learning 2026-2S</h2>
-<h3 align="center" style="font-size:1.05em; margin:4px 0;">WorkShop 1 - DNNs en datos tabulares</h3>
-<h4 align="center" style="font-size:0.9em; margin:4px 0; color:#555;">Modelo de clasificación del precio de viviendas</h4>
+<h3 align="center" style="font-size:1.05em; margin:4px 0;">Proyecto curso - Precio de bolsa energía Colombia</h3>
+<h4 align="center" style="font-size:0.9em; margin:4px 0; color:#555;">Modelo pronostico precio de bolsa energía de Colombia</h4>
 
 <p align="center" style="font-size:0.82em; line-height:1.3; margin:6px 0;">
 Departamento de Ciencias de la Computación y de la Decisión<br>
@@ -173,7 +173,7 @@ gantt
     Hito o entregable (milestone)        :milestone, conv5, 2026-12-1, 0d
 
     section Sprint 0 - Infraestructura y DevOps
-    A1 Configuración repo, config.yaml y CI/CD       :crit, a1, 2026-11-19, 2d
+    A1 Configuración repo, config.yaml y CI/CD       :done, a1, 2026-11-19, 2d
 
     section Sprint 1 - Obtención y Exploración
     A2 Ingesta datos SIMEM (make_dataset.py)         :crit, a2, after a1, 3d

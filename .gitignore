@@ -221,3 +221,8 @@ __marimo__/
 
 # Parquet files
 *.parquet
+
+# Snapshots locales de SIMEM y gráficas regenerables del Sprint 1
+/data/raw/simem/
+/reports/figures/simem/
+/reports/figures/xm/

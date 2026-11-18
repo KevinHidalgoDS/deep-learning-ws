@@ -17,3 +17,11 @@ dependencies:
       - ruff==0.17.3
       - mkdocs-material==9.8.0
       - streamlit==1.52.2
+      - matplotlib==3.11.2
+      - statsmodels==0.15.0
+      - ipykernel==7.4.0
+      - tzdata==2026.3
+      - pydataxm==0.3.19
+      - scipy==1.18.1
+      - pydantic==2.14.1
+      - python-dotenv==1.2.4
