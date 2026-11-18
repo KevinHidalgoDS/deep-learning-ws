@@ -1,4 +1,5 @@
 import json
+from dataclasses import replace
 from datetime import date
 from pathlib import Path
 
@@ -29,7 +30,13 @@ BASE_ROW = {
 
 @pytest.fixture
 def spec() -> Dataset:
-    return Dataset(**read_config_mapping()["simem"]["datasets"]["precio_bolsa"])
+    settings = read_config_mapping()["simem"]["datasets"]["precio_bolsa"]
+    return replace(
+        Dataset(**settings),
+        revision=None,
+        revision_calendar_id=None,
+        filters={**settings["filters"], "Version": "TX5"},
+    )
 
 
 def test_price_schema_types_and_unique_hours(spec: Dataset) -> None:
@@ -113,7 +120,10 @@ def test_checks_plant_key_before_daily_aggregation() -> None:
 
 
 def test_demand_does_not_mix_revisions_within_each_hour() -> None:
-    spec = Dataset(**read_config_mapping()["simem"]["datasets"]["demanda_nacional"])
+    spec = replace(
+        Dataset(**read_config_mapping()["simem"]["datasets"]["demanda_nacional"]),
+        revision_calendar_id=None,
+    )
     row = {
         **BASE_ROW,
         "CodigoVariable": "DdaReal",
@@ -133,6 +143,92 @@ def test_demand_does_not_mix_revisions_within_each_hour() -> None:
         normalize_dataset([pd.DataFrame([row, overlapping])], spec, DAY, DAY, TZ)
 
 
+@pytest.mark.parametrize(
+    ("as_of", "version", "expected", "demand_has_tx5"),
+    [(None, "TX5", 200, True), ("2024-06-30", "TX4", 100, True), (None, "TX5", 200, False)],
+)
+def test_snapshot_selects_official_price_and_demand_revisions(
+    tmp_path: Path,
+    as_of: str | None,
+    version: str,
+    expected: int,
+    demand_has_tx5: bool,
+) -> None:
+    config = read_config_mapping()
+    sources = config["simem"]["datasets"]
+    config["simem"]["datasets"] = {
+        name: sources[name] for name in ("precio_bolsa", "demanda_nacional")
+    }
+    sources["demanda_nacional"]["revision_as_of"] = as_of
+    sources["precio_bolsa"]["revision_as_of"] = as_of
+    pd.DataFrame(
+        [
+            {**BASE_ROW, "Version": "TX4", "Valor": 100},
+            {**BASE_ROW, "Version": "TX5", "Valor": 200},
+        ]
+    ).to_csv(tmp_path / "precio_bolsa.csv", index=False)
+    demand = {
+        **BASE_ROW,
+        "CodigoVariable": "DdaReal",
+        "UnidadMedida": "kWh",
+        "CodigoSICAgente": "AAA",
+        "TipoMercado": "Regulado",
+    }
+    demand_rows = [{**demand, "Version": "TX4", "Valor": 100}]
+    if demand_has_tx5:
+        demand_rows.append({**demand, "Version": "TX5", "Valor": 200})
+    pd.DataFrame(demand_rows).to_csv(tmp_path / "demanda_nacional.csv", index=False)
+    period = {"FechaInicio": "2024-04-01", "FechaFin": "2024-04-30"}
+    pd.DataFrame(
+        [
+            {**period, "Version": "TX4", "FechaPublicacion": "2024-06-30", "EsMaximaVersion": 0},
+            {**period, "Version": "TX5", "FechaPublicacion": "2024-07-01", "EsMaximaVersion": 1},
+        ]
+    ).to_csv(tmp_path / "calendario_liquidacion_24914F.csv", index=False)
+
+    snapshot = ingest(config, source_dir=tmp_path, root=tmp_path, start=str(DAY), end=str(DAY))
+    result = read_snapshot(snapshot, "demanda_nacional")
+    assert result["fecha"].is_unique
+    assert result["demanda_nacional"].tolist() == ([expected] if demand_has_tx5 else [100])
+    manifest = json.loads((snapshot / "manifest.json").read_text(encoding="utf-8"))
+    price = read_snapshot(snapshot, "precio_bolsa")
+    assert price["fecha"].is_unique and price["precio_bolsa"].tolist() == [expected]
+    expected_hours_in_day = 24
+    assert manifest["datasets"]["precio_bolsa"]["missing_hours"] == expected_hours_in_day - len(
+        price
+    )
+    calendars = manifest["revision_calendars"]
+    assert calendars["precio_bolsa"]["revisions"] == {"2024-04": version}
+    assert calendars["demanda_nacional"]["revisions"] == {
+        "2024-04": version if demand_has_tx5 else "TX4"
+    }
+    assert calendars["precio_bolsa"]["files"] == calendars["demanda_nacional"]["files"]
+    if not demand_has_tx5:
+        assert calendars["demanda_nacional"]["preferred_revisions"] == {"2024-04": "TX5"}
+    (snapshot / "calendario_liquidacion_24914F.csv").write_bytes(b"alterado")
+    with pytest.raises(IngestionError, match="SHA-256"):
+        read_snapshot(snapshot, "demanda_nacional")
+
+
+@pytest.mark.parametrize(
+    ("provided", "message"), [(None, "nulas o vacías"), ("TX4", "oficial ausente")]
+)
+def test_demand_diagnoses_null_or_missing_official_revision(
+    provided: str | None, message: str
+) -> None:
+    spec = Dataset(**read_config_mapping()["simem"]["datasets"]["demanda_nacional"])
+    row = {
+        **BASE_ROW,
+        "CodigoVariable": "DdaReal",
+        "UnidadMedida": "kWh",
+        "CodigoSICAgente": "AAA",
+        "TipoMercado": "Regulado",
+        "Version": provided,
+    }
+    with pytest.raises(IngestionError, match=message):
+        normalize_dataset([pd.DataFrame([row])], spec, DAY, DAY, TZ, revisions={"2024-04": "TX5"})
+
+
 def test_request_windows_do_not_overlap() -> None:
     assert list(date_chunks(DAY, date(2024, 4, 5), 2)) == [
         (DAY, date(2024, 4, 2)),
@@ -149,8 +245,13 @@ def test_public_data_response_contract() -> None:
 
 
 @pytest.fixture
-def local_ingestion(tmp_path: Path) -> tuple[dict, Path, Path]:
+def local_ingestion(tmp_path: Path, spec: Dataset) -> tuple[dict, Path, Path]:
     config = read_config_mapping()
+    config["simem"]["datasets"]["precio_bolsa"].update(
+        filters=spec.filters,
+        revision=None,
+        revision_calendar_id=None,
+    )
     config["simem"]["datasets"] = {"precio_bolsa": config["simem"]["datasets"]["precio_bolsa"]}
     source = tmp_path / "exports"
     source.mkdir()
@@ -185,6 +286,6 @@ def test_failed_ingestion_does_not_publish_snapshot(
     config, source, export = local_ingestion
     pd.DataFrame([BASE_ROW, BASE_ROW]).to_csv(export, index=False)
     with pytest.raises(IngestionError, match="Duplicados"):
-        ingest(config, source_dir=source, root=tmp_path)
+        ingest(config, source_dir=source, root=tmp_path, start=str(DAY), end=str(DAY))
     assert not list((tmp_path / "data" / "raw").rglob("manifest.json"))
     assert not list((tmp_path / "data" / "raw").rglob(".staging-*"))

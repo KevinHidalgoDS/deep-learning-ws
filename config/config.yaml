@@ -29,7 +29,10 @@ simem:
       timestamp: FechaHora
       value: Valor
       frequency: "1h"
-      filters: {CodigoVariable: PB_Nal, Version: TX5, CodigoDuracion: PT1H, UnidadMedida: COP/kWh}
+      filters: {CodigoVariable: PB_Nal, CodigoDuracion: PT1H, UnidadMedida: COP/kWh}
+      revision: Version
+      revision_calendar_id: "24914F"
+      revision_as_of: null
     demanda_nacional:
       dataset_id: 14fabb
       timestamp: FechaHora
@@ -37,6 +40,9 @@ simem:
       frequency: "1h"
       filters: {CodigoVariable: DdaReal, CodigoDuracion: PT1H, UnidadMedida: kWh}
       revision: Version
+      revision_calendar_id: "24914F"
+      revision_as_of: null  # Opcional: fecha de corte AAAA-MM-DD inclusive, hora de Colombia.
+      revision_fallback: true  # Una sola revisión publicada con cobertura para todo el mes.
       dimensions: [CodigoSICAgente, TipoMercado]
       aggregate: true
     aportes_hidricos:
@@ -61,8 +67,8 @@ data:
   frequency: "1h"
   timezone: "America/Bogota"
   window:
-    start: "2025-01-01"
-    end: "2025-12-31"
+    start: "2026-06-01"
+    end: "2026-09-30"
 
 training:
   seed: 42

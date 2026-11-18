@@ -128,11 +128,23 @@ Los nombres y columnas esperados están en `simem.datasets`.
 | `aportes_hidricos` | `BA1C55` | Diaria por serie hidrológica; no se suman series potencialmente solapadas |
 | `generacion_real` | `E17D25` | Generación real estimada SCADA, diaria, por tipo hidráulico/térmico |
 
-El precio usa **TX5** de forma explícita; si un periodo todavía no dispone
-de esa versión, ajusta el filtro con criterio de negocio. La demanda usa la
-versión publicada por SIMEM, que puede cambiar entre periodos; si coexisten
-versiones en una misma hora, la ingesta la rechaza. No se imputan huecos.
-Para pronosticar, verifica las fechas
+Para el precio y la demanda, la ingesta selecciona una revisión por mes
+con el calendario oficial SIMEM `24914F`. Obtiene un único precio por hora
+sin promediar revisiones, y suma la demanda solo después de seleccionar la
+revisión. Por defecto usa la revisión marcada como
+vigente (`EsMaximaVersion=1`). Si se configura `revision_as_of` en
+la fuente correspondiente de `simem.datasets`, usa la última revisión publicada hasta
+esa fecha de corte inclusive. El corte es fijo para toda la ingesta: para un
+backtest con varios orígenes, aplícalo por origen según los datos disponibles.
+Si la revisión oficial no cubre todas las horas observadas de la demanda,
+`revision_fallback` permite elegir la revisión más reciente del calendario
+que sí las cubre. El manifiesto registra la revisión preferida y la usada.
+Para el precio no se aplica esa alternativa. Se rechazan revisiones nulas o
+ambiguas; no se mezclan revisiones dentro de un mes ni se imputan huecos. El calendario y la selección se
+guardan en el snapshot, junto con la cobertura horaria del precio. En modo
+local, incluye `calendario_liquidacion_24914F.csv`
+o `.json` junto a las exportaciones.
+Para pronosticar, verifica también las fechas
 de publicación de las revisiones y exógenas para evitar fuga de información.
 
 Cada ejecución válida crea un snapshot nuevo en
