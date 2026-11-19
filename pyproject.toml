@@ -26,6 +26,34 @@ dependencies = [
     "python-dotenv==1.2.4",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pip-tools",
+    "black",
+    "coverage",
+    "flake8",
+    "isort",
+    "mkdocs",
+    "mkdocs-bibtex",
+    "mkdocs-dracula-theme",
+    "mkdocs-git-revision-date-localized-plugin",
+    "mkdocs-glightbox",
+    "mkdocs-jupyter",
+    "mkdocs-material",
+    "mkdocs-with-pdf",
+    "mkdocstrings-python",
+    "mypy",
+    # "notebook",
+    "pre-commit",
+    "pydocstyle",
+    "pylint",
+    "pyrefly",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "taskipy"
+]
+
 [tool.black]
 line-length = 100
 include = '^(common|tests)/'
