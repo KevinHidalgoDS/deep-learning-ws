@@ -445,3 +445,27 @@ Opción 2
   `scripts/run_pipeline.sh` (o `Makefile`) que encadene `make_dataset.py` $\rightarrow$
   `preprocess.py` $\rightarrow$ `build_features.py` $\rightarrow$ `train_model.py` $\rightarrow$
   `predict_model.py` en un solo comando.
+
+
+Reveal.js + MkDocs
+
+En una sustentación de Deep Learning normalmente mostrarás:
+
+Problema
+Dataset
+Preprocesamiento
+Arquitectura de la red
+Entrenamiento
+Resultados
+Demo
+Conclusiones
+
+docs/
+├── index.md
+├── presentation/
+│   ├── reveal.html
+│   ├── images/
+│   └── assets/
+├── notebooks/
+├── api/
+└── source/

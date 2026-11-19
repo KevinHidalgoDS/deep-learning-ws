@@ -40,6 +40,7 @@ dev = [
     "mkdocs-glightbox",
     "mkdocs-jupyter",
     "mkdocs-material",
+    "mkdocs-revealjs",
     "mkdocs-with-pdf",
     "mkdocstrings-python",
     "mypy",

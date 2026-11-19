@@ -18,10 +18,10 @@ watch:
 # -----------------------------------------------------------------------------
 
 theme:
-  name: dracula
-  logo: img/dracula.png
-  favicon: img/favicon.ico
-  # name: material
+  # name: dracula
+  # logo: img/dracula.png
+  # favicon: img/favicon.ico
+  name: material
   language: es
   font:
     text: Roboto
@@ -99,6 +99,10 @@ plugins:
       locale: es
       type: timeago # o 'iso_date'
 
+  - revealjs:
+      transition: slide
+      controls: true
+
 # -----------------------------------------------------------------------------
 # EXTENSIONES DE MARKDOWN
 # -----------------------------------------------------------------------------
@@ -157,3 +161,4 @@ nav:
       - data: src_data.md
   - Cuadernos Jupyter:
       - EDA: notebooks/01_eda_simem_precio_bolsa.ipynb
+  - Presentación: presentacion.md
