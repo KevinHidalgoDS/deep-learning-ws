@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal-md</title>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/serif.css" id="theme" />
+    <link rel="stylesheet" href="css/highlight/base16/zenburn.css" />
+
+    <link rel="stylesheet" href="_assets/slides-scroll.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n----\r?\n">
+          <textarea data-template>
+            
+
+<hr style="border:2px solid #CC00FF;">
+
+<div style="display:flex; justify-content:center; align-items:center; gap:25px; flex-wrap:nowrap; margin:5px 0;">
+    <a href="https://medellin.unal.edu.co" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9ItLTT_F-3Q30cu7ZCCoKmuFGBt22pe7pNA"
+             style="height:60px; width:auto; max-width:150px; object-fit:contain;" alt="Logo UNAL">
+    </a>
+    <a href="https://minaslap.net/?redirect=0" target="_blank">
+        <img src="https://minaslap.net/pluginfile.php/1/core_admin/logo/0x200/1770226238/Logo%20MinasLAP-3%20%281%29.png"
+             style="height:60px; width:auto; max-width:180px; object-fit:contain;" alt="Logo MinasLAP">
+    </a>
+    <a href="https://micampus.unal.edu.co" target="_blank">
+        <img src="https://micampus.unal.edu.co/pluginfile.php/1/theme_almondb/sliderimage1/1788871931/Slider_1.png"
+             style="height:60px; width:auto; max-width:200px; object-fit:contain;" alt="Logo MiCampus">
+    </a>
+</div>
+
+<h2 align="center" style="font-size:1.4em; margin:6px 0;">Deep Learning 2026-2S</h2>
+<h3 align="center" style="font-size:1.05em; margin:4px 0;">Proyecto- Pronóstico del precio de bolsa de energía de Colombia</h3>
+<h4 align="center" style="font-size:0.9em; margin:4px 0; color:#555;">LSTM- RNNs</h4>
+
+<p align="center" style="font-size:0.82em; line-height:1.3; margin:6px 0;">
+Departamento de Ciencias de la Computación y de la Decisión<br>
+Facultad de Minas · Universidad Nacional de Colombia<br>
+Docente: John R. Ballesteros
+</p>
+
+<hr style="border:1px solid #CC00FF; margin:8px 0;">
+
+<p style="font-size:0.78em; line-height:1.35; margin:4px 0;"><b>Equipo de trabajo:</b></p>
+
+<table style="width:100%; font-size:0.72em; line-height:1.25; border-collapse:collapse;">
+  <tr>
+    <td style="padding:2px 6px;">• Lissy Grace Restrepo Taborda</td>
+    <td style="padding:2px 6px;">📧 <i>lrestrepopo@unal.edu.co </i></td>
+    <td style="padding:2px 6px;">• Kelly Y. Monsalve Carvajal</td>
+    <td style="padding:2px 6px;">📧 <i>kemonsalvec@unal.edu.co</i></td>
+  </tr>
+  <tr>
+    <td style="padding:2px 6px;">• Leidy M. Castaño Hernández</td>
+    <td style="padding:2px 6px;">📧 <i>lmcastanoh@unal.edu.co</i></td>
+    <td style="padding:2px 6px;">• Kevin F. Hidalgo Higuita</td>
+    <td style="padding:2px 6px;">📧 <i>kfhidalgoh@unal.edu.co</i></td>
+  </tr>
+  <tr>
+    <td style="padding:2px 6px;">• Sebastian Sánchez Arango</td>
+    <td style="padding:2px 6px;">📧 <i>sebsanchezar@unal.edu.co</i></td>
+  </tr>
+</table>
+
+<p align="center" style="font-size:0.75em; margin:8px 0 0 0;">
+📅 26 de Octubre de 2026 ·
+<a href="https://github.com/KevinHidalgoDS/deep-learning-ws">
+  <img src="https://img.shields.io/badge/repository-GitHub-181717.svg" alt="GitHub Repo" style="vertical-align:middle;">
+</a>
+</p>
+
+<p align="center" style="font-size:0.68em; color:#777; margin:4px 0 0 0;">
+<i>Nota: el tema del navegador puede afectar la visualización de la presentación.</i>
+</p>
+
+<aside class="notes">
+Mensaje clave a decir: "Buenos días a todos. Es un gusto presentarles nuestro trabajo final para el curso de Optimización e Inteligencia Artificial de la Maestría en Ingeniería - Analítica. En este proyecto abordamos un problema real de la PTAR Bello del Grupo EPM: la detección temprana de anomalías en transmisores de nivel, un sistema crítico para la eficiencia energética y operativa de la estación de bombeo."
+</aside>
+
+---
+
+## Problema
+
+- **Tarea**: Clasificación binaria de sentimiento en reseñas de texto (positivo / negativo)
+- **Desafío**: Las frases tienen longitud variable y dependencias a largo plazo; los modelos tradicionales (como bolsa de palabras) no capturan el contexto secuencial
+- **Por qué LSTM**: Las compuertas de memoria (input / forget / output) permiten retener selectivamente información clave a largo plazo y mitigar el problema del gradiente desvaneciente
+
+Note:
+Explicar brevemente por qué RNN simples no son suficientes, destacar el papel de la compuerta de olvido.
+
+---
+
+## Dataset
+
+- **Fuente**: IMDb Movie Reviews (o dataset personalizado de reseñas en español)
+- **Tamaño**: 50,000 muestras (25k entrenamiento / 25k prueba), balanceado 50/50
+- **Etiquetas**: 1 = positivo, 0 = negativo
+- **Longitud**: La mayoría de reseñas entre 100–500 palabras, se trunca/padea a `max_len = 128`
+
+| Split | Muestras | Positivas | Negativas |
+|-------|----------|-----------|-----------|
+| Train | 20,000   | 10,000    | 10,000    |
+| Val   | 5,000    | 2,500     | 2,500     |
+| Test  | 25,000   | 12,500    | 12,500    |
+
+Note:
+Mencionar que si se usa un dataset en español, se debe ajustar el tokenizador (por ejemplo, con spacy o jieba).
+
+---
+
+## Preprocesamiento
+
+1. **Limpieza**: Eliminar etiquetas HTML, caracteres especiales; unificar minúsculas
+2. **Tokenización**: Segmentar por palabras y construir vocabulario (frecuencia mínima 5)
+3. **Mapeo a índices**: Convertir palabras a IDs; palabras desconocidas → `<UNK>`; padding → `<PAD>` (índice 0)
+4. **Padding / Truncamiento**: Fijar todas las secuencias a longitud 128
+5. **Embeddings**: Inicializar con GloVe 100d (opcional), ajuste fino durante el entrenamiento
+
+```python
+# Pseudocódigo del flujo de preprocesamiento
+indices = [vocab.get(w, UNK_IDX) for w in tokens]
+if len(indices) < MAX_LEN:
+    indices += [PAD_IDX] * (MAX_LEN - len(indices))
+else:
+    indices = indices[:MAX_LEN]
+```
+
+Note:
+Destacar que el padding debe hacerse después del truncamiento, y que <PAD> no participa en el cálculo de la pérdida.
+
+---
+
+## Arquitectura de la red
+
+Modelo LSTM para clasificación de texto
+
+```text
+Entrada (batch, 128) 
+    ↓
+Embedding (vocab_size → 100)
+    ↓
+LSTM (hidden_size=128, num_layers=2, dropout=0.3, batch_first=True)
+    ↓
+Último estado oculto h_T (batch, 128)
+    ↓
+Dropout (0.3)
+    ↓
+Linear (128 → 1)
+    ↓
+Sigmoide → Probabilidad (0–1)
+```
+
+- Pérdida: BCEWithLogitsLoss
+
+- Optimizador: Adam (lr=1e-3)
+
+- Regularización: Dropout + weight decay 1e-5
+
+Note:
+Explicar por qué se toma el último estado oculto en lugar del promedio: en tareas de clasificación de sentimiento, la información al final de la secuencia suele ser más representativa.
+
+--- 
+
+## Entrenamiento
+
+|Hiperparámetro|Valor|
+|:---:|:---:|
+|Batch size|64|
+|Épocas|20 (early stopping patience=3)|
+|Learning rate|1e-3 (ReduceLROnPlateau factor=0.5)|
+|Gradient clipping|1.0|
+
+Curva de aprendizaje (resumen):
+
+- Época 1–3: pérdida desciende rápidamente de 0.69 → 0.45
+
+- Época 4–10: descenso lento, accuracy de validación sube de 78% → 86%
+
+- Época 11–15: se estabiliza, early stopping en época 14 (mejor val_acc = 87.2%)
+
+Note:
+Mencionar que el clipping de gradientes es crucial para el entrenamiento de LSTM, especialmente en las primeras épocas.
+
+--- 
+
+## Resultados
+
+Métricas en conjunto de prueba (25k muestras):
+
+|Métrica|	Valor|
+|:---:|:---:|
+|Accuracy|	86.8%|
+|Precision|87.1%|
+|Recall|86.4%|
+|F1-score|	86.7%|
+|AUC-ROC|0.934|
+
+Matriz de confusión (resumen):
+
+- Verdaderos positivos: 10,820 / 12,500
+
+- Verdaderos negativos: 10,880 / 12,500
+
+- Falsos positivos / negativos: ~1,650 cada uno (equilibrado)
+
+Note:
+Si se usa un dataset en español, el accuracy puede variar; se recomienda reemplazar con las cifras reales de tu propio experimento.
+
+--- 
+
+## Demo
+
+A continuación se muestra una animación interactiva del forward pass de LSTM (generada con la skill neural-network-html-dynamic-diagram).
+
+Instrucciones: Haz clic en "Play" para ver la propagación de estados; usa los botones de paso para inspeccionar las compuertas de entrada, olvido y salida.
+
+<iframe src="../assets/lstm_demo.html" width="100%" height="560px" frameborder="0"></iframe>
+Si el iframe no carga, abre directamente assets/lstm_demo.html en una nueva pestaña.
+
+Note:
+El archivo HTML debe ser generado previamente con Codex usando la skill, guardado en docs/assets/lstm_demo.html. La skill produce un HTML/CSS/JS autónomo con controles de reproducción, pausa, paso a paso y reinicio
+
+--- 
+
+## Conclusiones
+
+- LSTM logra 86.8% de accuracy en clasificación binaria de sentimiento, con AUC 0.934
+
+- El mecanismo de compuertas permite modelar dependencias a largo plazo, superando a RNN simples en ~5–8 puntos porcentuales
+
+- Costo: ~12s por época en GPU T4; inferencia ~3ms por muestra (batch=1)
+
+- Mejoras futuras:
+
+    - Probar atención sobre los estados ocultos de LSTM (LSTM + Attention)
+
+    - Reemplazar con Transformer ligero (DistilBERT) y comparar
+
+    - Ajustar el vocabulario para dominio específico (reseñas de productos vs. películas)
+
+Note:
+Conectar la demo interactiva con los conceptos explicados: por ejemplo, al explicar la compuerta de olvido, pausar la demo y señalar visualmente cómo se descarta información.
+
+---
+
+## Ejemplos de funcionalidades
+
+Usa las flechas **arriba y abajo** para recorrer las subdiapositivas de esta sección.
+
+----
+
+## Fragments: aparición progresiva
+
+<ul>
+  <li class="fragment">Primero se prepara la secuencia de entrada.</li>
+  <li class="fragment">Después la LSTM procesa los datos.</li>
+  <li class="fragment">Finalmente se obtiene una predicción.</li>
+</ul>
+
+Avanza para revelar cada paso.
+
+----
+
+## Math: ecuaciones
+
+La compuerta de olvido determina qué información conservar:
+
+<math display="block" aria-label="f sub t igual a sigma de W sub f por h sub t menos uno y x sub t, más b sub f">
+  <msub><mi>f</mi><mi>t</mi></msub><mo>=</mo>
+  <mi>σ</mi><mo>(</mo><msub><mi>W</mi><mi>f</mi></msub>
+  <mo>[</mo><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub>
+  <mo>,</mo><msub><mi>x</mi><mi>t</mi></msub><mo>]</mo><mo>+</mo>
+  <msub><mi>b</mi><mi>f</mi></msub><mo>)</mo>
+</math>
+
+Aquí <math><msub><mi>x</mi><mi>t</mi></msub></math> es la entrada y
+<math><msub><mi>h</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></math>
+es el estado oculto anterior.
+
+----
+
+## Code: código Python
+
+```python
+import torch
+
+lstm = torch.nn.LSTM(input_size=100, hidden_size=128, batch_first=True)
+entrada = torch.randn(4, 10, 100)  # lote, pasos de tiempo, características
+salida, (estado_oculto, estado_celda) = lstm(entrada)
+print(salida.shape)  # torch.Size([4, 10, 128])
+```
+
+----
+
+## Hidden: contenido desplegable
+
+<details>
+  <summary>Mostrar una aclaración</summary>
+  <p>La información permanece oculta hasta que se abre este panel.</p>
+</details>
+
+Note:
+Este texto es una nota para el expositor: no aparece en la diapositiva. Pulsa S para abrir la vista del presentador.
+
+----
+
+## Links: enlaces
+
+- [Repositorio del proyecto](https://github.com/KevinHidalgoDS/deep-learning-ws)
+- [Documentación de PyTorch LSTM](https://pytorch.org/docs/stable/generated/torch.nn.LSTM.html)
+- [Inicio de la documentación](../)
+
+----
+
+## Layout: dos columnas
+
+<div style="display:flex; flex-wrap:wrap; gap:1em; text-align:left;">
+  <div style="flex:1 1 250px;">
+    <h3>Entrada</h3>
+    <p>Una secuencia de vectores representa los datos de cada paso de tiempo.</p>
+  </div>
+  <div style="flex:1 1 250px;">
+    <h3>Salida</h3>
+    <p>La red produce estados ocultos que se pueden usar para una predicción.</p>
+  </div>
+</div>
+
+----
+
+## Lightbox: ampliar una imagen
+
+Haz clic en la imagen para abrirla ampliada; usa Escape para cerrarla.
+
+<a href="../img/dracula.png" class="presentacion-lightbox" data-type="image" aria-label="Ampliar imagen de ejemplo">
+  <img src="../img/dracula.png" alt="Imagen de ejemplo para lightbox: tema Dracula" style="max-height:250px;">
+</a>
+          </textarea>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="./mermaid/dist/mermaid.min.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        slideNumber: true,
+        highlight: {
+          highlightOnLoad: false
+        },
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath
+        ]
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"_":["presentacion.md"],"theme":"serif","css":"slides-scroll.css","static":"..\\presentacion-html","static-dirs":"img","staticDirs":"img"}, queryOptions);
+    </script>
+
+
+    <script>
+      Reveal.initialize(options);
+      Reveal.addEventListener('ready', function (event) {
+        const blocks = Reveal.getRevealElement().querySelectorAll('pre code:not(.mermaid)');
+        const hlp = Reveal.getPlugin('highlight');
+        blocks.forEach(hlp.highlightBlock);
+      });
+    </script>
+
+    <script>
+      const mermaidOptions = extend({ startOnLoad: false }, {});
+      mermaid.startOnLoad = false;
+      mermaid.initialize(mermaidOptions);
+      const cb = function (event) { mermaid.init(mermaidOptions, '.stack.present>.present pre code.mermaid'); };
+      Reveal.addEventListener('ready', cb);
+      Reveal.addEventListener('slidetransitionend', cb);
+    </script>
+  </body>
+</html>
