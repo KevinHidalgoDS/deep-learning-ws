@@ -161,4 +161,7 @@ nav:
       - data: src_data.md
   - Cuadernos Jupyter:
       - EDA: notebooks/01_eda_simem_precio_bolsa.ipynb
-  - Presentación: presentacion.md
+  - Presentación:
+      # - Markdown Reveals: presentacion.md
+      # - Reveals: presentacion-html/presentacion.html
+      - Jupyter: 02_presentacion.slides.html
