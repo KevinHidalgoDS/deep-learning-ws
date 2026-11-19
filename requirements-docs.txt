@@ -1,0 +1,13 @@
+# install basic requirements
+-r requirements.txt
+
+# docs
+mkdocs
+mkdocs-bibtex
+mkdocs-dracula-theme
+mkdocs-git-revision-date-localized-plugin
+mkdocs-glightbox
+mkdocs-jupyter
+mkdocs-material
+mkdocs-with-pdf
+mkdocstrings-python
