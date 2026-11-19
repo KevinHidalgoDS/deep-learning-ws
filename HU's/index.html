@@ -1,0 +1,886 @@
+<!DOCTYPE html><html lang="en" data-bs-theme="dark"><head>
+        <title>Lazy promt - Deep Learning</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        
+        <meta name="author" content="Milena Castaño, Lissy Grace, Kelly Monsalve, Sebastian Sanchez, Kevin Hidalgo">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../assets/css/mkdocs.min.css">
+            <link href="../css/timeago.css" rel="stylesheet">
+            <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+
+        
+            <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../img/dracula.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">Deep Learning</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider">
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Inicio
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#src-collapse" aria-expanded="false">
+                    src
+                </a>
+                <div class="collapse" id="src-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../src_data/" class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            data
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#cuadernos-jupyter-collapse" aria-expanded="false">
+                    Cuadernos Jupyter
+                </a>
+                <div class="collapse" id="cuadernos-jupyter-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../notebooks/01_eda_simem_precio_bolsa/" class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            EDA
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu" aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary" placeholder="Search docs" title="Type search term here">
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                            
+                                <div class="md-source source-detail">
+    <div class="md-source-repo-icon">
+        <i class="fa fa-github-alt drac-text-white" aria-hidden="true"></i>
+    </div>
+
+    <div class="md-source-repo-url">
+        <a href="https://github.com/KevinHidalgoDS/deep-learning-ws" class="md-source drac-anchor drac-text drac-text-white drac-text-cyan-green--hover">
+            KevinHidalgoDS/deep-learning-ws
+        </a>
+
+        <ul class="md-source-repo-text">
+            <li>
+                <i class="fa fa-tag drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+
+            <li>
+                <i class="fa fa-star drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+
+            <li>
+                <i class="fa fa-code-fork drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub forks" src="https://img.shields.io/github/forks/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+        </ul>
+    </div>
+
+</div>
+                            
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p></p><h1 id="lazy-promt">Lazy promt<a class="headerlink" href="#lazy-promt" title="Permanent link">¶</a></h1>
+<p>actúa como un ingeniero de prompt, se quiere desarrolllar un proyecto de clase para el curso de
+Deep learning de la Universidad NAcional de Colombia, tu tarea es crear un flujo de trabajo
+completo que permita el desarrollo del mismo, el proyecto es crear un modelo de redes neuronales
+para pronósticar el precio de bolsa de energía de colombia (el dataset se encuentra en el portal
+SIMEM), es importarte que tengas en cuenta el ciclo de vida de la análitica que es algo así:
+obtención de datos, transformación, modelado, resultados, presentación. ten en cuenta metodología
+DevOps, Scrum u otra que consideres apropiada, también ten presente que se cuenta con un
+repositorio Github que posee la siguiente estructura de carpetas</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>├── config/              # Parámetros del proyecto (rutas, hiperparámetros, credenciales de ejemplo).
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── data/
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│   ├── raw/             # Datos originales e inmutables.
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│   ├── interim/         # Datos en transformación, resultados parciales de limpieza.
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>│   ├── processed/       # Datos limpios y listos para modelado.
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│   └── external/        # Datos de terceros o fuentes externas.
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>├── docs/                # Documentación del proyecto (Sphinx/MkDocs), guías y referencias.
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>├── models/              # Modelos entrenados y serializados (ej. .pkl, .h5).
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│   ├── trained/         # Modelos finales listos para inferencia.
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│   ├── checkpoints/     # Puntos de guardado durante entrenamiento.
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>├── notebooks/           # Jupyter Notebooks para exploración y visualización (nombrados secuencialmente).
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>├── src/                 # Código fuente principal del proyecto.
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│   ├── __init__.py
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│   ├── data/            # Scripts para ingesta y transformación de datos.
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│   ├── utils/           # Funciones utilitarias y helpers.
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│   ├── features/        # Scripts de feature engineering.
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│   ├── models/          # Scripts para entrenamiento, optimización y predicción.
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│   └── visualization/   # Generación de gráficos y pósteres digitales.
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>├── tests/               # Pruebas unitarias y de integración.
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>├── dashboards/          # Aplicaciones interactivas.
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>├── reports/             # Resultados y comunicación.
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│   ├── figures/         # imágenes generadas por scripts/notebooks (versionadas o regenerables).
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>├── scripts/             # Automatización.
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>├── .gitignore           # Archivos ignorados por Git.
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>├── environment.yml      # Dependencias para Conda.
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>├── requirements.txt     # Dependencias para pip.
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>└── README.md            # Este archivo.
+</span></code></pre></div>
+<h2 id="prompt-gemini">prompt Gemini<a class="headerlink" href="#prompt-gemini" title="Permanent link">¶</a></h2>
+<p>El siguiente flujo de trabajo integra el ciclo de vida de la analítica de datos, principios de
+<strong>MLOps/DevOps</strong> y una gestión ágil basada en <strong>Scrum</strong> adaptada a un proyecto académico de
+posgrado de la <strong>Universidad Nacional de Colombia</strong>.</p>
+<p>Para construir el proyecto de manera modular, trazable y sin deuda técnica, utiliza esta secuencia
+de <strong>Prompt Chaining</strong> (encadenamiento de prompts). Cada fase está diseñada para ejecutar un
+<em>Sprint</em> específico sobre tu estructura de repositorio.</p>
+<hr>
+<h3 id="marco-metodologico-del-flujo-crisp-dm-scrum-mlops">Marco Metodológico del Flujo (CRISP-DM + Scrum + MLOps)<a class="headerlink" href="#marco-metodologico-del-flujo-crisp-dm-scrum-mlops" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Gestión Ágil (Scrum):</strong> El desarrollo se divide en <strong>5 Sprints</strong> alineados con las etapas
+  analíticas. Cada prompt actúa como el <em>Sprint Backlog</em> técnico.</li>
+<li><strong>Ingeniería y DevOps:</strong> Se prioriza el código modular en <code>src/</code> sobre los <em>notebooks</em>
+  monolíticos, pruebas automatizadas en <code>tests/</code>, configuración centralizada en <code>config/</code> y
+  documentación continua con <strong>MkDocs</strong>.</li>
+</ul>
+<hr>
+<h2 id="fase-0-configuracion-de-infraestructura-y-devops-sprint-0">Fase 0: Configuración de Infraestructura y DevOps (Sprint 0)<a class="headerlink" href="#fase-0-configuracion-de-infraestructura-y-devops-sprint-0" title="Permanent link">¶</a></h2>
+<p><strong>Objetivo:</strong> Establecer las bases del repositorio, entornos reproducibles, calidad de código y
+automatización inicial.</p>
+<blockquote>
+<p><strong>Prompt 0 (Copiar y ejecutar):</strong> "Actúa como un Ingeniero de MLOps y Arquitecto de Software
+Senior en Python. Estamos iniciando un proyecto de Deep Learning para la Universidad Nacional de
+Colombia cuyo objetivo es pronosticar el precio de bolsa de energía en Colombia utilizando datos
+del portal SIMEM. Basándote estrictamente en nuestra estructura de repositorio (<code>config/</code>,
+<code>src/</code>, <code>tests/</code>, <code>docs/</code>, <code>scripts/</code>, etc.), genera los archivos base para garantizar
+reproducibilidad y calidad de código bajo prácticas DevOps:</p>
+<ol>
+<li><strong><code>config/config.yaml</code></strong>: Archivo maestro con rutas relativas a <code>data/</code>, parámetros de
+   conexión a la API/portal SIMEM, ventanas temporales, semillas aleatorias (<code>seed: 42</code>) y
+   parámetros base de entrenamiento.</li>
+<li><strong><code>requirements.txt</code> y <code>environment.yml</code></strong>: Dependencias exactas enfocadas en series de tiempo
+   y Deep Learning (PyTorch o TensorFlow/Keras, pandas, polars, scikit-learn, optuna, pyyaml,
+   pytest, ruff, mkdocs-material, streamlit).</li>
+<li><strong><code>.github/workflows/ci.yml</code></strong>: Pipeline de GitHub Actions que ejecute <code>ruff</code>
+   (linter/formatter) y <code>pytest</code> en cada <em>push</em> o <em>pull request</em> a <code>main</code>.</li>
+<li><strong><code>scripts/setup_env.sh</code></strong>: Script de automatización para inicializar el entorno y verificar
+   la estructura de carpetas.</li>
+</ol>
+<p>Asegúrate de que todo el código siga estándares PEP 8, tipado estático (<code>typing</code>) y principios de
+código limpio."</p>
+</blockquote>
+<hr>
+<h2 id="fase-1-obtencion-y-exploracion-de-datos-sprint-1">Fase 1: Obtención y Exploración de Datos (Sprint 1)<a class="headerlink" href="#fase-1-obtencion-y-exploracion-de-datos-sprint-1" title="Permanent link">¶</a></h2>
+<p><strong>Objetivo:</strong> Construir el <em>pipeline</em> de extracción reproducible desde SIMEM hacia <code>data/raw/</code> y
+realizar el Análisis Exploratorio de Datos (EDA) específico del mercado eléctrico colombiano.</p>
+<blockquote>
+<p><strong>Prompt 1 (Copiar y ejecutar):</strong> "Actúa como un Ingeniero de Datos especializado en el Mercado
+de Energía Mayorista (MEM) de Colombia. Vamos a desarrollar el <strong>Sprint 1: Obtención y
+Exploración de Datos</strong> dentro de nuestra estructura de proyecto. Considerando el dominio del
+problema (estacionalidad horaria/diaria, fenómenos macroclimáticos como El Niño/La Niña, aportes
+hídricos, demanda nacional y generación térmica/hidráulica):</p>
+<ol>
+<li><strong><code>src/data/make_dataset.py</code></strong>: Escribe un script modular que descargue o cargue los datos
+   históricos del precio de bolsa nacional y variables exógenas clave desde el portal SIMEM
+   (usando su API pública o lectura estructurada), guardando los archivos inmutables con control
+   de versiones por fecha en <code>data/raw/</code>. Incluye manejo de excepciones, <em>logging</em> estructurado y
+   lectura de parámetros desde <code>config/config.yaml</code>.</li>
+<li><strong><code>notebooks/01_eda_simem_precio_bolsa.ipynb</code></strong>: Diseña la estructura detallada (celdas de
+   código y markdown) de un notebook exploratorio que analice: valores faltantes, valores
+   atípicos (picos de escasez), estacionariedad (pruebas ADF/KPSS), autocorrelación (ACF/PACF) y
+   descomposición estacional del precio de bolsa. Las figuras clave deben exportarse
+   automáticamente a <code>reports/figures/</code>.</li>
+<li><strong><code>tests/test_data_ingestion.py</code></strong>: Crea pruebas unitarias con <code>pytest</code> para validar el
+   esquema de datos, tipos de columnas y ausencia de duplicados temporales tras la ingesta."</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="fase-2-transformacion-e-ingenieria-de-caracteristicas-sprint-2">Fase 2: Transformación e Ingeniería de Características (Sprint 2)<a class="headerlink" href="#fase-2-transformacion-e-ingenieria-de-caracteristicas-sprint-2" title="Permanent link">¶</a></h2>
+<p><strong>Objetivo:</strong> Limpiar los datos, evitar fuga de información (<em>data leakage</em>) y construir tensores
+secuenciales listos para redes neuronales.</p>
+<p>Opción 1</p>
+<blockquote>
+<p><strong>Prompt 2 (Copiar y ejecutar):</strong> "Actúa como un Científico de Datos Senior experto en Series de
+Tiempo. Ejecutemos el <strong>Sprint 2: Transformación y Feature Engineering</strong>. Utilizando los datos
+crudos en <code>data/raw/</code> y siguiendo las reglas definidas en <code>config/config.yaml</code>:</p>
+<ol>
+<li><strong><code>src/data/preprocess.py</code></strong>: Implementa la limpieza de datos, imputación causal (sin mirar al
+   futuro) y alineación temporal horaria/diaria, guardando el resultado intermedio en
+   <code>data/interim/</code>.</li>
+<li>
+<p><strong><code>src/features/build_features.py</code></strong>: Crea un pipeline de ingeniería de características que
+   genere:</p>
+</li>
+<li>
+<p>Rezagos (<em>lags</em>) autorregresivos óptimos y ventanas móviles (media, desviación estándar,
+  cuantiles).</p>
+</li>
+<li>Codificación cíclica de variables temporales (<span class="arithmatex">\(\sin/\cos\)</span> para hora del día, día de la semana y
+  mes).</li>
+<li>Indicadores de dominio energético (ej. brecha demanda-aportes hídricos si están disponibles).</li>
+<li>Escalado (<code>RobustScaler</code> o <code>StandardScaler</code>) ajustado <strong>estrictamente sobre el conjunto de
+  entrenamiento</strong> (serializando el escalador en <code>models/trained/scaler.pkl</code> para inferencia
+  futura).</li>
+<li>
+<p>Generación de ventanas deslizantes 3D <code>(muestras, pasos_tiempo, características)</code> almacenadas
+  en <code>data/processed/</code>.</p>
+</li>
+<li>
+<p><strong><code>tests/test_features.py</code></strong>: Implementa pruebas unitarias que garanticen que no existe <em>data
+   leakage</em> entre los conjuntos de <em>train</em>, <em>validation</em> y <em>test</em> (split cronológico estricto)."</p>
+</li>
+</ol>
+</blockquote>
+<p>Opción 2</p>
+<blockquote>
+<p>Actúa como un Científico de Datos Senior especializado en series de tiempo y en modelado de
+sistemas energéticos. Necesito que implementes el <strong>Sprint 2: Transformación y Feature
+Engineering</strong> de este proyecto, siguiendo estrictamente las reglas definidas en
+<code>config/config.yaml</code>. El objetivo es dejar listos, de forma reproducible y libre de fuga de
+información, los datos transformados para entrenar modelos de pronóstico.</p>
+<p>Los datos crudos están en <code>data/raw/</code>. Trabaja sobre ellos respetando el orden cronológico en
+todo momento, porque cualquier transformación que use información futura invalidaría el
+pronóstico.</p>
+<p>Implementa lo siguiente:</p>
+<ol>
+<li>
+<p><strong><code>src/data/preprocess.py</code></strong>: limpieza de datos, imputación causal (cada valor faltante se
+   rellena únicamente con información disponible en el pasado, nunca con valores posteriores) y
+   alineación temporal a frecuencia horaria y diaria. Guarda el resultado intermedio en
+   <code>data/interim/</code>.</p>
+</li>
+<li>
+<p><strong><code>src/features/build_features.py</code></strong>: un pipeline de ingeniería de características que genere:</p>
+</li>
+<li>
+<p>Rezagos (<em>lags</em>) autorregresivos y ventanas móviles (media, desviación estándar y cuantiles).
+  Selecciona los rezagos a partir de evidencia del propio dato (por ejemplo, autocorrelación o
+  autocorrelación parcial) y justifica la elección en comentarios del código.</p>
+</li>
+<li>Codificación cíclica de variables temporales mediante seno y coseno para hora del día, día de
+  la semana y mes.</li>
+<li>Indicadores de dominio energético, como la brecha entre demanda y aportes hídricos, siempre que
+  las columnas correspondientes existan en los datos.</li>
+<li>Escalado con <code>RobustScaler</code> o <code>StandardScaler</code>, ajustado <strong>únicamente sobre el conjunto de
+  entrenamiento</strong>. Serializa el escalador en <code>models/trained/scaler.pkl</code> para la inferencia
+  futura.</li>
+<li>
+<p>Generación de ventanas deslizantes tridimensionales con forma
+  <code>(muestras, pasos_tiempo, características)</code>, almacenadas en <code>data/processed/</code>.</p>
+</li>
+<li>
+<p><strong><code>tests/test_features.py</code></strong>: pruebas unitarias que verifiquen la ausencia de <em>data leakage</em>
+   entre los conjuntos de entrenamiento, validación y prueba. El particionado debe ser
+   cronológico estricto. Incluye pruebas que confirmen que el escalador no fue ajustado con datos
+   de validación ni de prueba, que la imputación no usa valores futuros y que las ventanas
+   deslizantes no cruzan las fronteras entre particiones.</p>
+</li>
+</ol>
+<p>Restricciones de implementación: usa Python con las bibliotecas estándar del ecosistema
+científico (pandas, numpy, scikit-learn, pytest). Mantén el código modular, con funciones
+pequeñas y documentadas. Si alguna columna mencionada en <code>config/config.yaml</code> no existe en
+<code>data/raw/</code>, no la inventes: registra la omisión de forma explícita y continúa con las demás.
+Antes de dar por terminado el trabajo, ejecuta las pruebas y confirma que pasan.</p>
+</blockquote>
+<hr>
+<h2 id="fase-3-modelado-de-deep-learning-y-optimizacion-sprint-3">Fase 3: Modelado de Deep Learning y Optimización (Sprint 3)<a class="headerlink" href="#fase-3-modelado-de-deep-learning-y-optimizacion-sprint-3" title="Permanent link">¶</a></h2>
+<p><strong>Objetivo:</strong> Diseñar, entrenar, regularizar y optimizar arquitecturas neuronales para pronóstico
+de series de tiempo.</p>
+<p>Opción 1</p>
+<blockquote>
+<p><strong>Prompt 3 (Copiar y ejecutar):</strong> "Actúa como un Investigador en Deep Learning. Vamos a
+desarrollar el <strong>Sprint 3: Modelado, Entrenamiento y Optimización</strong>. Sobre los tensores
+procesados en <code>data/processed/</code>, implementa una arquitectura modular en <code>src/models/</code> que permita
+comparar un modelo base estadístico/ML contra arquitecturas profundas (ej. <strong>LSTM/GRU con
+mecanismo de atención</strong>, <strong>TCN - Temporal Convolutional Networks</strong>, o <strong>N-BEATS/TFT</strong>):</p>
+<ol>
+<li><strong><code>src/models/architectures.py</code></strong>: Define al menos dos arquitecturas de redes neuronales en
+   PyTorch (o TensorFlow/Keras) bien estructuradas, incluyendo capas de <em>Dropout</em>, normalización
+   y funciones de pérdida robustas ante picos de precio (ej. <em>Huber Loss</em> o <em>Quantile Loss</em> para
+   intervalos de predicción).</li>
+<li><strong><code>src/models/train_model.py</code></strong>: Script de entrenamiento configurado desde
+   <code>config/config.yaml</code> que incluya: <em>Early Stopping</em>, programación de tasa de aprendizaje
+   (<em>Learning Rate Scheduler</em>), guardado de los mejores pesos en <code>models/checkpoints/</code>, y
+   registro de métricas de entrenamiento/validación.</li>
+<li><strong><code>src/models/optimize.py</code></strong>: Implementa una búsqueda de hiperparámetros con <strong>Optuna</strong> (tasa
+   de aprendizaje, tamaño de ventana, unidades ocultas, <em>dropout</em>) que guarde los mejores
+   parámetros y exporte el modelo campeón final a <code>models/trained/</code>."</li>
+</ol>
+</blockquote>
+<p>Opción 2</p>
+<blockquote>
+<p>Actúa como un investigador senior en Deep Learning especializado en pronóstico de series
+temporales financieras. Tu tarea es implementar el <strong>Sprint 3: Modelado, Entrenamiento y
+Optimización</strong> de un proyecto de predicción de precios, partiendo de tensores ya procesados
+ubicados en <code>data/processed/</code>.</p>
+<p>El objetivo final es construir un marco modular en <code>src/models/</code> que compare de forma justa un
+modelo base estadístico/ML contra arquitecturas profundas (por ejemplo, LSTM/GRU con mecanismo de
+atención, TCN — Temporal Convolutional Networks, o N-BEATS/TFT), de modo que se pueda identificar
+el modelo campeón con evidencia.</p>
+<p>Trabaja con PyTorch (o TensorFlow/Keras si el código existente ya lo usa; mantén la coherencia
+con el resto del proyecto). Entrega tres componentes:</p>
+<ol>
+<li>
+<p><strong><code>src/models/architectures.py</code></strong>: Define al menos tres arquitecturas de redes neuronales bien
+   estructuradas y modulares, además del modelo base estadístico/ML para la comparación. Incluye
+   capas de <em>Dropout</em> y normalización donde corresponda. Usa una función de pérdida robusta ante
+   picos de precio, como <em>Huber Loss</em>, y considera <em>Quantile Loss</em> para producir intervalos de
+   predicción si el objetivo lo requiere. Justifica brevemente en comentarios la elección de cada
+   arquitectura frente a la naturaleza de los datos.</p>
+</li>
+<li>
+<p><strong><code>src/models/train_model.py</code></strong>: Script de entrenamiento parametrizado desde
+   <code>config/config.yaml</code> (no hardcodees hiperparámetros). Debe incluir <em>Early Stopping</em> sobre la
+   pérdida de validación, un <em>Learning Rate Scheduler</em>, guardado de los mejores pesos en
+   <code>models/checkpoints/</code>, y registro de métricas de entrenamiento y validación por época. Respeta
+   el orden temporal de los datos: la validación debe ser posterior al entrenamiento, sin fuga de
+   información del futuro.</p>
+</li>
+<li>
+<p><strong><code>src/models/optimize.py</code></strong>: Búsqueda de hiperparámetros con <strong>Optuna</strong> sobre tasa de
+   aprendizaje, tamaño de ventana, unidades ocultas y <em>dropout</em>. Guarda los mejores parámetros
+   encontrados y exporta el modelo campeón final a <code>models/trained/</code>. La selección del campeón
+   debe basarse en el rendimiento de validación, no de prueba.</p>
+</li>
+</ol>
+<p>Antes de escribir código, revisa la estructura real de <code>data/processed/</code> y <code>config/config.yaml</code>
+para adaptar las rutas, formas de los tensores (ventana, horizonte, número de variables) y
+nombres de parámetros a lo que ya existe. Mantén el alcance acotado a estos tres archivos y a la
+configuración que necesiten; no reescribas el preprocesamiento.</p>
+<p>Entrega código completo y ejecutable, con docstrings breves y manejo de semillas aleatorias para
+reproducibilidad. Incluye un ejemplo mínimo de uso (comando de ejecución) al final de cada
+script.</p>
+</blockquote>
+<hr>
+<h2 id="fase-4-evaluacion-de-resultados-e-interpretabilidad-sprint-4">Fase 4: Evaluación de Resultados e Interpretabilidad (Sprint 4)<a class="headerlink" href="#fase-4-evaluacion-de-resultados-e-interpretabilidad-sprint-4" title="Permanent link">¶</a></h2>
+<p><strong>Objetivo:</strong> Evaluar el rendimiento fuera de muestra bajo métricas financieras y energéticas, y
+explicar las predicciones del modelo.</p>
+<blockquote>
+<p><strong>Prompt 4 (Copiar y ejecutar):</strong> "Actúa como un Analista Cuantitativo del Sector Energético.
+Ejecutemos el <strong>Sprint 4: Evaluación de Resultados e Interpretabilidad</strong>. Carga el modelo campeón
+desde <code>models/trained/</code> y evalúalo sobre el conjunto de prueba (<em>out-of-sample</em>) en
+<code>data/processed/</code>:</p>
+<ol>
+<li><strong><code>src/models/predict_model.py</code></strong>: Genera las predicciones en la escala original (COP/kWh)
+   invirtiendo la transformación con <code>models/trained/scaler.pkl</code> y calcula métricas clave: <strong>MAE,
+   RMSE, MAPE, sMAPE</strong> y métricas direccionales (precisión en la tendencia de subida/bajada del
+   precio). Incluye comparación directa contra un modelo <em>Baseline</em> (ej. persistencia / Naïve
+   estacional).</li>
+<li>
+<p><strong><code>src/visualization/visualize.py</code></strong>: Genera gráficos de alta resolución (300 DPI) listos para
+   publicación académica en <code>reports/figures/</code>:</p>
+</li>
+<li>
+<p>Serie real vs. pronosticada (incluyendo zoom en eventos de alta volatilidad).</p>
+</li>
+<li>Análisis de residuales y distribución de errores por hora del día.</li>
+<li>
+<p>Importancia de características mediante <strong>SHAP</strong> o gradientes integrados para explicar qué
+  variables impulsan el precio de bolsa.</p>
+</li>
+<li>
+<p><strong><code>notebooks/02_evaluacion_errores.ipynb</code></strong>: Notebook de análisis post-mortem enfocado en
+   identificar en qué condiciones del mercado (horas pico, baja hidrología) falla el modelo."</p>
+</li>
+</ol>
+</blockquote>
+<p>Opción 2</p>
+<blockquote>
+<p>Actúa como un analista cuantitativo senior del sector energético especializado en mercados
+eléctricos mayoristas y en machine learning aplicado a series temporales. Tu tarea es ejecutar la
+evaluación de resultados e interpretabilidad (Sprint 4) de un modelo de pronóstico del precio de
+bolsa de energía eléctrica en Colombia, expresado en COP/kWh, sobre un conjunto de prueba
+out-of-sample.</p>
+<p>Trabaja sobre los archivos y rutas del proyecto que te indico, asumiendo que tienes acceso al
+repositorio, y ten en cuenta que el modelo campeón y el escalador ya fueron entrenados y
+persistidos previamente:</p>
+<ul>
+<li>Modelo campeón: <code>models/trained/</code> (carga el modelo ganador del entrenamiento previo).</li>
+<li>Escalador: <code>models/trained/scaler.pkl</code>, necesario para invertir la transformación y devolver
+  las predicciones y los valores reales a la escala original COP/kWh.</li>
+<li>Datos de prueba (out-of-sample): <code>data/processed/</code>. No uses ninguna observación de este
+  conjunto durante el entrenamiento o la selección del modelo.</li>
+</ul>
+<p><strong>1. <code>src/models/predict_model.py</code>: predicciones y métricas</strong></p>
+<ul>
+<li>Genera las predicciones sobre el conjunto de prueba e invierte la transformación con
+  <code>scaler.pkl</code> para trabajar en COP/kWh.</li>
+<li>Calcula <strong>MAE, RMSE, MAPE y sMAPE</strong>. Documenta cómo tratas los valores cercanos a cero en MAPE,
+  ya que el precio puede aproximarse a cero o ser negativo en algunas horas; elige y justifica
+  una variante robusta (por ejemplo, sMAPE o MAPE con denominador acotado).</li>
+<li>Calcula métricas direccionales: la precisión en la dirección del movimiento del precio
+  (subida/bajada) respecto al periodo anterior, con su matriz de confusión o tasa de acierto.</li>
+<li>Compara el modelo contra un <strong>baseline de persistencia / Naïve estacional</strong> (por ejemplo, el
+  precio de la misma hora del día anterior o de la semana anterior, según la estacionalidad de
+  los datos). Reporta las mismas métricas para ambos y la mejora relativa del modelo campeón.</li>
+<li>Guarda las métricas en un formato tabular reproducible.</li>
+</ul>
+<p><strong>2. <code>src/visualization/visualize.py</code>: gráficos para publicación</strong></p>
+<p>Genera figuras a <strong>300 DPI</strong>, con etiquetas, unidades (COP/kWh) y leyendas legibles, listas para
+un artículo académico, en <code>reports/figures/</code>:</p>
+<ul>
+<li>Serie real vs. pronosticada en el conjunto de prueba, con un zoom adicional sobre episodios de
+  alta volatilidad.</li>
+<li>Análisis de residuales (serie temporal de errores e histograma/distribución) y distribución de
+  errores agrupada por hora del día.</li>
+<li>Importancia de características mediante <strong>SHAP</strong> o gradientes integrados, que explique qué
+  variables impulsan el precio de bolsa. Si usas SHAP, indica el tipo de explicador empleado
+  según el modelo y el tamaño de la muestra para mantener el cálculo tratable.</li>
+</ul>
+<p><strong>3. <code>notebooks/02_evaluacion_errores.ipynb</code>: análisis post-mortem</strong></p>
+<p>Construye un notebook que identifique en qué condiciones del mercado falla el modelo. Analiza al
+menos:</p>
+<ul>
+<li>Horas pico frente a horas valle, comparando el error en cada régimen.</li>
+<li>Periodos de baja hidrología, si la base de datos incluye variables hidrológicas o de aportes;
+  si no las incluye, indícalo explícitamente y utiliza el proxy disponible.</li>
+<li>Episodios de alta volatilidad y eventos extremos, cuantificando cuánto del error total proviene
+  de ellos.</li>
+</ul>
+<p>Concluye con hallazgos accionables sobre dónde y por qué el modelo degrada su desempeño.</p>
+<p><strong>Criterios de calidad</strong></p>
+<ul>
+<li>Reporta las métricas con su contexto: cuántas observaciones, qué periodo cubre el conjunto de
+  prueba y cuál es el baseline.</li>
+<li>Si algún archivo, columna o ruta no existe o no coincide con lo descrito, detén ese paso,
+  explica la discrepancia con precisión y continúa con lo que sea posible sin inventar datos.</li>
+<li>Mantén el código modular, reproducible y con semillas fijas donde aplique.</li>
+<li>Presenta un resumen final breve con las métricas principales frente al baseline y los hallazgos
+  más relevantes del análisis de errores.</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="fase-5-presentacion-despliegue-y-documentacion-academica-sprint-5">Fase 5: Presentación, Despliegue y Documentación Académica (Sprint 5)<a class="headerlink" href="#fase-5-presentacion-despliegue-y-documentacion-academica-sprint-5" title="Permanent link">¶</a></h2>
+<p><strong>Objetivo:</strong> Consolidar los entregables finales para la sustentación en la Universidad Nacional de
+Colombia: aplicación interactiva, documentación técnica y reporte ejecutivo.</p>
+<blockquote>
+<p><strong>Prompt 5 (Copiar y ejecutar):</strong> "Actúa como un Líder Técnico y Divulgador Científico. Vamos a
+cerrar el proyecto con el <strong>Sprint 5: Presentación, Despliegue y Documentación</strong>. Con base en
+todos los artefactos generados en las fases anteriores:</p>
+<ol>
+<li><strong><code>dashboards/app.py</code></strong>: Desarrolla una aplicación interactiva en <strong>Streamlit</strong> que consuma el
+   modelo en <code>models/trained/</code> y permita al usuario seleccionar un horizonte de pronóstico,
+   visualizar la predicción del precio de bolsa con sus intervalos de confianza, explorar
+   métricas de desempeño y consultar la explicabilidad de variables.</li>
+<li>**<code>docs/</code> y <code>README.md**</code>: Redacta la documentación técnica completa utilizando <strong>MkDocs</strong>
+   (<code>docs/index.md</code>, <code>docs/architecture.md</code>, <code>docs/methodology.md</code>) y actualiza el <code>README.md</code>
+   principal con instrucciones claras de instalación, ejecución de pipelines (<code>scripts/</code>) y
+   resumen de resultados.</li>
+<li><strong><code>reports/informe_final_unal.md</code> (o estructura LaTeX/póster)</strong>: Genera el borrador técnico
+   del artículo/informe final del curso de Deep Learning, estructurado en: <em>Resumen, Introducción
+   al Mercado Eléctrico Colombiano, Metodología y Arquitectura Neuronal, Diseño Experimental,
+   Resultados y Discusión, Conclusiones y Trabajo Futuro</em>, referenciando las figuras almacenadas
+   en <code>reports/figures/</code>."</li>
+</ol>
+</blockquote>
+<p>Opción 2</p>
+<blockquote>
+<p>Actúa como un Líder Técnico senior con experiencia en ciencia de datos y aprendizaje profundo, y
+como divulgador científico capaz de comunicar resultados técnicos con rigor y claridad. Vamos a
+cerrar el proyecto con el <strong>Sprint 5: Presentación, Despliegue y Documentación</strong>, a partir de los
+artefactos generados en las fases anteriores del proyecto de pronóstico del precio de bolsa del
+mercado eléctrico colombiano. Tu objetivo es producir los tres entregables descritos abajo,
+coherentes entre sí y con los resultados reales del modelo entrenado.</p>
+<p>Los artefactos previos del proyecto (modelo entrenado en <code>models/trained/</code>, métricas, figuras en
+<code>reports/figures/</code>, scripts en <code>scripts/</code> y código de entrenamiento) están disponibles en el
+repositorio. Antes de redactar, revisa estos archivos y basa cada afirmación en lo que realmente
+contienen: cifras, nombres de variables, arquitectura y resultados. No inventes métricas, fechas
+ni parámetros que no aparezcan en los artefactos; si algún dato no está disponible, indícalo
+explícitamente.</p>
+<p><strong>1. <code>dashboards/app.py</code> (aplicación en Streamlit)</strong> Desarrolla una aplicación interactiva que
+cargue el modelo desde <code>models/trained/</code> y permita al usuario:</p>
+<ul>
+<li>Seleccionar el horizonte de pronóstico.</li>
+<li>Visualizar la predicción del precio de bolsa junto con sus intervalos de confianza.</li>
+<li>Explorar las métricas de desempeño del modelo.</li>
+<li>Consultar la explicabilidad de las variables de entrada.</li>
+</ul>
+<p>Mantén el código limpio y ejecutable, con la carga del modelo y de los datos separada de la
+lógica de la interfaz, y con un manejo claro de errores si falta algún artefacto.</p>
+<p><strong>2. Documentación con MkDocs y <code>README.md</code></strong> Redacta la documentación técnica completa en
+<code>docs/index.md</code>, <code>docs/architecture.md</code> y <code>docs/methodology.md</code>, y actualiza el <code>README.md</code>
+principal con:</p>
+<ul>
+<li>Instrucciones claras de instalación y de ejecución de los pipelines en <code>scripts/</code>.</li>
+<li>Un resumen de resultados que refleje las métricas reales del proyecto.</li>
+</ul>
+<p>La documentación debe ser precisa para un lector técnico que quiera reproducir el trabajo.</p>
+<p><strong>3. Informe final del curso de Deep Learning (<code>reports/informe_final_unal.md</code>, o bien estructura
+LaTeX/póster si es lo más adecuado)</strong> Genera el borrador técnico del artículo final con las
+secciones: Resumen, Introducción al Mercado Eléctrico Colombiano, Metodología y Arquitectura
+Neuronal, Diseño Experimental, Resultados y Discusión, y Conclusiones y Trabajo Futuro.
+Referencia las figuras almacenadas en <code>reports/figures/</code> en las secciones correspondientes,
+indicando qué muestra cada una. Mantén un tono académico, con explicaciones accesibles para una
+audiencia no especialista en la introducción y el resumen.</p>
+<p>Entrega cada uno de los tres artefactos completo y listo para usarse, en Markdown o Python según
+corresponda, y asegúrate de que la terminología, las cifras y los nombres de archivos sean
+consistentes en los tres.</p>
+</blockquote>
+<hr>
+<h3 id="recomendaciones-de-ejecucion-en-tu-flujo-de-trabajo">Recomendaciones de Ejecución en tu Flujo de Trabajo<a class="headerlink" href="#recomendaciones-de-ejecucion-en-tu-flujo-de-trabajo" title="Permanent link">¶</a></h3>
+<ul>
+<li><strong>Iteración incremental:</strong> No ejecutes todos los prompts a la vez. Ejecuta el <strong>Prompt 0</strong>,
+  valida que los archivos funcionen en tu entorno local y haz el primer <code>git commit</code>. Avanza al
+  siguiente <em>Sprint</em> solo cuando los <code>tests/</code> del <em>Sprint</em> actual pasen en verde.</li>
+<li><strong>Control de contexto:</strong> Cuando pases del Prompt <span class="arithmatex">\(N\)</span> al Prompt <span class="arithmatex">\(N+1\)</span>, adjunta únicamente los
+  nombres de columnas reales obtenidas de SIMEM y la arquitectura seleccionada para mantener
+  coherencia estricta entre scripts.</li>
+<li><strong>Automatización final:</strong> Al terminar el Sprint 3, pide generar un archivo
+  <code>scripts/run_pipeline.sh</code> (o <code>Makefile</code>) que encadene <code>make_dataset.py</code> <span class="arithmatex">\(\rightarrow\)</span>
+  <code>preprocess.py</code> <span class="arithmatex">\(\rightarrow\)</span> <code>build_features.py</code> <span class="arithmatex">\(\rightarrow\)</span> <code>train_model.py</code> <span class="arithmatex">\(\rightarrow\)</span>
+  <code>predict_model.py</code> en un solo comando.</li>
+</ul><script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+/* Shared by full pages and Material's instant navigation. */
+(() => {
+  const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
+  if (window.mkdocsJupyterMathJax) return;
+
+  let loading;
+  let queue = Promise.resolve();
+  let previous = [];
+
+  const ready = async () => {
+    if (!loading) {
+      loading = (async () => {
+        let math = window.MathJax;
+        if (!math?.typesetPromise) {
+          const url = new URL(config.url, document.baseURI).href;
+          const existing = Array.from(document.scripts).find(script =>
+            script.src && (script.src === url || script.id === 'MathJax-script' ||
+              (/mathjax/i.test(script.src) &&
+               /\/(?:MathJax|latest|(?:tex|mml)(?:-mml)?-(?:chtml|svg))\.js(?:[?#]|$)/i.test(script.src))));
+          if (existing) {
+            if (!math?.startup?.promise) {
+              await new Promise((resolve, reject) => {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+              });
+            }
+          } else {
+            // Keep site macros, delimiters and startup hooks when supplied.
+            const options = math || {};
+            window.MathJax = {
+              ...options,
+              loader: {
+                ...options.loader,
+                load: Array.from(new Set(['ui/safe', ...(options.loader?.load || [])]))
+              },
+              startup: { typeset: false, ...options.startup },
+              tex: {
+                tags: 'ams',
+                useLabelIds: true,
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                ...options.tex
+              }
+            };
+            await new Promise((resolve, reject) => {
+              const script = document.createElement('script');
+              script.src = config.url;
+              script.id = 'MathJax-script';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+          }
+        }
+        math = window.MathJax;
+        await math.startup.promise;
+        return math;
+      })();
+    }
+    const math = await loading;
+    // A site owner can extend the v3 queue again on each navigation.
+    await math.startup.promise;
+    return math;
+  };
+
+  const unrendered = node => {
+    if (node.matches('mjx-container')) return [];
+    if (!node.querySelector('mjx-container')) return [node];
+    // In v3, scanning generated assistive MathML again produces nested output.
+    return Array.from(node.children).flatMap(unrendered);
+  };
+
+  const refresh = () => {
+    // A separate chain also serializes v3, without changing v4's startup promise.
+    queue = queue.then(async () => {
+      const notebooks = Array.from(document.querySelectorAll('.jupyter-wrapper'));
+      if (!notebooks.length && !previous.length) return;
+      if (notebooks.length === previous.length &&
+          notebooks.every((node, index) => node === previous[index])) return;
+      const math = await ready();
+      if (previous.length) {
+        math.typesetClear(previous);
+        math.texReset();
+      }
+      previous = notebooks.filter(node => node.isConnected);
+      const pending = previous.flatMap(unrendered);
+      if (pending.length) await math.typesetPromise(pending);
+    }).catch(error => console.error('mkdocs-jupyter: MathJax rendering failed', error));
+    return queue;
+  };
+
+  window.mkdocsJupyterMathJax = { refresh };
+  const start = () => {
+    if (typeof document$ !== 'undefined') document$.subscribe(refresh);
+    else refresh();
+  };
+  // Theme bundles and user-provided MathJax scripts can follow notebook content.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else start();
+})();
+
+</script>
+<p></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                
+                    <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;" class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+                
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '..';</script>
+        <script src="../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/mkdocs.js"></script>
+			<script src="../js/timeago.min.js" defer=""></script>
+			<script src="../js/timeago_mkdocs_material.js" defer=""></script>
+			<script src="../javascripts/mathjax.js" defer=""></script>
+			<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer=""></script>
+			<script src="../search/main.js" defer=""></script>
+
+<script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+/* Shared by full pages and Material's instant navigation. */
+(() => {
+  const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
+  if (window.mkdocsJupyterMathJax) return;
+
+  let loading;
+  let queue = Promise.resolve();
+  let previous = [];
+
+  const ready = async () => {
+    if (!loading) {
+      loading = (async () => {
+        let math = window.MathJax;
+        if (!math?.typesetPromise) {
+          const url = new URL(config.url, document.baseURI).href;
+          const existing = Array.from(document.scripts).find(script =>
+            script.src && (script.src === url || script.id === 'MathJax-script' ||
+              (/mathjax/i.test(script.src) &&
+               /\/(?:MathJax|latest|(?:tex|mml)(?:-mml)?-(?:chtml|svg))\.js(?:[?#]|$)/i.test(script.src))));
+          if (existing) {
+            if (!math?.startup?.promise) {
+              await new Promise((resolve, reject) => {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+              });
+            }
+          } else {
+            // Keep site macros, delimiters and startup hooks when supplied.
+            const options = math || {};
+            window.MathJax = {
+              ...options,
+              loader: {
+                ...options.loader,
+                load: Array.from(new Set(['ui/safe', ...(options.loader?.load || [])]))
+              },
+              startup: { typeset: false, ...options.startup },
+              tex: {
+                tags: 'ams',
+                useLabelIds: true,
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                ...options.tex
+              }
+            };
+            await new Promise((resolve, reject) => {
+              const script = document.createElement('script');
+              script.src = config.url;
+              script.id = 'MathJax-script';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+          }
+        }
+        math = window.MathJax;
+        await math.startup.promise;
+        return math;
+      })();
+    }
+    const math = await loading;
+    // A site owner can extend the v3 queue again on each navigation.
+    await math.startup.promise;
+    return math;
+  };
+
+  const unrendered = node => {
+    if (node.matches('mjx-container')) return [];
+    if (!node.querySelector('mjx-container')) return [node];
+    // In v3, scanning generated assistive MathML again produces nested output.
+    return Array.from(node.children).flatMap(unrendered);
+  };
+
+  const refresh = () => {
+    // A separate chain also serializes v3, without changing v4's startup promise.
+    queue = queue.then(async () => {
+      const notebooks = Array.from(document.querySelectorAll('.jupyter-wrapper'));
+      if (!notebooks.length && !previous.length) return;
+      if (notebooks.length === previous.length &&
+          notebooks.every((node, index) => node === previous[index])) return;
+      const math = await ready();
+      if (previous.length) {
+        math.typesetClear(previous);
+        math.texReset();
+      }
+      previous = notebooks.filter(node => node.isConnected);
+      const pending = previous.flatMap(unrendered);
+      if (pending.length) await math.typesetPromise(pending);
+    }).catch(error => console.error('mkdocs-jupyter: MathJax rendering failed', error));
+    return queue;
+  };
+
+  window.mkdocsJupyterMathJax = { refresh };
+  const start = () => {
+    if (typeof document$ !== 'undefined') document$.subscribe(refresh);
+    else refresh();
+  };
+  // Theme bundles and user-provided MathJax scripts can follow notebook content.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else start();
+})();
+
+</script>
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

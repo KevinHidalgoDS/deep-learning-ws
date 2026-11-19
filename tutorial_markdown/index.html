@@ -1,0 +1,717 @@
+<!DOCTYPE html><html lang="en" data-bs-theme="dark"><head>
+        <title>Tutorial markdown - Deep Learning</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        
+        <meta name="author" content="Milena Castaño, Lissy Grace, Kelly Monsalve, Sebastian Sanchez, Kevin Hidalgo">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../assets/css/mkdocs.min.css">
+            <link href="../css/timeago.css" rel="stylesheet">
+            <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+
+        
+            <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../img/dracula.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">Deep Learning</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider">
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Inicio
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#src-collapse" aria-expanded="false">
+                    src
+                </a>
+                <div class="collapse" id="src-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../src_data/" class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            data
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#cuadernos-jupyter-collapse" aria-expanded="false">
+                    Cuadernos Jupyter
+                </a>
+                <div class="collapse" id="cuadernos-jupyter-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../notebooks/01_eda_simem_precio_bolsa/" class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            EDA
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu" aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary" placeholder="Search docs" title="Type search term here">
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                            
+                                <div class="md-source source-detail">
+    <div class="md-source-repo-icon">
+        <i class="fa fa-github-alt drac-text-white" aria-hidden="true"></i>
+    </div>
+
+    <div class="md-source-repo-url">
+        <a href="https://github.com/KevinHidalgoDS/deep-learning-ws" class="md-source drac-anchor drac-text drac-text-white drac-text-cyan-green--hover">
+            KevinHidalgoDS/deep-learning-ws
+        </a>
+
+        <ul class="md-source-repo-text">
+            <li>
+                <i class="fa fa-tag drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+
+            <li>
+                <i class="fa fa-star drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+
+            <li>
+                <i class="fa fa-code-fork drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub forks" src="https://img.shields.io/github/forks/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+        </ul>
+    </div>
+
+</div>
+                            
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p></p><ul>
+<li><a href="#h1-heading">h1 Heading</a></li>
+<li><a href="#h2-heading">h2 Heading</a><ul>
+<li><a href="#h3-heading">h3 Heading</a></li>
+<li><a href="#h4-heading">h4 Heading</a><ul>
+<li><a href="#h5-heading">h5 Heading</a></li>
+<li><a href="#h6-heading">h6 Heading</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#horizontal-rules">Horizontal Rules</a></li>
+<li><a href="#emphasis">Emphasis</a></li>
+<li><a href="#blockquotes">Blockquotes</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#tables">Tables</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#images">Images</a></li>
+<li><a href="#emojies">Emojies</a></li>
+<li><a href="#task">Task</a></li>
+<li><a href="#hide-details">Hide details</a></li>
+<li><a href="#mathematical-formulas">mathematical formulas</a></li>
+<li><a href="#mind-maps">mind maps</a></li>
+<li><a href="#gantt-charts">Gantt charts</a></li>
+<li><a href="#timing-charts">timing charts</a></li>
+<li><a href="#charts">charts</a></li>
+<li><a href="#graphviz-rendering">graphviz rendering</a></li>
+<li><a href="#flowchart">Flowchart</a></li>
+<li><a href="#plantuml">plantuml</a></li>
+</ul>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non nisi arcu. Nunc mollis arcu eget urna placerat suscipit. Nulla facilisi. Sed sollicitudin faucibus sem, lacinia interdum eros pretium quis. Suspendisse eget lobortis ex, non placerat massa. Maecenas ultrices arcu ut consequat hendrerit. Duis mollis metus id dignissim ullamcorper. Vestibulum tempus blandit turpis. Aliquam pharetra lacus tempor, venenatis enim non, mattis lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur convallis viverra pulvinar. Praesent sed dui luctus, laoreet lectus sit amet, ornare metus. Quisque scelerisque aliquam eros quis interdum. Morbi et ipsum vehicula, tincidunt ex et, suscipit erat. Quisque fringilla tortor sed odio placerat iaculis.</p>
+<hr>
+<h1 id="h1-heading">h1 Heading<a class="headerlink" href="#h1-heading" title="Permanent link">¶</a></h1>
+<h2 id="h2-heading">h2 Heading<a class="headerlink" href="#h2-heading" title="Permanent link">¶</a></h2>
+<h3 id="h3-heading">h3 Heading<a class="headerlink" href="#h3-heading" title="Permanent link">¶</a></h3>
+<h4 id="h4-heading">h4 Heading<a class="headerlink" href="#h4-heading" title="Permanent link">¶</a></h4>
+<h5 id="h5-heading">h5 Heading<a class="headerlink" href="#h5-heading" title="Permanent link">¶</a></h5>
+<h6 id="h6-heading">h6 Heading<a class="headerlink" href="#h6-heading" title="Permanent link">¶</a></h6>
+<h2 id="horizontal-rules">Horizontal Rules<a class="headerlink" href="#horizontal-rules" title="Permanent link">¶</a></h2>
+<hr>
+<h2 id="emphasis">Emphasis<a class="headerlink" href="#emphasis" title="Permanent link">¶</a></h2>
+<p><strong>This is bold text</strong></p>
+<p><strong>This is bold text</strong></p>
+<p><em>This is italic text</em></p>
+<p><em>This is italic text</em></p>
+<p>~~Strikethrough~~</p>
+<h2 id="blockquotes">Blockquotes<a class="headerlink" href="#blockquotes" title="Permanent link">¶</a></h2>
+<blockquote>
+<p>Blockquotes can also be nested...</p>
+<blockquote>
+<p>...by using additional greater-than signs right next to each other...</p>
+<blockquote>
+<p>...or with spaces between arrows.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="lists">Lists<a class="headerlink" href="#lists" title="Permanent link">¶</a></h2>
+<p>Unordered</p>
+<ul>
+<li>Create a list by starting a line with <code>+</code>, <code>-</code>, or <code>*</code></li>
+<li>Sub-lists are made by indenting 2 spaces:<ul>
+<li>
+<p>Marker character change forces new list start:</p>
+<ul>
+<li>
+<p>Ac tristique libero volutpat at</p>
+</li>
+<li>
+<p>Facilisis in pretium nisl aliquet</p>
+</li>
+<li>
+<p>Nulla volutpat aliquam velit</p>
+</li>
+<li>Very easy!</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Ordered</p>
+<ol>
+<li>Lorem ipsum dolor sit amet</li>
+<li>Consectetur adipiscing elit</li>
+<li>Integer molestie lorem at massa</li>
+<li>You can use sequential numbers...</li>
+<li>...or keep all the numbers as <code>1.</code></li>
+</ol>
+<p>Start numbering with offset:</p>
+<ol>
+<li>foo</li>
+<li>bar</li>
+</ol>
+<h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">¶</a></h2>
+<p>Inline <code>code</code></p>
+<p>Indented code</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>// Some comments
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>line 1 of code
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>line 2 of code
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>line 3 of code
+</span></code></pre></div>
+<p>Block code "fences"</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Sample text here...
+</span></code></pre></div>
+<p>Syntax highlighting</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">bar</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">bar</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">};</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">(</span><span class="mf">5</span><span class="p">));</span>
+</span></code></pre></div>
+<h2 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td>engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td>et</td>
+<td>extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p>Right aligned columns</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Option</th>
+<th style="text-align: right;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">data</td>
+<td style="text-align: right;">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td style="text-align: right;">engine</td>
+<td style="text-align: right;">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td style="text-align: right;">ext</td>
+<td style="text-align: right;">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">¶</a></h2>
+<p><a href="https://github.com/shuzijun/markdown-editor">link text</a></p>
+<h2 id="images">Images<a class="headerlink" href="#images" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://avatars.githubusercontent.com/u/27667179?s=48&amp;v=4" data-desc-position="bottom"><img alt="image" src="https://avatars.githubusercontent.com/u/27667179?s=48&amp;v=4"></a></p>
+<h2 id="emojies">Emojies<a class="headerlink" href="#emojies" title="Permanent link">¶</a></h2>
+<p>😄 😆 😵 😭 😰 😅  😢 😤 😍 😌
+👍 👎 💯 👏 🔔 🎁 ❓ 💣 ❤️ ☕️ 🌀 🙇 💋 🙏 💢</p>
+<h2 id="task">Task<a class="headerlink" href="#task" title="Permanent link">¶</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled="" checked=""><span class="task-list-indicator"></span></label> task 1</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled="" checked=""><span class="task-list-indicator"></span></label> task 2</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled=""><span class="task-list-indicator"></span></label> task 3</li>
+</ul>
+<h2 id="hide-details">Hide details<a class="headerlink" href="#hide-details" title="Permanent link">¶</a></h2>
+<details>
+<summary>Abstract</summary>
+Here are the details.
+</details>
+
+<h2 id="mathematical-formulas">mathematical formulas<a class="headerlink" href="#mathematical-formulas" title="Permanent link">¶</a></h2>
+<p>Multiline formula block：</p>
+<div class="arithmatex">\[
+\frac{1}{
+\Bigl(\sqrt{\phi \sqrt{5}}-\phi\Bigr) e^{
+\frac25 \pi}} = 1+\frac{e^{-2\pi}} {1+\frac{e^{-4\pi}} {
+1+\frac{e^{-6\pi}}
+{1+\frac{e^{-8\pi}}{1+\cdots}}
+}
+}
+\]</div>
+<p>Inline formula：</p>
+<p>formula <span class="arithmatex">\(a^2 + b^2 = \color{red}c^2\)</span></p>
+<h2 id="mind-maps">mind maps<a class="headerlink" href="#mind-maps" title="Permanent link">¶</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>- demo
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>- Heading
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  - Emphasis
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  - Blockquotes
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>  - Lists
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  - Code
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  - Tables
+</span></code></pre></div>
+<h2 id="gantt-charts">Gantt charts<a class="headerlink" href="#gantt-charts" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>gantt
+    title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2019-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2019-01-12  , 12d
+    another task      : 24d</code></pre>
+<h2 id="timing-charts">timing charts<a class="headerlink" href="#timing-charts" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    Alice-&gt;&gt;John: Hello John, how are you?
+    loop Every minute
+        John--&gt;&gt;Alice: Great!
+    end</code></pre>
+<h2 id="charts">charts<a class="headerlink" href="#charts" title="Permanent link">¶</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>{
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  "title": { "text": "30 day" },
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  "tooltip": { "trigger": "axis", "axisPointer": { "lineStyle": { "width": 0 } } },
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  "legend": { "data": [ "user"] },
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  "xAxis": [{
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>      "type": "category",
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>      "boundaryGap": false,
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>      "data": ["2019-05-08","2019-05-09","2019-05-10","2019-05-11","2019-05-12","2019-05-13","2019-05-14","2019-05-15","2019-05-16","2019-05-17","2019-05-18","2019-05-19","2019-05-20","2019-05-21","2019-05-22","2019-05-23","2019-05-24","2019-05-25","2019-05-26","2019-05-27","2019-05-28","2019-05-29","2019-05-30","2019-05-31","2019-06-01","2019-06-02","2019-06-03","2019-06-04","2019-06-05","2019-06-06","2019-06-07"],
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>      "axisTick": { "show": false },
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>      "axisLine": { "show": false }
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>  }],
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>  "yAxis": [{ "type": "value", "axisTick": { "show": false }, "axisLine": { "show": false }, "splitLine": { "lineStyle": { "color": "rgba(0, 0, 0, .38)", "type": "dashed" } } }],
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>  "series": [
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    {
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>      "name": "user", "type": "line", "smooth": true, "itemStyle": { "color": "#f1e05a" }, "areaStyle": { "normal": {} }, "z": 2,
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>      "data": ["31","33","30","23","16","29","23","37","41","29","16","13","39","23","38","136","89","35","22","50","57","47","36","59","14","23","46","44","51","43","0"]
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    }
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>  ]
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>}
+</span></code></pre></div>
+<h2 id="graphviz-rendering">graphviz rendering<a class="headerlink" href="#graphviz-rendering" title="Permanent link">¶</a></h2>
+<div class="language-graphviz highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">digraph</span><span class="w"> </span><span class="nt">finite_state_machine</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="na">rankdir</span><span class="p">=</span><span class="s">LR</span><span class="p">;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="na">size</span><span class="p">=</span><span class="s2">"8,5"</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">doublecircle</span><span class="p">];</span><span class="w"> </span><span class="nt">S</span><span class="p">;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">point</span><span class="w"> </span><span class="p">];</span><span class="w"> </span><span class="nt">qi</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">node</span><span class="w"> </span><span class="p">[</span><span class="na">shape</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">circle</span><span class="p">];</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nt">qi</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="p">;</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="nt">S</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q1</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"a"</span><span class="w"> </span><span class="p">];</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="nt">S</span><span class="w">  </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"a"</span><span class="w"> </span><span class="p">];</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="nt">q1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">S</span><span class="w">  </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"a"</span><span class="w"> </span><span class="p">];</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nt">q1</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q2</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"ddb"</span><span class="w"> </span><span class="p">];</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nt">q2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q1</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"b"</span><span class="w"> </span><span class="p">];</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">q2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">q2</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="na">label</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s2">"b"</span><span class="w"> </span><span class="p">];</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<h2 id="flowchart">Flowchart<a class="headerlink" href="#flowchart" title="Permanent link">¶</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>st=&gt;start: Start
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>op=&gt;operation: Your Operation
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>cond=&gt;condition: Yes or No?
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>e=&gt;end
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>st-&gt;op-&gt;cond
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>cond(yes)-&gt;e
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>cond(no)-&gt;op
+</span></code></pre></div>
+<h2 id="plantuml">plantuml<a class="headerlink" href="#plantuml" title="Permanent link">¶</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>@startuml component
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>actor client
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>node app
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>database db
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>db -&gt; app
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>app -&gt; client
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>@enduml
+</span></code></pre></div><script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+/* Shared by full pages and Material's instant navigation. */
+(() => {
+  const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
+  if (window.mkdocsJupyterMathJax) return;
+
+  let loading;
+  let queue = Promise.resolve();
+  let previous = [];
+
+  const ready = async () => {
+    if (!loading) {
+      loading = (async () => {
+        let math = window.MathJax;
+        if (!math?.typesetPromise) {
+          const url = new URL(config.url, document.baseURI).href;
+          const existing = Array.from(document.scripts).find(script =>
+            script.src && (script.src === url || script.id === 'MathJax-script' ||
+              (/mathjax/i.test(script.src) &&
+               /\/(?:MathJax|latest|(?:tex|mml)(?:-mml)?-(?:chtml|svg))\.js(?:[?#]|$)/i.test(script.src))));
+          if (existing) {
+            if (!math?.startup?.promise) {
+              await new Promise((resolve, reject) => {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+              });
+            }
+          } else {
+            // Keep site macros, delimiters and startup hooks when supplied.
+            const options = math || {};
+            window.MathJax = {
+              ...options,
+              loader: {
+                ...options.loader,
+                load: Array.from(new Set(['ui/safe', ...(options.loader?.load || [])]))
+              },
+              startup: { typeset: false, ...options.startup },
+              tex: {
+                tags: 'ams',
+                useLabelIds: true,
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                ...options.tex
+              }
+            };
+            await new Promise((resolve, reject) => {
+              const script = document.createElement('script');
+              script.src = config.url;
+              script.id = 'MathJax-script';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+          }
+        }
+        math = window.MathJax;
+        await math.startup.promise;
+        return math;
+      })();
+    }
+    const math = await loading;
+    // A site owner can extend the v3 queue again on each navigation.
+    await math.startup.promise;
+    return math;
+  };
+
+  const unrendered = node => {
+    if (node.matches('mjx-container')) return [];
+    if (!node.querySelector('mjx-container')) return [node];
+    // In v3, scanning generated assistive MathML again produces nested output.
+    return Array.from(node.children).flatMap(unrendered);
+  };
+
+  const refresh = () => {
+    // A separate chain also serializes v3, without changing v4's startup promise.
+    queue = queue.then(async () => {
+      const notebooks = Array.from(document.querySelectorAll('.jupyter-wrapper'));
+      if (!notebooks.length && !previous.length) return;
+      if (notebooks.length === previous.length &&
+          notebooks.every((node, index) => node === previous[index])) return;
+      const math = await ready();
+      if (previous.length) {
+        math.typesetClear(previous);
+        math.texReset();
+      }
+      previous = notebooks.filter(node => node.isConnected);
+      const pending = previous.flatMap(unrendered);
+      if (pending.length) await math.typesetPromise(pending);
+    }).catch(error => console.error('mkdocs-jupyter: MathJax rendering failed', error));
+    return queue;
+  };
+
+  window.mkdocsJupyterMathJax = { refresh };
+  const start = () => {
+    if (typeof document$ !== 'undefined') document$.subscribe(refresh);
+    else refresh();
+  };
+  // Theme bundles and user-provided MathJax scripts can follow notebook content.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else start();
+})();
+
+</script>
+<p></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                
+                    <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;" class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+                
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '..';</script>
+        <script src="../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/mkdocs.js"></script>
+			<script src="../js/timeago.min.js" defer=""></script>
+			<script src="../js/timeago_mkdocs_material.js" defer=""></script>
+			<script src="../javascripts/mathjax.js" defer=""></script>
+			<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer=""></script>
+			<script src="../search/main.js" defer=""></script>
+
+<script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+/* Shared by full pages and Material's instant navigation. */
+(() => {
+  const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
+  if (window.mkdocsJupyterMathJax) return;
+
+  let loading;
+  let queue = Promise.resolve();
+  let previous = [];
+
+  const ready = async () => {
+    if (!loading) {
+      loading = (async () => {
+        let math = window.MathJax;
+        if (!math?.typesetPromise) {
+          const url = new URL(config.url, document.baseURI).href;
+          const existing = Array.from(document.scripts).find(script =>
+            script.src && (script.src === url || script.id === 'MathJax-script' ||
+              (/mathjax/i.test(script.src) &&
+               /\/(?:MathJax|latest|(?:tex|mml)(?:-mml)?-(?:chtml|svg))\.js(?:[?#]|$)/i.test(script.src))));
+          if (existing) {
+            if (!math?.startup?.promise) {
+              await new Promise((resolve, reject) => {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+              });
+            }
+          } else {
+            // Keep site macros, delimiters and startup hooks when supplied.
+            const options = math || {};
+            window.MathJax = {
+              ...options,
+              loader: {
+                ...options.loader,
+                load: Array.from(new Set(['ui/safe', ...(options.loader?.load || [])]))
+              },
+              startup: { typeset: false, ...options.startup },
+              tex: {
+                tags: 'ams',
+                useLabelIds: true,
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                ...options.tex
+              }
+            };
+            await new Promise((resolve, reject) => {
+              const script = document.createElement('script');
+              script.src = config.url;
+              script.id = 'MathJax-script';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+          }
+        }
+        math = window.MathJax;
+        await math.startup.promise;
+        return math;
+      })();
+    }
+    const math = await loading;
+    // A site owner can extend the v3 queue again on each navigation.
+    await math.startup.promise;
+    return math;
+  };
+
+  const unrendered = node => {
+    if (node.matches('mjx-container')) return [];
+    if (!node.querySelector('mjx-container')) return [node];
+    // In v3, scanning generated assistive MathML again produces nested output.
+    return Array.from(node.children).flatMap(unrendered);
+  };
+
+  const refresh = () => {
+    // A separate chain also serializes v3, without changing v4's startup promise.
+    queue = queue.then(async () => {
+      const notebooks = Array.from(document.querySelectorAll('.jupyter-wrapper'));
+      if (!notebooks.length && !previous.length) return;
+      if (notebooks.length === previous.length &&
+          notebooks.every((node, index) => node === previous[index])) return;
+      const math = await ready();
+      if (previous.length) {
+        math.typesetClear(previous);
+        math.texReset();
+      }
+      previous = notebooks.filter(node => node.isConnected);
+      const pending = previous.flatMap(unrendered);
+      if (pending.length) await math.typesetPromise(pending);
+    }).catch(error => console.error('mkdocs-jupyter: MathJax rendering failed', error));
+    return queue;
+  };
+
+  window.mkdocsJupyterMathJax = { refresh };
+  const start = () => {
+    if (typeof document$ !== 'undefined') document$.subscribe(refresh);
+    else refresh();
+  };
+  // Theme bundles and user-provided MathJax scripts can follow notebook content.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else start();
+})();
+
+</script>
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

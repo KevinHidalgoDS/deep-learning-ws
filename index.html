@@ -1,0 +1,551 @@
+<!DOCTYPE html><html lang="en" data-bs-theme="dark"><head>
+        <title>Deep Learning</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="Documentación y laboratorio de Deep Learning">
+        
+        <meta name="author" content="Milena Castaño, Lissy Grace, Kelly Monsalve, Sebastian Sanchez, Kevin Hidalgo">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="assets/css/mkdocs.min.css">
+            <link href="css/timeago.css" rel="stylesheet">
+            <link href="assets/_mkdocstrings.css" rel="stylesheet">
+
+        
+            <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+<link href="assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="img/dracula.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">Deep Learning</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider">
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href="." class=" active 
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Inicio
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="." class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#src-collapse" aria-expanded="false">
+                    src
+                </a>
+                <div class="collapse" id="src-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="src_data/" class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            data
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href="." class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#cuadernos-jupyter-collapse" aria-expanded="false">
+                    Cuadernos Jupyter
+                </a>
+                <div class="collapse" id="cuadernos-jupyter-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="notebooks/01_eda_simem_precio_bolsa/" class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            EDA
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu" aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+        <div class="container">
+            <div class="row row-preview">
+                <div class="col">
+                    <a class="btn-preview drac-btn drac-text-white--hover disabled">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="src_data/" class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="./search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary" placeholder="Search docs" title="Type search term here">
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                            
+                                <div class="md-source source-detail">
+    <div class="md-source-repo-icon">
+        <i class="fa fa-github-alt drac-text-white" aria-hidden="true"></i>
+    </div>
+
+    <div class="md-source-repo-url">
+        <a href="https://github.com/KevinHidalgoDS/deep-learning-ws" class="md-source drac-anchor drac-text drac-text-white drac-text-cyan-green--hover">
+            KevinHidalgoDS/deep-learning-ws
+        </a>
+
+        <ul class="md-source-repo-text">
+            <li>
+                <i class="fa fa-tag drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+
+            <li>
+                <i class="fa fa-star drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+
+            <li>
+                <i class="fa fa-code-fork drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub forks" src="https://img.shields.io/github/forks/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+        </ul>
+    </div>
+
+</div>
+                            
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p></p><h1 id="deep-learning-3011087">🧠 Deep Learning - 3011087<a class="headerlink" href="#deep-learning-3011087" title="Permanent link">¶</a></h1>
+<h2 id="descripcion-del-proyecto">📖 Descripción del Proyecto<a class="headerlink" href="#descripcion-del-proyecto" title="Permanent link">¶</a></h2>
+<p>Este repositorio establece la estructura estándar y las mejores prácticas para los proyectos,
+prácticas y talleres del curso <strong>Deep Learning</strong> del Departamento de Ciencias de la Computación y
+la Decisión de la <strong>Universidad Nacional de Colombia, Sede Medellín</strong>.</p>
+<p>Repositorio oficial y guia del curso Deep Learning (3011087). Este curso abarca desde los
+fundamentos teoricos de las redes neuronales totalmente conectadas hasta arquitecturas avanzadas
+como CNNs, GANs, RNNs, GNNs y Transformers/LLMs.</p>
+<h2 id="objetivos-del-curso">Objetivos del Curso<a class="headerlink" href="#objetivos-del-curso" title="Permanent link">¶</a></h2>
+<h3 id="objetivo-general">Objetivo General<a class="headerlink" href="#objetivo-general" title="Permanent link">¶</a></h3>
+<p>Introducir al participante en el conocimiento de las redes neuronales artificiales, brindando un
+dominio de herramientas de ultima generacion para clasificacion, deteccion, segmentacion,
+generacion de imagenes y produccion de texto.</p>
+<h3 id="objetivos-especificos">Objetivos Especificos<a class="headerlink" href="#objetivos-especificos" title="Permanent link">¶</a></h3>
+<ul>
+<li>Conocer las generalidades, componentes, arquitecturas y tipos de redes neuronales y sus
+  aplicaciones reales.</li>
+<li>Aplicar Transfer Learning y tecnicas de anotacion de datos/imagenes para el entrenamiento de
+  redes profundas (DNN).</li>
+<li>Desarrollar algoritmos de Deep Learning para tareas de clasificacion, deteccion de objetos,
+  segmentacion y generacion de contenido.</li>
+<li>Utilizar entornos y librerias modernas de Python para visualizacion, procesamiento de datos y
+  desarrollo de modelos de Inteligencia Artificial.</li>
+</ul>
+<h2 id="contenido-del-programa">Contenido del Programa<a class="headerlink" href="#contenido-del-programa" title="Permanent link">¶</a></h2>
+<!-- prettier-ignore -->
+<table>
+<thead>
+<tr>
+<th>Modulo</th>
+<th>Tema /   Arquitectura</th>
+<th>Descripcion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0. Introduccion   y FCN</td>
+<td>Fully Connected Networks (FCN / MLP)</td>
+<td>Fundamentos de redes neuronales, Teorema de   Aproximacion Universal, funciones de activacion, retropropagacion y   optimizacion.</td>
+</tr>
+<tr>
+<td>1. Vision por   Computador</td>
+<td>Convolutional Neural Networks (CNN)</td>
+<td>Extraccion de caracteristicas espaciales,   convoluciones, clasificacion, deteccion y segmentacion de imagenes.</td>
+</tr>
+<tr>
+<td>2. Modelos   Generativos</td>
+<td>Generative Adversarial Networks (GAN)</td>
+<td>Redes generativas antagonicas, arquitectura   generador-discriminador y sintesis de imagenes.</td>
+</tr>
+<tr>
+<td>3. Datos   Secuenciales</td>
+<td>Recurrent Neural Networks (RNN)</td>
+<td>Procesamiento de series temporales, secuencias   y modelos recurrentes (LSTM / GRU).</td>
+</tr>
+<tr>
+<td>4. Datos   Estructurados en Grafos</td>
+<td>Graph Neural Networks (GNN)</td>
+<td>Aprendizaje en estructuras no euclidianas y   relaciones complejas entre nodos.</td>
+</tr>
+<tr>
+<td>5. Modelos   Modernos de IA</td>
+<td>Transformers, Atencion y LLMs</td>
+<td>Mecanismos de atencion, arquitecturas   Transformer, modelos de lenguaje y procesamiento multimodal.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="esquema-de-evaluacion">Esquema de Evaluacion<a class="headerlink" href="#esquema-de-evaluacion" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>20% — FollowUps, Quizzes y Lecturas:</strong> Seguimientos rapidos en clase y evaluaciones
+  individuales de afianzamiento conceptual.</li>
+<li><strong>50% — WorkShops / Talleres Practicos:</strong> Trabajos practicos asincronicos en equipo (grupos de
+  maximo 5 integrantes).</li>
+<li><strong>30% — Proyecto Final:</strong> Exposicion e implementacion grupal de una aplicacion real o tema de
+  interes en Deep Learning.</li>
+</ul>
+<h2 id="tecnologias-y-herramientas">Tecnologias y Herramientas<a class="headerlink" href="#tecnologias-y-herramientas" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>Lenguaje:</strong> Python 3.x</li>
+<li><strong>Frameworks principales:</strong> PyTorch, TensorFlow, Keras, Fastai, Scikit-Learn.</li>
+<li><strong>Entornos de desarrollo:</strong> Jupyter Notebook (local), Google Colab, VS Code, Kaggle.</li>
+<li><strong>Asistencia con IA:</strong> Se promueve el uso guiado de asistentes de IA (ChatGPT, Claude,
+  NotebookLM, etc.) para acelerar la experimentacion y el aprendizaje.</li>
+</ul>
+<h2 id="referencias-y-bibliografia">Referencias y Bibliografia<a class="headerlink" href="#referencias-y-bibliografia" title="Permanent link">¶</a></h2>
+<ol>
+<li>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). Deep Learning. MIT Press.</li>
+<li>Cursos de Fastai (V1 y V2) — Jeremy Howard et al.</li>
+<li>Deep Learning Specialization — Andrew Ng (Coursera).</li>
+<li>Zeiler, M. D., &amp; Fergus, R. (2014). Visualizing and Understanding Convolutional Networks.</li>
+</ol><script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+/* Shared by full pages and Material's instant navigation. */
+(() => {
+  const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
+  if (window.mkdocsJupyterMathJax) return;
+
+  let loading;
+  let queue = Promise.resolve();
+  let previous = [];
+
+  const ready = async () => {
+    if (!loading) {
+      loading = (async () => {
+        let math = window.MathJax;
+        if (!math?.typesetPromise) {
+          const url = new URL(config.url, document.baseURI).href;
+          const existing = Array.from(document.scripts).find(script =>
+            script.src && (script.src === url || script.id === 'MathJax-script' ||
+              (/mathjax/i.test(script.src) &&
+               /\/(?:MathJax|latest|(?:tex|mml)(?:-mml)?-(?:chtml|svg))\.js(?:[?#]|$)/i.test(script.src))));
+          if (existing) {
+            if (!math?.startup?.promise) {
+              await new Promise((resolve, reject) => {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+              });
+            }
+          } else {
+            // Keep site macros, delimiters and startup hooks when supplied.
+            const options = math || {};
+            window.MathJax = {
+              ...options,
+              loader: {
+                ...options.loader,
+                load: Array.from(new Set(['ui/safe', ...(options.loader?.load || [])]))
+              },
+              startup: { typeset: false, ...options.startup },
+              tex: {
+                tags: 'ams',
+                useLabelIds: true,
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                ...options.tex
+              }
+            };
+            await new Promise((resolve, reject) => {
+              const script = document.createElement('script');
+              script.src = config.url;
+              script.id = 'MathJax-script';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+          }
+        }
+        math = window.MathJax;
+        await math.startup.promise;
+        return math;
+      })();
+    }
+    const math = await loading;
+    // A site owner can extend the v3 queue again on each navigation.
+    await math.startup.promise;
+    return math;
+  };
+
+  const unrendered = node => {
+    if (node.matches('mjx-container')) return [];
+    if (!node.querySelector('mjx-container')) return [node];
+    // In v3, scanning generated assistive MathML again produces nested output.
+    return Array.from(node.children).flatMap(unrendered);
+  };
+
+  const refresh = () => {
+    // A separate chain also serializes v3, without changing v4's startup promise.
+    queue = queue.then(async () => {
+      const notebooks = Array.from(document.querySelectorAll('.jupyter-wrapper'));
+      if (!notebooks.length && !previous.length) return;
+      if (notebooks.length === previous.length &&
+          notebooks.every((node, index) => node === previous[index])) return;
+      const math = await ready();
+      if (previous.length) {
+        math.typesetClear(previous);
+        math.texReset();
+      }
+      previous = notebooks.filter(node => node.isConnected);
+      const pending = previous.flatMap(unrendered);
+      if (pending.length) await math.typesetPromise(pending);
+    }).catch(error => console.error('mkdocs-jupyter: MathJax rendering failed', error));
+    return queue;
+  };
+
+  window.mkdocsJupyterMathJax = { refresh };
+  const start = () => {
+    if (typeof document$ !== 'undefined') document$.subscribe(refresh);
+    else refresh();
+  };
+  // Theme bundles and user-provided MathJax scripts can follow notebook content.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else start();
+})();
+
+</script>
+<p></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                
+                    <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;" class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+                
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '.';</script>
+        <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/mkdocs.js"></script>
+			<script src="js/timeago.min.js" defer=""></script>
+			<script src="js/timeago_mkdocs_material.js" defer=""></script>
+			<script src="javascripts/mathjax.js" defer=""></script>
+			<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer=""></script>
+			<script src="search/main.js" defer=""></script>
+
+<script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+/* Shared by full pages and Material's instant navigation. */
+(() => {
+  const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
+  if (window.mkdocsJupyterMathJax) return;
+
+  let loading;
+  let queue = Promise.resolve();
+  let previous = [];
+
+  const ready = async () => {
+    if (!loading) {
+      loading = (async () => {
+        let math = window.MathJax;
+        if (!math?.typesetPromise) {
+          const url = new URL(config.url, document.baseURI).href;
+          const existing = Array.from(document.scripts).find(script =>
+            script.src && (script.src === url || script.id === 'MathJax-script' ||
+              (/mathjax/i.test(script.src) &&
+               /\/(?:MathJax|latest|(?:tex|mml)(?:-mml)?-(?:chtml|svg))\.js(?:[?#]|$)/i.test(script.src))));
+          if (existing) {
+            if (!math?.startup?.promise) {
+              await new Promise((resolve, reject) => {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+              });
+            }
+          } else {
+            // Keep site macros, delimiters and startup hooks when supplied.
+            const options = math || {};
+            window.MathJax = {
+              ...options,
+              loader: {
+                ...options.loader,
+                load: Array.from(new Set(['ui/safe', ...(options.loader?.load || [])]))
+              },
+              startup: { typeset: false, ...options.startup },
+              tex: {
+                tags: 'ams',
+                useLabelIds: true,
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                ...options.tex
+              }
+            };
+            await new Promise((resolve, reject) => {
+              const script = document.createElement('script');
+              script.src = config.url;
+              script.id = 'MathJax-script';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+          }
+        }
+        math = window.MathJax;
+        await math.startup.promise;
+        return math;
+      })();
+    }
+    const math = await loading;
+    // A site owner can extend the v3 queue again on each navigation.
+    await math.startup.promise;
+    return math;
+  };
+
+  const unrendered = node => {
+    if (node.matches('mjx-container')) return [];
+    if (!node.querySelector('mjx-container')) return [node];
+    // In v3, scanning generated assistive MathML again produces nested output.
+    return Array.from(node.children).flatMap(unrendered);
+  };
+
+  const refresh = () => {
+    // A separate chain also serializes v3, without changing v4's startup promise.
+    queue = queue.then(async () => {
+      const notebooks = Array.from(document.querySelectorAll('.jupyter-wrapper'));
+      if (!notebooks.length && !previous.length) return;
+      if (notebooks.length === previous.length &&
+          notebooks.every((node, index) => node === previous[index])) return;
+      const math = await ready();
+      if (previous.length) {
+        math.typesetClear(previous);
+        math.texReset();
+      }
+      previous = notebooks.filter(node => node.isConnected);
+      const pending = previous.flatMap(unrendered);
+      if (pending.length) await math.typesetPromise(pending);
+    }).catch(error => console.error('mkdocs-jupyter: MathJax rendering failed', error));
+    return queue;
+  };
+
+  window.mkdocsJupyterMathJax = { refresh };
+  const start = () => {
+    if (typeof document$ !== 'undefined') document$.subscribe(refresh);
+    else refresh();
+  };
+  // Theme bundles and user-provided MathJax scripts can follow notebook content.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else start();
+})();
+
+</script>
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,0 +1,641 @@
+<!DOCTYPE html><html lang="en" data-bs-theme="dark"><head>
+        <title>Proyecto - Deep Learning</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        
+        <meta name="author" content="Milena Castaño, Lissy Grace, Kelly Monsalve, Sebastian Sanchez, Kevin Hidalgo">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="../assets/css/darcula-highlight.min.css">
+
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../assets/css/mkdocs.min.css">
+            <link href="../css/timeago.css" rel="stylesheet">
+            <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+
+        
+            <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+                <script>hljs.initHighlightingOnLoad();</script>
+
+<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style></head>
+
+<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+
+    <main class="d-flex">
+
+        <!-- block sidebar -->
+            <nav id="sidebar" class="sidebar drac-bg-black">
+    <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Menu</span>
+        </button>
+    </div>
+
+    <div class="p-4">
+        
+            <img class="logo" src="../img/dracula.png" height="150px">
+        
+
+        <div class="drac-text-center">
+            
+                <span class="drac-text drac-line-height drac-text-white">Deep Learning</span>
+            
+        </div>
+
+        <div class="drac-box flex-column">
+            <ul class="dot-ul">
+                <li><div class="dot-li drac-bg-cyan"></div></li>
+                <li><div class="dot-li drac-bg-green"></div></li>
+                <li><div class="dot-li drac-bg-orange"></div></li>
+                <li><div class="dot-li drac-bg-pink"></div></li>
+                <li><div class="dot-li drac-bg-purple"></div></li>
+                <li><div class="dot-li drac-bg-red"></div></li>
+                <li><div class="dot-li drac-bg-yellow"></div></li>
+            </ul>
+        </div>
+
+        <hr class="drac-divider">
+
+        <!-- block menu -->
+        <ul class="mb-5 drac-list drac-list-none">
+            
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Inicio
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#src-collapse" aria-expanded="false">
+                    src
+                </a>
+                <div class="collapse" id="src-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../src_data/" class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            data
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="drac-box">
+                <a href=".." class="
+                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#cuadernos-jupyter-collapse" aria-expanded="false">
+                    Cuadernos Jupyter
+                </a>
+                <div class="collapse" id="cuadernos-jupyter-collapse">
+                    <ul class="mb-5 drac-list drac-list-none">
+                            
+    <li class="drac-box-ternary">
+        <a href="../notebooks/01_eda_simem_precio_bolsa/" class="
+            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+            EDA
+        </a>
+    </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+        <!-- endblock -->
+    </div>
+</nav>
+        <!-- endblock -->
+
+        <nav class="divider drac-bg-purple-cyan"></nav>
+
+        <div class="content">
+            <!-- block header -->
+                <header>
+    <nav class="navbar navbar-expand-xl drac-bg-purple">
+        <div class="container-fluid">
+            
+            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu" aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
+                <ul class="navbar-nav text-md-center">
+
+                    <!-- block preview -->
+                    <li class="nav-item">
+                            
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block search -->
+                    <li class="nav-item"><div role="search" class="search-box">
+	<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary" placeholder="Search docs" title="Type search term here">
+	</form>
+</div>
+                    </li>
+                    <!--  endblock -->
+
+                    <!-- block source -->
+                    <li class="nav-item">
+                        
+                            
+                                <div class="md-source source-detail">
+    <div class="md-source-repo-icon">
+        <i class="fa fa-github-alt drac-text-white" aria-hidden="true"></i>
+    </div>
+
+    <div class="md-source-repo-url">
+        <a href="https://github.com/KevinHidalgoDS/deep-learning-ws" class="md-source drac-anchor drac-text drac-text-white drac-text-cyan-green--hover">
+            KevinHidalgoDS/deep-learning-ws
+        </a>
+
+        <ul class="md-source-repo-text">
+            <li>
+                <i class="fa fa-tag drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+
+            <li>
+                <i class="fa fa-star drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+
+            <li>
+                <i class="fa fa-code-fork drac-text-black" aria-hidden="true"></i>
+                <img alt="GitHub forks" src="https://img.shields.io/github/forks/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
+            </li>
+        </ul>
+    </div>
+
+</div>
+                            
+                        
+                    </li>
+                    <!--  endblock -->
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>
+            <!-- endblock -->
+
+            <!-- block content -->
+                <section class="p-md-5 section-content">
+    <article>
+        <p></p><hr style="border:2px solid #CC00FF;">
+
+<div style="display:flex; justify-content:center; align-items:center; gap:25px; flex-wrap:nowrap; margin:5px 0;">
+    <a href="https://medellin.unal.edu.co" target="_blank">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9ItLTT_F-3Q30cu7ZCCoKmuFGBt22pe7pNA" style="height:60px; width:auto; max-width:150px; object-fit:contain;" alt="Logo UNAL">
+    </a>
+    <a href="https://minaslap.net/?redirect=0" target="_blank">
+        <img src="https://minaslap.net/pluginfile.php/1/core_admin/logo/0x200/1770226238/Logo%20MinasLAP-3%20%281%29.png" style="height:60px; width:auto; max-width:180px; object-fit:contain;" alt="Logo MinasLAP">
+    </a>
+    <a href="https://micampus.unal.edu.co" target="_blank">
+        <img src="https://micampus.unal.edu.co/pluginfile.php/1/theme_almondb/sliderimage1/1788871931/Slider_1.png" style="height:60px; width:auto; max-width:200px; object-fit:contain;" alt="Logo MiCampus">
+    </a>
+</div>
+
+<h2 align="center" style="font-size:1.4em; margin:6px 0;">Deep Learning 2026-2S</h2>
+<h3 align="center" style="font-size:1.05em; margin:4px 0;">Proyecto curso - Precio de bolsa energía Colombia</h3>
+<h4 align="center" style="font-size:0.9em; margin:4px 0; color:#555;">Modelo pronostico precio de bolsa energía de Colombia</h4>
+
+<p align="center" style="font-size:0.82em; line-height:1.3; margin:6px 0;">
+Departamento de Ciencias de la Computación y de la Decisión<br>
+Facultad de Minas · Universidad Nacional de Colombia<br>
+Docente: John R. Ballesteros
+</p>
+
+<hr style="border:1px solid #CC00FF; margin:8px 0;">
+
+<p style="font-size:0.78em; line-height:1.35; margin:4px 0;"><b>Equipo de trabajo:</b></p>
+
+<table style="width:100%; font-size:0.72em; line-height:1.25; border-collapse:collapse;">
+  <tbody><tr>
+    <td style="padding:2px 6px;">• Lissy Grace Restrepo Taborda</td>
+    <td style="padding:2px 6px;">📧 <i>lrestrepopo@unal.edu.co </i></td>
+    <td style="padding:2px 6px;">• Kelly Y. Monsalve Carvajal</td>
+    <td style="padding:2px 6px;">📧 <i>kemonsalvec@unal.edu.co</i></td>
+  </tr>
+  <tr>
+    <td style="padding:2px 6px;">• Leidy M. Castaño Hernández</td>
+    <td style="padding:2px 6px;">📧 <i>lmcastanoh@unal.edu.co</i></td>
+    <td style="padding:2px 6px;">• Kevin F. Hidalgo Higuita</td>
+    <td style="padding:2px 6px;">📧 <i>kfhidalgoh@unal.edu.co</i></td>
+  </tr>
+  <tr>
+    <td style="padding:2px 6px;">• Sebastian Sánchez Arango</td>
+    <td style="padding:2px 6px;">📧 <i>sebsanchezar@unal.edu.co</i></td>
+  </tr>
+</tbody></table>
+
+<p align="center" style="font-size:0.75em; margin:8px 0 0 0;">
+📅 26 de Octubre de 2026 ·
+<a href="https://github.com/KevinHidalgoDS/deep-learning-ws">
+  <img src="https://img.shields.io/badge/repository-GitHub-181717.svg" alt="GitHub Repo" style="vertical-align:middle;">
+</a>
+</p>
+
+<p align="center" style="font-size:0.68em; color:#777; margin:4px 0 0 0;">
+<i>Nota: el tema del navegador puede afectar la visualización de la presentación.</i>
+</p>
+
+<h2 id="diagrama-de-red">🕸️ Diagrama de red<a class="headerlink" href="#diagrama-de-red" title="Permanent link">¶</a></h2>
+<!-- prettier-ignore -->
+<pre class="mermaid"><code>%%{init: {'theme':'neo-dark', 'look': 'neo'}}%%
+flowchart LR
+    %% Definición de colores y estilos
+    classDef critical fill:#ffe6e6,stroke:#ff0000,stroke-width:2px,color:#000
+    classDef normal fill:#f9f9f9,stroke:#333,stroke-width:1px,color:#000
+    classDef legend fill:#ffffff,stroke:#333,stroke-width:1px,color:#000
+
+    %% Leyenda con la convención solicitada
+    subgraph Convencion [Convención de Tiempos - Días]
+        L["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;PI&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;Holgura&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;PT&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Actividad / Artefacto&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# ID&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Rol&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Duración&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;UI&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;UT&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+    end
+
+    %% SPRINT 0: Infraestructura y DevOps
+    A1["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Configuración repo, config.yaml y CI/CD&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A1&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;MLOps&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    %% SPRINT 1: Obtención y Exploración
+    A2["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;2&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Ingesta datos SIMEM (make_dataset.py)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A2&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Data Eng&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;2&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    A3["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;5&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;2&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;7&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;EDA Precio Bolsa y Pruebas Ingesta&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A3&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Data Sci&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;7&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;9&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    %% SPRINT 2: Transformación y Feature Engineering
+    A4["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;5&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;7&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Limpieza e imputación causal (preprocess.py)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A4&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Data Eng&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;5&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;7&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    A5["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;7&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Feature Engineering y Tensores 3D&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A5&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Data Sci&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;7&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    %% SPRINT 3: Modelado y Optimización
+    A6["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;10&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;13&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Arquitecturas DL (LSTM/TCN) y Train&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A6&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;DL Eng&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;10&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;13&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    A7["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;13&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;17&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Optimización Hiperparámetros (Optuna)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A7&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;DL Eng&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;13&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;17&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    %% SPRINT 4: Resultados e Interpretabilidad
+    A8["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;17&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;19&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Evaluación Out-of-Sample y Métricas MEM&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A8&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Quant&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;17&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;19&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    A9["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;19&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;21&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Explicabilidad SHAP y Figuras 300 DPI&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A9&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Data Sci&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;19&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;21&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    %% SPRINT 5: Presentación y Despliegue
+    A10["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;19&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;22&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Dashboard Interactivo (Streamlit app.py)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A10&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;MLOps&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;19&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;22&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    A11["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;21&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;24&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Informe Final UNAL y Docs MkDocs&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A11&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Tech Lead&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;21&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;24&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    A12["&lt;table style='text-align:center; border-collapse:collapse; font-family:sans-serif; font-size:12px;'&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;22&lt;/td&gt;&lt;td style='background-color:yellow; color:black; padding:2px 8px;'&gt;0&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;24&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan='3' style='border:1px solid black; padding:4px;'&gt;Sustentación Proyecto Deep Learning UNAL&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;# A12&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;Equipo&lt;/td&gt;&lt;td style='border:1px solid black; padding:4px;'&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style='padding:2px 8px;'&gt;22&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;td style='padding:2px 8px;'&gt;24&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"]
+
+    %% Secuencia y Dependencias
+    A1 --&gt; A2
+    A2 --&gt; A3
+    A2 --&gt; A4
+    A3 --&gt; A5
+    A4 --&gt; A5
+    A5 --&gt; A6
+    A6 --&gt; A7
+    A7 --&gt; A8
+    A8 --&gt; A9
+    A8 --&gt; A10
+    A9 --&gt; A11
+    A10 --&gt; A12
+    A11 --&gt; A12
+
+    %% Tabla de precedencias
+    %% Actividad | Predecesora | Duración
+    %% A1        | -           | 2
+    %% A2        | A1          | 3
+    %% A3        | A2          | 2
+    %% A4        | A2          | 2
+    %% A5        | A3, A4      | 3
+    %% A6        | A5          | 3
+    %% A7        | A6          | 4
+    %% A8        | A7          | 2
+    %% A9        | A8          | 2
+    %% A10       | A8          | 3
+    %% A11       | A9          | 3
+    %% A12       | A10, A11    | 2
+
+    %% Aplicar estilos según ruta crítica
+    class L legend
+    class A1,A2,A4,A5,A6,A7,A8,A9,A11,A12 critical
+    class A3,A10 normal</code></pre>
+<p>Notas sobre la lógica de red y ruta crítica Paralelismo real en el proyecto:</p>
+<p>Tras descargar los datos de SIMEM (A2), el análisis exploratorio (A3) y la limpieza causal (A4)
+avanzan en paralelo antes de converger en la ingeniería de características (A5).</p>
+<p>Tras evaluar el modelo campeón (A8), el desarrollo del dashboard en Streamlit (A10) se ejecuta en
+paralelo con la generación de explicabilidad SHAP (A9) y la redacción del informe final UNAL (A11).</p>
+<p>Ruta Crítica (Holgura = 0): A1 → A2 → A4 → A5 → A6 → A7 → A8 → A9 → A11 → A12 (duración total de 24
+días; nota: la rama A8 → A10 → A12 suma 19 + 3 + 2 = 24 días, por lo que también es crítica).</p>
+<h2 id="diagrama-de-gantt">📅 Diagrama de Gantt<a class="headerlink" href="#diagrama-de-gantt" title="Permanent link">¶</a></h2>
+<!-- prettier-ignore -->
+<pre class="mermaid"><code>%%{init: {'theme':'forest'}}%%
+gantt
+    title Cronograma Proyecto Deep Learning UNAL - Pronóstico Precio de Bolsa SIMEM
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d-%b
+    tickInterval 3day
+    %%excludes weekends
+
+    %% Se asume una fecha de inicio base de 24 días calendario para coherencia con la red PERT/CPM
+    section Convenciones de Estados y Colores
+    Tarea completada (done)              :done, conv1, 2026-11-15, 5d
+    Tarea activa (active)                :active, conv2, 2026-11-20, 5d
+    Tarea crítica (crit)                 :crit, conv3, 2026-11-25, 5d
+    Tarea futura (normal)                :conv4, 2026-11-26, 5d
+    Hito o entregable (milestone)        :milestone, conv5, 2026-12-1, 0d
+
+    section Sprint 0 - Infraestructura y DevOps
+    A1 Configuración repo, config.yaml y CI/CD       :done, a1, 2026-11-19, 2d
+
+    section Sprint 1 - Obtención y Exploración
+    A2 Ingesta datos SIMEM (make_dataset.py)         :done, a2, after a1, 3d
+    A3 EDA Precio Bolsa y Pruebas Ingesta            :done, a3, after a2, 2d
+
+    section Sprint 2 - Transformación y Features
+    A4 Limpieza e imputación causal (preprocess.py)  :crit, a4, after a2, 2d
+    A5 Feature Engineering y Tensores 3D             :crit, a5, after a3 a4, 3d
+
+    section Sprint 3 - Modelado y Optimización
+    A6 Arquitecturas DL (LSTM/TCN) y Train           :crit, a6, after a5, 3d
+    A7 Optimización Hiperparámetros (Optuna)         :crit, a7, after a6, 4d
+
+    section Sprint 4 - Resultados e Interpretabilidad
+    A8 Evaluación Out-of-Sample y Métricas MEM       :crit, a8, after a7, 2d
+    A9 Explicabilidad SHAP y Figuras 300 DPI         :crit, a9, after a8, 2d
+
+    section Sprint 5 - Presentación y Despliegue
+    A10 Dashboard Interactivo (Streamlit app.py)     :done, a10, after a8, 3d
+    A11 Informe Final UNAL y Docs MkDocs             :crit, a11, after a9, 3d
+    A12 Sustentación Proyecto Deep Learning UNAL     :crit, a12, after a10 a11, 2d
+
+    %% ---------------------------
+    %% HITOS
+    %% ---------------------------
+    section Hitos
+    Entorno DevOps y CI/CD operativo                 :milestone, h1, 2026-11-21, 0d
+    Dataset SIMEM versionado y validado              :milestone, h2, 2026-11-24, 0d
+    Tensores 3D listos sin data leakage              :milestone, h3, 2026-11-29, 0d
+    Modelo campeón exportado en models/trained/      :milestone, h4, 2026-12-06, 0d
+    Evaluación MEM y SHAP completados                :milestone, h5, 2026-12-10, 0d
+    Entrega final y sustentación UNAL                :milestone, h6, 2026-12-15, 0d</code></pre><script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+/* Shared by full pages and Material's instant navigation. */
+(() => {
+  const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
+  if (window.mkdocsJupyterMathJax) return;
+
+  let loading;
+  let queue = Promise.resolve();
+  let previous = [];
+
+  const ready = async () => {
+    if (!loading) {
+      loading = (async () => {
+        let math = window.MathJax;
+        if (!math?.typesetPromise) {
+          const url = new URL(config.url, document.baseURI).href;
+          const existing = Array.from(document.scripts).find(script =>
+            script.src && (script.src === url || script.id === 'MathJax-script' ||
+              (/mathjax/i.test(script.src) &&
+               /\/(?:MathJax|latest|(?:tex|mml)(?:-mml)?-(?:chtml|svg))\.js(?:[?#]|$)/i.test(script.src))));
+          if (existing) {
+            if (!math?.startup?.promise) {
+              await new Promise((resolve, reject) => {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+              });
+            }
+          } else {
+            // Keep site macros, delimiters and startup hooks when supplied.
+            const options = math || {};
+            window.MathJax = {
+              ...options,
+              loader: {
+                ...options.loader,
+                load: Array.from(new Set(['ui/safe', ...(options.loader?.load || [])]))
+              },
+              startup: { typeset: false, ...options.startup },
+              tex: {
+                tags: 'ams',
+                useLabelIds: true,
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                ...options.tex
+              }
+            };
+            await new Promise((resolve, reject) => {
+              const script = document.createElement('script');
+              script.src = config.url;
+              script.id = 'MathJax-script';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+          }
+        }
+        math = window.MathJax;
+        await math.startup.promise;
+        return math;
+      })();
+    }
+    const math = await loading;
+    // A site owner can extend the v3 queue again on each navigation.
+    await math.startup.promise;
+    return math;
+  };
+
+  const unrendered = node => {
+    if (node.matches('mjx-container')) return [];
+    if (!node.querySelector('mjx-container')) return [node];
+    // In v3, scanning generated assistive MathML again produces nested output.
+    return Array.from(node.children).flatMap(unrendered);
+  };
+
+  const refresh = () => {
+    // A separate chain also serializes v3, without changing v4's startup promise.
+    queue = queue.then(async () => {
+      const notebooks = Array.from(document.querySelectorAll('.jupyter-wrapper'));
+      if (!notebooks.length && !previous.length) return;
+      if (notebooks.length === previous.length &&
+          notebooks.every((node, index) => node === previous[index])) return;
+      const math = await ready();
+      if (previous.length) {
+        math.typesetClear(previous);
+        math.texReset();
+      }
+      previous = notebooks.filter(node => node.isConnected);
+      const pending = previous.flatMap(unrendered);
+      if (pending.length) await math.typesetPromise(pending);
+    }).catch(error => console.error('mkdocs-jupyter: MathJax rendering failed', error));
+    return queue;
+  };
+
+  window.mkdocsJupyterMathJax = { refresh };
+  const start = () => {
+    if (typeof document$ !== 'undefined') document$.subscribe(refresh);
+    else refresh();
+  };
+  // Theme bundles and user-provided MathJax scripts can follow notebook content.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else start();
+})();
+
+</script>
+<p></p>
+    </article>
+</section>
+            <!-- endblock -->
+
+            <!-- block footer -->
+                
+                    <footer>
+    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
+        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;" class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
+            Made with Dracula Theme for MkDocs
+        </a>
+    </div>
+</footer>
+                
+            <!-- endblock -->
+        </div>
+
+    </main>
+
+        <script>var base_url = '..';</script>
+        <script src="../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/mkdocs.js"></script>
+			<script src="../js/timeago.min.js" defer=""></script>
+			<script src="../js/timeago_mkdocs_material.js" defer=""></script>
+			<script src="../javascripts/mathjax.js" defer=""></script>
+			<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer=""></script>
+			<script src="../search/main.js" defer=""></script>
+
+<script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+/* Shared by full pages and Material's instant navigation. */
+(() => {
+  const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
+  if (window.mkdocsJupyterMathJax) return;
+
+  let loading;
+  let queue = Promise.resolve();
+  let previous = [];
+
+  const ready = async () => {
+    if (!loading) {
+      loading = (async () => {
+        let math = window.MathJax;
+        if (!math?.typesetPromise) {
+          const url = new URL(config.url, document.baseURI).href;
+          const existing = Array.from(document.scripts).find(script =>
+            script.src && (script.src === url || script.id === 'MathJax-script' ||
+              (/mathjax/i.test(script.src) &&
+               /\/(?:MathJax|latest|(?:tex|mml)(?:-mml)?-(?:chtml|svg))\.js(?:[?#]|$)/i.test(script.src))));
+          if (existing) {
+            if (!math?.startup?.promise) {
+              await new Promise((resolve, reject) => {
+                existing.addEventListener('load', resolve, { once: true });
+                existing.addEventListener('error', reject, { once: true });
+              });
+            }
+          } else {
+            // Keep site macros, delimiters and startup hooks when supplied.
+            const options = math || {};
+            window.MathJax = {
+              ...options,
+              loader: {
+                ...options.loader,
+                load: Array.from(new Set(['ui/safe', ...(options.loader?.load || [])]))
+              },
+              startup: { typeset: false, ...options.startup },
+              tex: {
+                tags: 'ams',
+                useLabelIds: true,
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                ...options.tex
+              }
+            };
+            await new Promise((resolve, reject) => {
+              const script = document.createElement('script');
+              script.src = config.url;
+              script.id = 'MathJax-script';
+              script.async = true;
+              script.onload = resolve;
+              script.onerror = reject;
+              document.head.appendChild(script);
+            });
+          }
+        }
+        math = window.MathJax;
+        await math.startup.promise;
+        return math;
+      })();
+    }
+    const math = await loading;
+    // A site owner can extend the v3 queue again on each navigation.
+    await math.startup.promise;
+    return math;
+  };
+
+  const unrendered = node => {
+    if (node.matches('mjx-container')) return [];
+    if (!node.querySelector('mjx-container')) return [node];
+    // In v3, scanning generated assistive MathML again produces nested output.
+    return Array.from(node.children).flatMap(unrendered);
+  };
+
+  const refresh = () => {
+    // A separate chain also serializes v3, without changing v4's startup promise.
+    queue = queue.then(async () => {
+      const notebooks = Array.from(document.querySelectorAll('.jupyter-wrapper'));
+      if (!notebooks.length && !previous.length) return;
+      if (notebooks.length === previous.length &&
+          notebooks.every((node, index) => node === previous[index])) return;
+      const math = await ready();
+      if (previous.length) {
+        math.typesetClear(previous);
+        math.texReset();
+      }
+      previous = notebooks.filter(node => node.isConnected);
+      const pending = previous.flatMap(unrendered);
+      if (pending.length) await math.typesetPromise(pending);
+    }).catch(error => console.error('mkdocs-jupyter: MathJax rendering failed', error));
+    return queue;
+  };
+
+  window.mkdocsJupyterMathJax = { refresh };
+  const start = () => {
+    if (typeof document$ !== 'undefined') document$.subscribe(refresh);
+    else refresh();
+  };
+  // Theme bundles and user-provided MathJax scripts can follow notebook content.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start, { once: true });
+  } else start();
+})();
+
+</script>
+
+
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
