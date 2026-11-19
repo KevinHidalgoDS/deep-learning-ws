@@ -9,5 +9,6 @@ mkdocs-git-revision-date-localized-plugin
 mkdocs-glightbox
 mkdocs-jupyter
 mkdocs-material
+mkdocs-revealjs
 mkdocs-with-pdf
 mkdocstrings-python

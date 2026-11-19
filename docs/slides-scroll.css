@@ -1,0 +1,1 @@
+.reveal .slides section:not(:has(> section)) { max-height: 100%; overflow-y: auto; scrollbar-gutter: stable; }

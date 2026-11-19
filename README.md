@@ -252,6 +252,58 @@ pytest tests/
 - Comenta de manera justificada las decisiones complejas en el código (ej. por qué se eligió un
   hiperparámetro o se modificó el "learning rate" en un método quasi-Newton).
 
+### Exportar la presentación sin MkDocs
+
+Se puede generar un sitio HTML con [reveal-md](https://github.com/webpro/reveal-md) directamente
+desde `docs\presentacion.md`. Se necesitan Node.js, npm e internet para descargar el paquete la
+primera vez. Los siguientes comandos son para PowerShell, desde la raíz del repositorio:
+
+```powershell
+cd docs
+
+# Crear el CSS solo si aún no existe; no sobrescribe una personalización previa.
+if (-not (Test-Path .\slides-scroll.css)) {
+  '.reveal .slides section:not(:has(> section)) { max-height: 100%; overflow-y: auto; scrollbar-gutter: stable; }' |
+    Set-Content -Encoding utf8 .\slides-scroll.css
+}
+
+npx --yes reveal-md@6.1.2 presentacion.md --theme serif `
+  --separator '\r?\n---[ \t]*\r?\n' `
+  --css slides-scroll.css --static ..\presentacion-export\presentacion --static-dirs img
+if ($LASTEXITCODE -ne 0) { throw "Falló la exportación de reveal-md." }
+
+# La presentación usa ../img; copiar las imágenes también al nivel superior.
+Copy-Item -Recurse .\img ..\presentacion-export\img
+cd ..
+python -m http.server 8000 --directory presentacion-export
+```
+
+Usa una carpeta `presentacion-export` nueva para evitar mezclar o sobrescribir archivos de una
+exportación anterior. Abre `http://localhost:8000/presentacion/` y detén el servidor con
+`Ctrl+C`. Comparte la carpeta completa: el HTML depende de los recursos que contiene.
+
+El tema `serif` se aproxima al original y el CSS agrega scroll a las diapositivas largas. El
+separador explícito acepta espacios después de `---`; `----` sigue creando subdiapositivas.
+Reveal-md incluye fragments, notas (`S`), resaltado de código y navegación con teclado; el
+ejemplo de matemáticas usa MathML. Los enlaces y el diseño HTML se conservan cuando sus destinos
+y recursos están disponibles.
+
+**Diferencias importantes:** el front matter `revealjs:` y sus ajustes de MkDocs, como la
+sincronización de temas y `transition: none`, no se aplican automáticamente. Para configurar
+transiciones en reveal-md se puede agregar `revealOptions: { transition: none }` al front matter,
+al mismo nivel que `revealjs`. El lightbox requiere GLightbox y una inicialización propia de
+reveal-md; `docs\javascripts\presentacion.js` escucha un evento específico de MkDocs y no basta
+con pasarlo mediante `--scripts`. Sin esa adaptación, el enlace de la imagen abre el archivo
+normalmente. El enlace a la documentación no exporta el sitio completo; el iframe de la demo
+necesita `presentacion-export\assets\lstm_demo.html`, que debe existir y copiarse aparte.
+Los logos externos requieren internet. Revel-md ya no está en desarrollo activo; considera sus
+alternativas si se necesita mantenimiento a largo plazo.
+
+cd docs
+npx --yes reveal-md presentacion.md --theme serif --static ..\presentacion-html --static-dirs img
+'.reveal .slides section:not(:has(> section)) { max-height: 100%; overflow-y: auto; scrollbar-gutter: stable; }' | Set-Content -Encoding utf8 slides-scroll.css
+npx --yes reveal-md presentacion.md --theme serif --css slides-scroll.css --static ..\presentacion-html --static-dirs img
+
 ---
 
 ## 🤝 Contribuciones
