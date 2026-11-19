@@ -1,202 +1,667 @@
-<!DOCTYPE html><html lang="en" data-bs-theme="dark"><head>
-        <title>DNN Regression eq5 Price of Houses - Deep Learning</title>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        
-        
+<!DOCTYPE html><html lang="es" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación y laboratorio de Deep Learning">
+      
+      
         <meta name="author" content="Milena Castaño, Lissy Grace, Kelly Monsalve, Sebastian Sanchez, Kevin Hidalgo">
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="../../assets/css/darcula-highlight.min.css">
-
-        <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../assets/css/dracula-ui.min.css">
-        <link rel="stylesheet" href="../../assets/css/mkdocs.min.css">
-            <link href="../../css/timeago.css" rel="stylesheet">
-            <link href="../../assets/_mkdocstrings.css" rel="stylesheet">
-
+      
+      
+      
+      
+      
         
-            <link rel="icon" type="image/x-icon" href="../../img/favicon.ico">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>DNN Regression eq5 Price of Houses - Deep Learning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
         
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-                <script>hljs.initHighlightingOnLoad();</script>
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
 
-<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrainsMono+NFM:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrainsMono NFM"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
         </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#workshop1" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
 
-<body class="drac-bg-black-secondary drac-text-grey-ternary drac-text drac-scrollbar-purple">
+  
 
-    <main class="d-flex">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="Deep Learning" class="md-header__button md-logo" aria-label="Deep Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
-        <!-- block sidebar -->
-            <nav id="sidebar" class="sidebar drac-bg-black">
-    <div class="custom-menu">
-        <button type="button" id="sidebarCollapse" class="btn btn-primary">
-            <i class="fa fa-bars"></i>
-            <span class="sr-only">Menu</span>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Deep Learning
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DNN Regression eq5 Price of Houses
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Cambiar a modo oscuro" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Cambiar a modo claro" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Compartir" aria-label="Compartir" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
-    </div>
-
-    <div class="p-4">
-        
-            <img class="logo" src="../../img/dracula.png" height="150px">
-        
-
-        <div class="drac-text-center">
-            
-                <span class="drac-text drac-line-height drac-text-white">Deep Learning</span>
-            
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
-
-        <div class="drac-box flex-column">
-            <ul class="dot-ul">
-                <li><div class="dot-li drac-bg-cyan"></div></li>
-                <li><div class="dot-li drac-bg-green"></div></li>
-                <li><div class="dot-li drac-bg-orange"></div></li>
-                <li><div class="dot-li drac-bg-pink"></div></li>
-                <li><div class="dot-li drac-bg-purple"></div></li>
-                <li><div class="dot-li drac-bg-red"></div></li>
-                <li><div class="dot-li drac-bg-yellow"></div></li>
-            </ul>
-        </div>
-
-        <hr class="drac-divider">
-
-        <!-- block menu -->
-        <ul class="mb-5 drac-list drac-list-none">
-            
-            <li class="drac-box">
-                <a href="../.." class="
-                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
-                    Inicio
-                </a>
-            </li>
-            <li class="drac-box">
-                <a href="../.." class="
-                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#src-collapse" aria-expanded="false">
-                    src
-                </a>
-                <div class="collapse" id="src-collapse">
-                    <ul class="mb-5 drac-list drac-list-none">
-                            
-    <li class="drac-box-ternary">
-        <a href="../../src_data/" class="
-            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
-            data
-        </a>
-    </li>
-                    </ul>
-                </div>
-            </li>
-            <li class="drac-box">
-                <a href="../.." class="
-                    drac-anchor btn-toggle d-inline-flex align-items-center border-0 drac-text-purple--hover collapsed" data-bs-toggle="collapse" data-bs-target="#cuadernos-jupyter-collapse" aria-expanded="false">
-                    Cuadernos Jupyter
-                </a>
-                <div class="collapse" id="cuadernos-jupyter-collapse">
-                    <ul class="mb-5 drac-list drac-list-none">
-                            
-    <li class="drac-box-ternary">
-        <a href="../01_eda_simem_precio_bolsa/" class="
-            drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
-            EDA
-        </a>
-    </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-        <!-- endblock -->
+      </div>
     </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/KevinHidalgoDS/deep-learning-ws" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    KevinHidalgoDS/deep-learning-ws
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../src_data/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  src
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../01_eda_simem_precio_bolsa/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Cuadernos Jupyter
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../presentacion/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Presentación
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
 </nav>
-        <!-- endblock -->
-
-        <nav class="divider drac-bg-purple-cyan"></nav>
-
-        <div class="content">
-            <!-- block header -->
-                <header>
-    <nav class="navbar navbar-expand-xl drac-bg-purple">
-        <div class="container-fluid">
-            
-            <button class="navbar-toggler w-100 text-center" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsMenu" aria-controls="navbarsMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse flex-column ml-auto" id="navbarsMenu">
-                <ul class="navbar-nav text-md-center">
-
-                    <!-- block preview -->
-                    <li class="nav-item">
-                            
-                    </li>
-                    <!--  endblock -->
-
-                    <!-- block search -->
-                    <li class="nav-item"><div role="search" class="search-box">
-	<form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary" placeholder="Search docs" title="Type search term here">
-	</form>
-</div>
-                    </li>
-                    <!--  endblock -->
-
-                    <!-- block source -->
-                    <li class="nav-item">
-                        
-                            
-                                <div class="md-source source-detail">
-    <div class="md-source-repo-icon">
-        <i class="fa fa-github-alt drac-text-white" aria-hidden="true"></i>
-    </div>
-
-    <div class="md-source-repo-url">
-        <a href="https://github.com/KevinHidalgoDS/deep-learning-ws" class="md-source drac-anchor drac-text drac-text-white drac-text-cyan-green--hover">
-            KevinHidalgoDS/deep-learning-ws
-        </a>
-
-        <ul class="md-source-repo-text">
-            <li>
-                <i class="fa fa-tag drac-text-black" aria-hidden="true"></i>
-                <img alt="GitHub tag (latest by date)" src="https://img.shields.io/github/v/tag/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
-            </li>
-
-            <li>
-                <i class="fa fa-star drac-text-black" aria-hidden="true"></i>
-                <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
-            </li>
-
-            <li>
-                <i class="fa fa-code-fork drac-text-black" aria-hidden="true"></i>
-                <img alt="GitHub forks" src="https://img.shields.io/github/forks/KevinHidalgoDS/deep-learning-ws?color=white&amp;label=%20&amp;style=flat-square">
-            </li>
-        </ul>
-    </div>
-
-</div>
-                            
-                        
-                    </li>
-                    <!--  endblock -->
-
-                </ul>
-            </div>
-
-        </div>
-    </nav>
+    
+  
 </header>
-            <!-- endblock -->
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
 
-            <!-- block content -->
-                <section class="p-md-5 section-content">
-    <article>
-        <p><script>
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Deep Learning" class="md-nav__button md-logo" aria-label="Deep Learning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    Deep Learning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/KevinHidalgoDS/deep-learning-ws" title="Ir al repositorio" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    KevinHidalgoDS/deep-learning-ws
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    src
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    src
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../src_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cuadernos Jupyter
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cuadernos Jupyter
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_eda_simem_precio_bolsa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EDA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../presentacion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Presentación
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Variables
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<script>
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
@@ -413,475 +878,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <style type="text/css">
 .jupyter-wrapper{--jp-shadow-base-lightness: 0;--jp-shadow-umbra-color: rgba( var(--jp-shadow-base-lightness), var(--jp-shadow-base-lightness), var(--jp-shadow-base-lightness), .2 );--jp-shadow-penumbra-color: rgba( var(--jp-shadow-base-lightness), var(--jp-shadow-base-lightness), var(--jp-shadow-base-lightness), .14 );--jp-shadow-ambient-color: rgba( var(--jp-shadow-base-lightness), var(--jp-shadow-base-lightness), var(--jp-shadow-base-lightness), .12 );--jp-elevation-z0: none;--jp-elevation-z1: 0px 2px 1px -1px var(--jp-shadow-umbra-color), 0px 1px 1px 0px var(--jp-shadow-penumbra-color), 0px 1px 3px 0px var(--jp-shadow-ambient-color);--jp-elevation-z2: 0px 3px 1px -2px var(--jp-shadow-umbra-color), 0px 2px 2px 0px var(--jp-shadow-penumbra-color), 0px 1px 5px 0px var(--jp-shadow-ambient-color);--jp-elevation-z4: 0px 2px 4px -1px var(--jp-shadow-umbra-color), 0px 4px 5px 0px var(--jp-shadow-penumbra-color), 0px 1px 10px 0px var(--jp-shadow-ambient-color);--jp-elevation-z6: 0px 3px 5px -1px var(--jp-shadow-umbra-color), 0px 6px 10px 0px var(--jp-shadow-penumbra-color), 0px 1px 18px 0px var(--jp-shadow-ambient-color);--jp-elevation-z8: 0px 5px 5px -3px var(--jp-shadow-umbra-color), 0px 8px 10px 1px var(--jp-shadow-penumbra-color), 0px 3px 14px 2px var(--jp-shadow-ambient-color);--jp-elevation-z12: 0px 7px 8px -4px var(--jp-shadow-umbra-color), 0px 12px 17px 2px var(--jp-shadow-penumbra-color), 0px 5px 22px 4px var(--jp-shadow-ambient-color);--jp-elevation-z16: 0px 8px 10px -5px var(--jp-shadow-umbra-color), 0px 16px 24px 2px var(--jp-shadow-penumbra-color), 0px 6px 30px 5px var(--jp-shadow-ambient-color);--jp-elevation-z20: 0px 10px 13px -6px var(--jp-shadow-umbra-color), 0px 20px 31px 3px var(--jp-shadow-penumbra-color), 0px 8px 38px 7px var(--jp-shadow-ambient-color);--jp-elevation-z24: 0px 11px 15px -7px var(--jp-shadow-umbra-color), 0px 24px 38px 3px var(--jp-shadow-penumbra-color), 0px 9px 46px 8px var(--jp-shadow-ambient-color);--jp-border-width: 1px;--jp-border-color0: var(--md-grey-400);--jp-border-color1: var(--md-grey-400);--jp-border-color2: var(--md-grey-300);--jp-border-color3: var(--md-grey-200);--jp-inverse-border-color: var(--md-grey-600);--jp-border-radius: 2px;--jp-ui-font-scale-factor: 1.2;--jp-ui-font-size0: .83333em;--jp-ui-font-size1: 13px;--jp-ui-font-size2: 1.2em;--jp-ui-font-size3: 1.44em;--jp-ui-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";--jp-ui-font-color0: rgba(0, 0, 0, 1);--jp-ui-font-color1: rgba(0, 0, 0, .87);--jp-ui-font-color2: rgba(0, 0, 0, .54);--jp-ui-font-color3: rgba(0, 0, 0, .38);--jp-ui-inverse-font-color0: rgba(255, 255, 255, 1);--jp-ui-inverse-font-color1: rgba(255, 255, 255, 1);--jp-ui-inverse-font-color2: rgba(255, 255, 255, .7);--jp-ui-inverse-font-color3: rgba(255, 255, 255, .5);--jp-content-line-height: 1.6;--jp-content-font-scale-factor: 1.2;--jp-content-font-size0: .83333em;--jp-content-font-size1: 14px;--jp-content-font-size2: 1.2em;--jp-content-font-size3: 1.44em;--jp-content-font-size4: 1.728em;--jp-content-font-size5: 2.0736em;--jp-content-presentation-font-size1: 17px;--jp-content-heading-line-height: 1;--jp-content-heading-margin-top: 1.2em;--jp-content-heading-margin-bottom: .8em;--jp-content-heading-font-weight: 500;--jp-content-font-color0: rgba(0, 0, 0, 1);--jp-content-font-color1: rgba(0, 0, 0, .87);--jp-content-font-color2: rgba(0, 0, 0, .54);--jp-content-font-color3: rgba(0, 0, 0, .38);--jp-content-link-color: var(--md-blue-700);--jp-content-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";--jp-code-font-size: 13px;--jp-code-line-height: 1.3077;--jp-code-padding: 5px;--jp-code-font-family-default: Menlo, Consolas, "DejaVu Sans Mono", monospace;--jp-code-font-family: var(--jp-code-font-family-default);--jp-code-presentation-font-size: 16px;--jp-code-cursor-width0: 1.4px;--jp-code-cursor-width1: 2px;--jp-code-cursor-width2: 4px;--jp-layout-color0: white;--jp-layout-color1: white;--jp-layout-color2: var(--md-grey-200);--jp-layout-color3: var(--md-grey-400);--jp-layout-color4: var(--md-grey-600);--jp-inverse-layout-color0: #111111;--jp-inverse-layout-color1: var(--md-grey-900);--jp-inverse-layout-color2: var(--md-grey-800);--jp-inverse-layout-color3: var(--md-grey-700);--jp-inverse-layout-color4: var(--md-grey-600);--jp-brand-color0: var(--md-blue-900);--jp-brand-color1: var(--md-blue-700);--jp-brand-color2: var(--md-blue-300);--jp-brand-color3: var(--md-blue-100);--jp-brand-color4: var(--md-blue-50);--jp-accent-color0: var(--md-green-900);--jp-accent-color1: var(--md-green-700);--jp-accent-color2: var(--md-green-300);--jp-accent-color3: var(--md-green-100);--jp-warn-color0: var(--md-orange-900);--jp-warn-color1: var(--md-orange-700);--jp-warn-color2: var(--md-orange-300);--jp-warn-color3: var(--md-orange-100);--jp-error-color0: var(--md-red-900);--jp-error-color1: var(--md-red-700);--jp-error-color2: var(--md-red-300);--jp-error-color3: var(--md-red-100);--jp-success-color0: var(--md-green-900);--jp-success-color1: var(--md-green-700);--jp-success-color2: var(--md-green-300);--jp-success-color3: var(--md-green-100);--jp-info-color0: var(--md-cyan-900);--jp-info-color1: var(--md-cyan-700);--jp-info-color2: var(--md-cyan-300);--jp-info-color3: var(--md-cyan-100);--jp-cell-padding: 5px;--jp-cell-collapser-width: 8px;--jp-cell-collapser-min-height: 20px;--jp-cell-collapser-not-active-hover-opacity: .6;--jp-cell-editor-background: var(--md-grey-100);--jp-cell-editor-border-color: var(--md-grey-300);--jp-cell-editor-box-shadow: inset 0 0 2px var(--md-blue-300);--jp-cell-editor-active-background: var(--jp-layout-color0);--jp-cell-editor-active-border-color: var(--jp-brand-color1);--jp-cell-prompt-width: 64px;--jp-cell-prompt-font-family: var(--jp-code-font-family-default);--jp-cell-prompt-letter-spacing: 0px;--jp-cell-prompt-opacity: 1;--jp-cell-prompt-not-active-opacity: .5;--jp-cell-prompt-not-active-font-color: var(--md-grey-700);--jp-cell-inprompt-font-color: #307fc1;--jp-cell-outprompt-font-color: #bf5b3d;--jp-notebook-padding: 10px;--jp-notebook-select-background: var(--jp-layout-color1);--jp-notebook-multiselected-color: var(--md-blue-50);--jp-notebook-scroll-padding: calc( 100% - var(--jp-code-font-size) * var(--jp-code-line-height) - var(--jp-code-padding) - var(--jp-cell-padding) - 1px );--jp-rendermime-error-background: #fdd;--jp-rendermime-table-row-background: var(--md-grey-100);--jp-rendermime-table-row-hover-background: var(--md-light-blue-50);--jp-dialog-background: rgba(0, 0, 0, .25);--jp-console-padding: 10px;--jp-toolbar-border-color: var(--jp-border-color1);--jp-toolbar-micro-height: 8px;--jp-toolbar-background: var(--jp-layout-color1);--jp-toolbar-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, .24);--jp-toolbar-header-margin: 4px 4px 0px 4px;--jp-toolbar-active-background: var(--md-grey-300);--jp-statusbar-height: 24px;--jp-input-box-shadow: inset 0 0 2px var(--md-blue-300);--jp-input-active-background: var(--jp-layout-color1);--jp-input-hover-background: var(--jp-layout-color1);--jp-input-background: var(--md-grey-100);--jp-input-border-color: var(--jp-inverse-border-color);--jp-input-active-border-color: var(--jp-brand-color1);--jp-input-active-box-shadow-color: rgba(19, 124, 189, .3);--jp-editor-selected-background: #d9d9d9;--jp-editor-selected-focused-background: #d7d4f0;--jp-editor-cursor-color: var(--jp-ui-font-color0);--jp-mirror-editor-keyword-color: #008000;--jp-mirror-editor-atom-color: #88f;--jp-mirror-editor-number-color: #080;--jp-mirror-editor-def-color: #00f;--jp-mirror-editor-variable-color: var(--md-grey-900);--jp-mirror-editor-variable-2-color: #05a;--jp-mirror-editor-variable-3-color: #085;--jp-mirror-editor-punctuation-color: #05a;--jp-mirror-editor-property-color: #05a;--jp-mirror-editor-operator-color: #aa22ff;--jp-mirror-editor-comment-color: #408080;--jp-mirror-editor-string-color: #ba2121;--jp-mirror-editor-string-2-color: #708;--jp-mirror-editor-meta-color: #aa22ff;--jp-mirror-editor-qualifier-color: #555;--jp-mirror-editor-builtin-color: #008000;--jp-mirror-editor-bracket-color: #997;--jp-mirror-editor-tag-color: #170;--jp-mirror-editor-attribute-color: #00c;--jp-mirror-editor-header-color: blue;--jp-mirror-editor-quote-color: #090;--jp-mirror-editor-link-color: #00c;--jp-mirror-editor-error-color: #f00;--jp-mirror-editor-hr-color: #999;--jp-collaborator-color1: #ffad8e;--jp-collaborator-color2: #dac83d;--jp-collaborator-color3: #72dd76;--jp-collaborator-color4: #00e4d0;--jp-collaborator-color5: #45d4ff;--jp-collaborator-color6: #e2b1ff;--jp-collaborator-color7: #ff9de6;--jp-vega-background: white;--jp-sidebar-min-width: 250px;--jp-search-toggle-off-opacity: .5;--jp-search-toggle-hover-opacity: .8;--jp-search-toggle-on-opacity: 1;--jp-search-selected-match-background-color: rgb(245, 200, 0);--jp-search-selected-match-color: black;--jp-search-unselected-match-background-color: var( --jp-inverse-layout-color0 );--jp-search-unselected-match-color: var(--jp-ui-inverse-font-color0);--jp-icon-contrast-color0: var(--md-purple-600);--jp-icon-contrast-color1: var(--md-green-600);--jp-icon-contrast-color2: var(--md-pink-600);--jp-icon-contrast-color3: var(--md-blue-600);--jp-jupyter-icon-color: #f37626;--jp-notebook-icon-color: #f37626;--jp-json-icon-color: var(--md-orange-700);--jp-console-icon-background-color: var(--md-blue-700);--jp-console-icon-color: white;--jp-terminal-icon-background-color: var(--md-grey-800);--jp-terminal-icon-color: var(--md-grey-200);--jp-text-editor-icon-color: var(--md-grey-700);--jp-inspector-icon-color: var(--md-grey-700);--jp-switch-color: var(--md-grey-400);--jp-switch-true-position-color: var(--md-orange-900)}
 </style>
-<script type="module">
-  document.addEventListener("DOMContentLoaded", async () => {
-    const diagrams = document.querySelectorAll(".jp-Mermaid > pre.mermaid");
-    // do not load mermaidjs if not needed
-    if (!diagrams.length) {
-      return;
-    }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
-    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
-    if(elkUrl) {
-      const elkLayouts = (await import(elkUrl)).default;
-      mermaid.registerLayoutLoaders(elkLayouts);
-    }
-    const parser = new DOMParser();
-
-    mermaid.initialize({
-      maxTextSize: 100000,
-      maxEdges: 100000,
-      startOnLoad: false,
-      fontFamily: window
-        .getComputedStyle(document.body)
-        .getPropertyValue("--jp-ui-font-family"),
-      theme: document.querySelector("body[data-jp-theme-light='true']")
-        ? "default"
-        : "dark",
-    });
-
-    let _nextMermaidId = 0;
-
-    function makeMermaidImage(svg) {
-      const img = document.createElement("img");
-      const doc = parser.parseFromString(svg, "image/svg+xml");
-      const svgEl = doc.querySelector("svg");
-      const { maxWidth } = svgEl?.style || {};
-      const firstTitle = doc.querySelector("title");
-      const firstDesc = doc.querySelector("desc");
-
-      img.setAttribute("src", `data:image/svg+xml,${encodeURIComponent(svg)}`);
-      if (maxWidth) {
-        img.width = parseInt(maxWidth);
-      }
-      if (firstTitle) {
-        img.setAttribute("alt", firstTitle.textContent);
-      }
-      if (firstDesc) {
-        const caption = document.createElement("figcaption");
-        caption.className = "sr-only";
-        caption.textContent = firstDesc.textContent;
-        return [img, caption];
-      }
-      return [img];
-    }
-
-    async function makeMermaidError(text) {
-      let errorMessage = "";
-      try {
-        await mermaid.parse(text);
-      } catch (err) {
-        errorMessage = `${err}`;
-      }
-
-      const result = document.createElement("details");
-      result.className = 'jp-RenderedMermaid-Details';
-      const summary = document.createElement("summary");
-      summary.className = 'jp-RenderedMermaid-Summary';
-      const pre = document.createElement("pre");
-      const code = document.createElement("code");
-      code.innerText = text;
-      pre.appendChild(code);
-      summary.appendChild(pre);
-      result.appendChild(summary);
-
-      const warning = document.createElement("pre");
-      warning.innerText = errorMessage;
-      result.appendChild(warning);
-      return [result];
-    }
-
-    async function renderOneMarmaid(src) {
-      const id = `jp-mermaid-${_nextMermaidId++}`;
-      const parent = src.parentNode;
-      let raw = src.textContent.trim();
-      const el = document.createElement("div");
-      el.style.visibility = "hidden";
-      document.body.appendChild(el);
-      let results = null;
-      let output = null;
-      try {
-        let { svg } = await mermaid.render(id, raw, el);
-        svg = cleanMermaidSvg(svg);
-        results = makeMermaidImage(svg);
-        output = document.createElement("figure");
-        results.map(output.appendChild, output);
-      } catch (err) {
-        parent.classList.add("jp-mod-warning");
-        results = await makeMermaidError(raw);
-        output = results[0];
-      } finally {
-        el.remove();
-      }
-      parent.classList.add("jp-RenderedMermaid");
-      parent.appendChild(output);
-    }
-
-
-    /**
-     * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
-     */
-    function cleanMermaidSvg(svg) {
-      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
-      return `${SVG_XML_HEADER}${svg}`;
-    }
-
-
-    /**
-     * A regular expression for all void elements, which may include attributes and
-     * a slash.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Glossary/Void_element
-     *
-     * Of these, only `<br>` is generated by Mermaid in place of `\n`,
-     * but _any_ "malformed" tag will break the SVG rendering entirely.
-     */
-    const RE_VOID_ELEMENT =
-      /<\s*(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\s*([^>]*?)\s*>/gi;
-
-    /**
-     * Ensure a void element is closed with a slash, preserving any attributes.
-     */
-    function replaceVoidElement(match, tag, rest) {
-      rest = rest.trim();
-      if (!rest.endsWith('/')) {
-        rest = `${rest} /`;
-      }
-      return `<${tag} ${rest}>`;
-    }
-
-
-  /**
-   * Named HTML entities with their decimal equivalent codes.
-   *
-   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
-   * */
-  const HTML_ENTITIES = `<!ENTITY Aacute "&#193;">
-<!ENTITY aacute "&#225;">
-<!ENTITY Acirc "&#194;">
-<!ENTITY acirc "&#226;">
-<!ENTITY acute "&#180;">
-<!ENTITY AElig "&#198;">
-<!ENTITY aelig "&#230;">
-<!ENTITY Agrave "&#192;">
-<!ENTITY agrave "&#224;">
-<!ENTITY alefsym "&#8501;">
-<!ENTITY Alpha "&#913;">
-<!ENTITY alpha "&#945;">
-<!ENTITY amp "&#38;">
-<!ENTITY and "&#8869;">
-<!ENTITY ang "&#8736;">
-<!ENTITY Aring "&#197;">
-<!ENTITY aring "&#229;">
-<!ENTITY asymp "&#8776;">
-<!ENTITY Atilde "&#195;">
-<!ENTITY atilde "&#227;">
-<!ENTITY Auml "&#196;">
-<!ENTITY auml "&#228;">
-<!ENTITY bdquo "&#8222;">
-<!ENTITY Beta "&#914;">
-<!ENTITY beta "&#946;">
-<!ENTITY brvbar "&#166;">
-<!ENTITY bull "&#8226;">
-<!ENTITY cap "&#8745;">
-<!ENTITY Ccedil "&#199;">
-<!ENTITY ccedil "&#231;">
-<!ENTITY cedil "&#184;">
-<!ENTITY cent "&#162;">
-<!ENTITY Chi "&#935;">
-<!ENTITY chi "&#967;">
-<!ENTITY circ "&#710;">
-<!ENTITY clubs "&#9827;">
-<!ENTITY cong "&#8773;">
-<!ENTITY copy "&#169;">
-<!ENTITY crarr "&#8629;">
-<!ENTITY cup "&#8746;">
-<!ENTITY curren "&#164;">
-<!ENTITY dagger "&#8224;">
-<!ENTITY Dagger "&#8225;">
-<!ENTITY darr "&#8595;">
-<!ENTITY dArr "&#8659;">
-<!ENTITY deg "&#176;">
-<!ENTITY Delta "&#916;">
-<!ENTITY delta "&#948;">
-<!ENTITY diams "&#9830;">
-<!ENTITY divide "&#247;">
-<!ENTITY Eacute "&#201;">
-<!ENTITY eacute "&#233;">
-<!ENTITY Ecirc "&#202;">
-<!ENTITY ecirc "&#234;">
-<!ENTITY Egrave "&#200;">
-<!ENTITY egrave "&#232;">
-<!ENTITY empty "&#8709;">
-<!ENTITY emsp "&#8195;">
-<!ENTITY ensp "&#8194;">
-<!ENTITY epsilon "&#949;">
-<!ENTITY Epsilon "&#917;">
-<!ENTITY equiv "&#8801;">
-<!ENTITY Eta "&#919;">
-<!ENTITY eta "&#951;">
-<!ENTITY ETH "&#208;">
-<!ENTITY eth "&#240;">
-<!ENTITY Euml "&#203;">
-<!ENTITY euml "&#235;">
-<!ENTITY exist "&#8707;">
-<!ENTITY fnof "&#402;">
-<!ENTITY forall "&#8704;">
-<!ENTITY frac12 "&#189;">
-<!ENTITY frac14 "&#188;">
-<!ENTITY frac34 "&#190;">
-<!ENTITY frasl "&#8260;">
-<!ENTITY Gamma "&#915;">
-<!ENTITY gamma "&#947;">
-<!ENTITY ge "&#8805;">
-<!ENTITY gt "&#62;">
-<!ENTITY harr "&#8596;">
-<!ENTITY hArr "&#8660;">
-<!ENTITY hearts "&#9829;">
-<!ENTITY hellip "&#8230;">
-<!ENTITY Iacute "&#205;">
-<!ENTITY iacute "&#237;">
-<!ENTITY Icirc "&#206;">
-<!ENTITY icirc "&#238;">
-<!ENTITY iexcl "&#161;">
-<!ENTITY Igrave "&#204;">
-<!ENTITY igrave "&#236;">
-<!ENTITY image "&#8465;">
-<!ENTITY infin "&#8734;">
-<!ENTITY int "&#8747;">
-<!ENTITY Iota "&#921;">
-<!ENTITY iota "&#953;">
-<!ENTITY iquest "&#191;">
-<!ENTITY isin "&#8712;">
-<!ENTITY Iuml "&#207;">
-<!ENTITY iuml "&#239;">
-<!ENTITY Kappa "&#922;">
-<!ENTITY kappa "&#954;">
-<!ENTITY Lambda "&#923;">
-<!ENTITY lambda "&#955;">
-<!ENTITY lang "&#9001;">
-<!ENTITY laquo "&#171;">
-<!ENTITY larr "&#8592;">
-<!ENTITY lArr "&#8656;">
-<!ENTITY lceil "&#8968;">
-<!ENTITY ldquo "&#8220;">
-<!ENTITY le "&#8804;">
-<!ENTITY lfloor "&#8970;">
-<!ENTITY lowast "&#8727;">
-<!ENTITY loz "&#9674;">
-<!ENTITY lrm "&#8206;">
-<!ENTITY lsaquo "&#8249;">
-<!ENTITY lsquo "&#8216;">
-<!ENTITY lt "&#60;">
-<!ENTITY macr "&#175;">
-<!ENTITY mdash "&#8212;">
-<!ENTITY micro "&#181;">
-<!ENTITY middot "&#183;">
-<!ENTITY minus "&#8722;">
-<!ENTITY Mu "&#924;">
-<!ENTITY mu "&#956;">
-<!ENTITY nabla "&#8711;">
-<!ENTITY nbsp "&#160;">
-<!ENTITY ndash "&#8211;">
-<!ENTITY ne "&#8800;">
-<!ENTITY ni "&#8715;">
-<!ENTITY not "&#172;">
-<!ENTITY notin "&#8713;">
-<!ENTITY nsub "&#8836;">
-<!ENTITY Ntilde "&#209;">
-<!ENTITY ntilde "&#241;">
-<!ENTITY Nu "&#925;">
-<!ENTITY nu "&#957;">
-<!ENTITY Oacute "&#211;">
-<!ENTITY oacute "&#243;">
-<!ENTITY Ocirc "&#212;">
-<!ENTITY ocirc "&#244;">
-<!ENTITY OElig "&#338;">
-<!ENTITY oelig "&#339;">
-<!ENTITY Ograve "&#210;">
-<!ENTITY ograve "&#242;">
-<!ENTITY oline "&#8254;">
-<!ENTITY Omega "&#937;">
-<!ENTITY omega "&#969;">
-<!ENTITY Omicron "&#927;">
-<!ENTITY omicron "&#959;">
-<!ENTITY oplus "&#8853;">
-<!ENTITY or "&#8870;">
-<!ENTITY ordf "&#170;">
-<!ENTITY ordm "&#186;">
-<!ENTITY Oslash "&#216;">
-<!ENTITY oslash "&#248;">
-<!ENTITY Otilde "&#213;">
-<!ENTITY otilde "&#245;">
-<!ENTITY otimes "&#8855;">
-<!ENTITY Ouml "&#214;">
-<!ENTITY ouml "&#246;">
-<!ENTITY para "&#182;">
-<!ENTITY part "&#8706;">
-<!ENTITY permil "&#8240;">
-<!ENTITY perp "&#8869;">
-<!ENTITY Phi "&#934;">
-<!ENTITY phi "&#966;">
-<!ENTITY Pi "&#928;">
-<!ENTITY pi "&#960;">
-<!ENTITY piv "&#982;">
-<!ENTITY plusmn "&#177;">
-<!ENTITY pound "&#163;">
-<!ENTITY prime "&#8242;">
-<!ENTITY Prime "&#8243;">
-<!ENTITY prod "&#8719;">
-<!ENTITY prop "&#8733;">
-<!ENTITY Psi "&#936;">
-<!ENTITY psi "&#968;">
-<!ENTITY quot "&#34;">
-<!ENTITY radic "&#8730;">
-<!ENTITY rang "&#9002;">
-<!ENTITY raquo "&#187;">
-<!ENTITY rarr "&#8594;">
-<!ENTITY rArr "&#8658;">
-<!ENTITY rceil "&#8969;">
-<!ENTITY rdquo "&#8221;">
-<!ENTITY real "&#8476;">
-<!ENTITY reg "&#174;">
-<!ENTITY rfloor "&#8971;">
-<!ENTITY Rho "&#929;">
-<!ENTITY rho "&#961;">
-<!ENTITY rlm "&#8207;">
-<!ENTITY rsaquo "&#8250;">
-<!ENTITY rsquo "&#8217;">
-<!ENTITY sbquo "&#8218;">
-<!ENTITY Scaron "&#352;">
-<!ENTITY scaron "&#353;">
-<!ENTITY sdot "&#8901;">
-<!ENTITY sect "&#167;">
-<!ENTITY shy "&#173;">
-<!ENTITY Sigma "&#931;">
-<!ENTITY sigma "&#963;">
-<!ENTITY sigmaf "&#962;">
-<!ENTITY sim "&#8764;">
-<!ENTITY spades "&#9824;">
-<!ENTITY sub "&#8834;">
-<!ENTITY sube "&#8838;">
-<!ENTITY sum "&#8721;">
-<!ENTITY sup "&#8835;">
-<!ENTITY sup1 "&#185;">
-<!ENTITY sup2 "&#178;">
-<!ENTITY sup3 "&#179;">
-<!ENTITY supe "&#8839;">
-<!ENTITY szlig "&#223;">
-<!ENTITY Tau "&#932;">
-<!ENTITY tau "&#964;">
-<!ENTITY there4 "&#8756;">
-<!ENTITY Theta "&#920;">
-<!ENTITY theta "&#952;">
-<!ENTITY thetasym "&#977;">
-<!ENTITY thinsp "&#8201;">
-<!ENTITY THORN "&#222;">
-<!ENTITY thorn "&#254;">
-<!ENTITY tilde "&#732;">
-<!ENTITY times "&#215;">
-<!ENTITY trade "&#8482;">
-<!ENTITY Uacute "&#218;">
-<!ENTITY uacute "&#250;">
-<!ENTITY uarr "&#8593;">
-<!ENTITY uArr "&#8657;">
-<!ENTITY Ucirc "&#219;">
-<!ENTITY ucirc "&#251;">
-<!ENTITY Ugrave "&#217;">
-<!ENTITY ugrave "&#249;">
-<!ENTITY uml "&#168;">
-<!ENTITY upsih "&#978;">
-<!ENTITY Upsilon "&#933;">
-<!ENTITY upsilon "&#965;">
-<!ENTITY Uuml "&#220;">
-<!ENTITY uuml "&#252;">
-<!ENTITY weierp "&#8472;">
-<!ENTITY Xi "&#926;">
-<!ENTITY xi "&#958;">
-<!ENTITY Yacute "&#221;">
-<!ENTITY yacute "&#253;">
-<!ENTITY yen "&#165;">
-<!ENTITY Yuml "&#376;">
-<!ENTITY yuml "&#255;">
-<!ENTITY Zeta "&#918;">
-<!ENTITY zeta "&#950;">
-<!ENTITY zwj "&#8205;">
-<!ENTITY zwnj "&#8204;">`.replace(/\n/g, ' ');
-
-  /**
-   * A reasonably strict xml declaration.
-   */
-  const XML_DECL = '<?xml version="1.0" standalone="no"?>';
-
-  /**
-   * The beginning of the XML doctype declaration.
-   */
-  const DOCTYPE_START = `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
-
-  /**
-   * The end of the XML docype declaration.
-   */
-  const DOCTYPE_END = ']>';
-
-  /**
-   * A full header for an SVG XML document.
-   */
-  const SVG_XML_HEADER = `${XML_DECL}
-    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
-
-    void Promise.all([...diagrams].map(renderOneMarmaid));
-  });
-</script>
-<style>
-  .jp-Mermaid:not(.jp-RenderedMermaid) {
-    display: none;
-  }
-
-  .jp-RenderedMermaid {
-    overflow: auto;
-    display: flex;
-  }
-
-  .jp-RenderedMermaid.jp-mod-warning {
-    width: auto;
-    padding: 0.5em;
-    margin-top: 0.5em;
-    border: var(--jp-border-width) solid var(--jp-warn-color2);
-    border-radius: var(--jp-border-radius);
-    color: var(--jp-ui-font-color1);
-    font-size: var(--jp-ui-font-size1);
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-
-  .jp-RenderedMermaid figure {
-    margin: 0;
-    overflow: auto;
-    max-width: 100%;
-  }
-
-  .jp-RenderedMermaid img {
-    max-width: 100%;
-  }
-
-  .jp-RenderedMermaid-Details > pre {
-    margin-top: 1em;
-  }
-
-  .jp-RenderedMermaid-Summary {
-    color: var(--jp-warn-color2);
-  }
-
-  .jp-RenderedMermaid:not(.jp-mod-warning) pre {
-    display: none;
-  }
-
-  .jp-RenderedMermaid-Summary > pre {
-    display: inline-block;
-    white-space: normal;
-  }
-</style>
-<!-- End of mermaid configuration --></p><div class="jupyter-wrapper">
+<div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -250686,37 +250683,131 @@ RMSE is even more popular than MSE, because RMSE is interpretable in the "y" uni
 })();
 
 </script>
-<p></p>
-    </article>
-</section>
-            <!-- endblock -->
 
-            <!-- block footer -->
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Última actualización">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="29 de octubre de 2026 22:42:09 UTC"><span class="timeago" datetime="2026-10-29T22:42:09+00:00" locale="es"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="29 de octubre de 2026 22:42:09 UTC">2026-10-29</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
                 
-                    <footer>
-    <div class="d-flex flex-sm-row justify-content-between py-2 border-top drac-text-black drac-bg-cyan-green">
-        <a href="https://github.com/dracula/mkdocs" target="_blank" style="padding-left: 1%;" class="footer-text drac-anchor drac-text-black drac-text-purple--hover">
-            Made with Dracula Theme for MkDocs
-        </a>
-    </div>
-</footer>
-                
-            <!-- endblock -->
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
-
-    </main>
-
-        <script>var base_url = '../..';</script>
-        <script src="../../assets/js/jquery-3.3.1.slim.min.js"></script>
-        <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-        <script src="../../assets/js/mkdocs.js"></script>
-			<script src="../../js/timeago.min.js" defer=""></script>
-			<script src="../../js/timeago_mkdocs_material.js" defer=""></script>
-			<script src="../../javascripts/mathjax.js" defer=""></script>
-			<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer=""></script>
-			<script src="../../search/main.js" defer=""></script>
-
-<script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Milena Castaño, Lissy Grace, Kelly Monsalve, Sebastian Sanchez, Kevin Hidalgo - Universidad Nacional de Colombia
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/KevinHidalgoDS" target="_blank" rel="noopener" title="GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.linkedin.com/in/kevin-ferney-hidalgo-higuita-752ab5162/" target="_blank" rel="noopener" title="LinkedIn" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://unal.edu.co/" target="_blank" rel="noopener" title="Universidad Nacional de Colombia" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="m48 195.8 209.2 86.1c9.8 4 20.2 6.1 30.8 6.1s21-2.1 30.8-6.1l242.4-99.8c9-3.7 14.8-12.4 14.8-22.1s-5.8-18.4-14.8-22.1L318.8 38.1c-9.8-4-20.2-6.1-30.8-6.1s-21 2.1-30.8 6.1L14.8 137.9C5.8 141.6 0 150.3 0 160v296c0 13.3 10.7 24 24 24s24-10.7 24-24zm48 71.7V384c0 53 86 96 192 96s192-43 192-96V267.4l-142.9 58.9c-15.6 6.4-32.2 9.7-49.1 9.7s-33.5-3.3-49.1-9.7L96 267.4z"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.path", "search.suggest", "search.share", "search.highlight", "content.code.copy", "content.code.annotate", "content.tooltips"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script data-mkdocs-jupyter-mathjax="{&quot;url&quot;: &quot;https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js&quot;, &quot;version&quot;: 4}">
 /* Shared by full pages and Material's instant navigation. */
 (() => {
   const config = JSON.parse(document.currentScript.dataset.mkdocsJupyterMathjax);
@@ -250823,7 +250914,6 @@ RMSE is even more popular than MSE, because RMSE is interpretable in the "y" uni
 })();
 
 </script>
-
 
 <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
 document$.subscribe(()=>{ lightbox.reload(); });
