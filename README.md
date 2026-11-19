@@ -304,6 +304,29 @@ npx --yes reveal-md presentacion.md --theme serif --static ..\presentacion-html 
 '.reveal .slides section:not(:has(> section)) { max-height: 100%; overflow-y: auto; scrollbar-gutter: stable; }' | Set-Content -Encoding utf8 slides-scroll.css
 npx --yes reveal-md presentacion.md --theme serif --css slides-scroll.css --static ..\presentacion-html --static-dirs img
 
+### Exportar un notebook a diapositivas con nbconvert
+
+Con Jupyter y `nbconvert` disponibles en el entorno activo, ejecuta en PowerShell:
+
+```powershell
+jupyter nbconvert D:\deep-learning-ws\notebooks\02_presentacion.ipynb --to slides `
+  --SlidesExporter.reveal_theme=serif `
+  --SlidesExporter.reveal_scroll=True `
+  --SlidesExporter.reveal_transition=none
+```
+
+El comando genera `notebooks\02_presentacion.slides.html` junto al notebook, sin ejecutarlo:
+incluye las salidas guardadas. Si se necesita actualizarlas, ejecuta y guarda el notebook antes
+de exportarlo. El tema es `serif`, se habilita el desplazamiento dentro de cada diapositiva y se
+desactivan las transiciones.
+
+La estructura depende de los metadatos de presentación de las celdas: `slide` inicia una
+diapositiva, `subslide` una vertical, `fragment` revela contenido progresivamente, `skip`
+lo omite y `notes` lo reserva para el expositor. Las celdas sin tipo se incorporan a la
+diapositiva actual. El HTML utiliza Reveal.js desde un CDN por defecto y puede contener recursos
+externos o archivos locales enlazados; conserva sus rutas y comprueba su disponibilidad al
+compartirlo. Esta exportación parte del notebook, no de `docs\presentacion.md`.
+
 ---
 
 ## 🤝 Contribuciones
