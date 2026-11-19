@@ -7,16 +7,25 @@ copyright: "Copyright &copy; 2026 Milena Castaño, Lissy Grace, Kelly Monsalve, 
 repo_name: KevinHidalgoDS/deep-learning-ws
 repo_url: https://github.com/KevinHidalgoDS/deep-learning-ws
 
+hooks:
+  - hooks/notebooks.py
+
+watch:
+  - notebooks
+
 # -----------------------------------------------------------------------------
 # TEMA
 # -----------------------------------------------------------------------------
 
 theme:
-#  name: dracula
-#  logo: img/dracula.png
-#  favicon: img/favicon.ico
-  name: material
+  name: dracula
+  logo: img/dracula.png
+  favicon: img/favicon.ico
+  # name: material
   language: es
+  font:
+    text: Roboto
+    code: JetBrainsMono NFM
   palette:
     # Modo claro
     - scheme: default
@@ -29,12 +38,22 @@ theme:
         icon: material/brightness-4
         name: Cambiar a modo claro
   features:
+    # Navegación SPA y fluidez
+    - navigation.instant
+    - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.indexes
     - navigation.top
+    - navigation.path
+    # Herramientas de búsqueda y lectura de código
     - search.suggest
+    - search.share
     - search.highlight
     - content.code.copy
+    - content.code.annotate
+    - content.tooltips
 
 plugins:
   - search:
@@ -42,7 +61,9 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
-          paths: [.]
+          paths:
+            - . # Raíz del proyecto
+            - src # Módulos comunes / compartidos
           options:
             docstring_style: google # Compatible con formato Google o NumPy
             members_order: source
@@ -59,6 +80,24 @@ plugins:
               - "!^__[a-zA-Z0-9_]+__$" # Oculta todas las variables dunder (__version__, __authors__, etc.)
   - mkdocs-jupyter:
       include_source: true
+      ignore_h1_titles: true
+      execute: false
+      remove_tag_config:
+        remove_input_tags:
+          - hide_code
+
+  # Gestión de referencias y citas académicas mediante BibTeX y CSL
+  - bibtex:
+      bib_file: "docs/referencias.bib" # Ruta al archivo .bib de Scopus/IEEE/Zotero
+      csl_file: "docs/ieee.csl" # Estilo de citación formal IEEE
+
+  # Soporte para galería de imágenes con lightbox (zoom y navegación)
+  - glightbox
+
+  # Trazabilidad de Versiones
+  - git-revision-date-localized:
+      locale: es
+      type: timeago # o 'iso_date'
 
 # -----------------------------------------------------------------------------
 # EXTENSIONES DE MARKDOWN
@@ -70,12 +109,16 @@ markdown_extensions:
   - tables
   - attr_list
   - md_in_html
+  - def_list
+  - abbr
   - toc:
       permalink: true
+      toc_depth: 3
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+  - pymdownx.inlinehilite
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -88,11 +131,29 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - footnotes
 
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/KevinHidalgoDS
+      name: GitHub
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/kevin-ferney-hidalgo-higuita-752ab5162/
+      name: LinkedIn
+    - icon: fontawesome/solid/graduation-cap
+      link: https://unal.edu.co/
+      name: Universidad Nacional de Colombia
+
 nav:
   - Inicio: index.md
+  - src:
+      - data: src_data.md
+  - Cuadernos Jupyter:
+      - EDA: notebooks/01_eda_simem_precio_bolsa.ipynb
