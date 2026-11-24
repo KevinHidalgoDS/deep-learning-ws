@@ -70,6 +70,26 @@ data:
     start: "2026-06-01"
     end: "2026-09-30"
 
+preprocess:
+  # Imputación causal: solo hacia adelante (ffill) y con un límite de pasos consecutivos.
+  max_gap_hours: 6
+  max_gap_days: 2
+  # Un dato diario del día D (aportes, generación) se publica al cierre del día:
+  # solo se usa como predictor desde las 00:00 de D + daily_publication_lag_days.
+  daily_publication_lag_days: 1
+
+features:
+  # Rezagos en horas según el EDA (notebook 01, ACF/PACF): persistencia fuerte en 1 h
+  # y picos estacionales en 24, 48 y 168 h.
+  lags: [1, 24, 48, 168]
+  # La serie es I(1): las diferencias regular (1 h) y diaria (24 h) estabilizan el nivel.
+  differences: [1, 24]
+  rolling_windows: [24, 168]
+  rolling_quantiles: [0.1, 0.5, 0.9]
+  cyclical: [hour, dayofweek, month]
+  scaler: "robust"  # robust | standard; robust por la asimetría y los picos de precio.
+  scaler_file: "scaler.pkl"
+
 training:
   seed: 42
   lookback_steps: 168
