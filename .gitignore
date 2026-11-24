@@ -226,6 +226,11 @@ __marimo__/
 /data/raw/simem/
 /reports/figures/simem/
 /reports/figures/xm/
+# Artefactos regenerables del Sprint 2 (preprocess.py y build_features.py)
+/data/interim/preprocess_report.json
+/data/processed/*.npz
+/data/processed/feature_metadata.json
+/models/trained/scaler.pkl
 # Datasets descargados por torchvision en los notebooks
 notebooks/**/MNIST/
 notebooks/**/FashionMNIST/
