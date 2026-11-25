@@ -1,0 +1,7 @@
+condición,fracción de horas,fracción del error,MAE campeón,MAE persistencia 24 h,sesgo campeón
+horas de punta,0.1667,0.3837,259.0397,178.6342,-224.9538
+horas valle,0.2500,0.1510,67.9429,45.9874,39.8015
+baja hidrología,0.9036,0.9118,113.5290,111.4449,-26.6693
+alta participación térmica,1.0000,1.0000,112.5037,106.3837,-23.0712
+alta volatilidad,0.2470,0.3404,155.0383,125.2320,-111.2106
+evento extremo,0.0847,0.3333,442.8262,211.0715,-442.8262
