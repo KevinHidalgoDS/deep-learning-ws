@@ -104,6 +104,49 @@ training:
   early_stopping_patience: 10
   num_workers: 0
   device: "auto"
+  # Sprint 3: entrenamiento de las redes (src/models/train_model.py).
+  early_stopping_min_delta: 0.0
+  gradient_clip_norm: 1.0
+  lr_scheduler:
+    factor: 0.5      # ReduceLROnPlateau: multiplica la tasa por este factor...
+    patience: 4      # ...tras estas épocas sin mejorar la pérdida de validación.
+    min_lr: 0.00001
+
+models:
+  # Arquitecturas profundas a comparar contra el baseline (src/models/architectures.py).
+  architectures: [lstm_attention, tcn, nbeats]
+  # huber: robusta ante picos de precio. quantile: produce intervalos de predicción.
+  loss: "huber"
+  huber_delta: 1.0
+  quantiles: [0.1, 0.5, 0.9]  # Solo con loss: quantile; debe incluir 0.5 (pronóstico puntual).
+  baseline:
+    ridge_alpha: 10.0
+  lstm_attention:
+    hidden_units: 64
+    num_layers: 2
+    dropout: 0.2
+  tcn:
+    hidden_units: 32   # Canales por capa convolucional.
+    levels: 6          # Dilataciones 1..32: campo receptivo de 253 h >= lookback de 168 h.
+    kernel_size: 3
+    dropout: 0.2
+  nbeats:
+    hidden_units: 256
+    num_blocks: 3
+    layers_per_block: 4
+    dropout: 0.1
+
+optimization:
+  # Búsqueda de hiperparámetros con Optuna (src/models/optimize.py).
+  n_trials: 20             # Por arquitectura.
+  epochs: 40               # Máximo por prueba; el early stopping suele cortar antes.
+  timeout_minutes: null    # Límite opcional por arquitectura.
+  # Métrica de selección del campeón: MAE de validación en COP/kWh (nunca la de prueba).
+  search_space:
+    learning_rate: [0.0001, 0.01]     # Muestreo logarítmico.
+    lookback_steps: [48, 96, 168]     # Recorta la ventana guardada; máximo training.lookback_steps.
+    hidden_units: [32, 64, 128, 256]
+    dropout: [0.0, 0.5]
 
 environment:
   nombre: "PRB"  # PRD

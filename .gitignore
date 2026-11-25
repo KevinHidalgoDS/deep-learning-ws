@@ -231,6 +231,13 @@ __marimo__/
 /data/processed/*.npz
 /data/processed/feature_metadata.json
 /models/trained/scaler.pkl
+# Artefactos regenerables del Sprint 3 (train_model.py y optimize.py)
+/models/checkpoints/*.pt
+/models/checkpoints/*.pkl
+/models/checkpoints/*.csv
+/models/checkpoints/training_summary.json
+/models/trained/champion.*
+/models/trained/best_params.json
 # Datasets descargados por torchvision en los notebooks
 notebooks/**/MNIST/
 notebooks/**/FashionMNIST/
