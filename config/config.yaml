@@ -15,6 +15,7 @@ paths:
     checkpoints: "models/checkpoints/"
   reports:
     figures: "reports/figures/"
+    metrics: "reports/metrics/"
 
 simem:
   portal_url: "https://www.simem.co/"
@@ -147,6 +148,20 @@ optimization:
     lookback_steps: [48, 96, 168]     # Recorta la ventana guardada; máximo training.lookback_steps.
     hidden_units: [32, 64, 128, 256]
     dropout: [0.0, 0.5]
+
+evaluation:
+  # Sprint 4: evaluación fuera de muestra (src/models/predict_model.py).
+  # Persistencias estacionales de referencia, en horas: misma hora de ayer y de la semana pasada.
+  naive_seasons: [24, 168]
+  # MAPE con denominador acotado: |real - pronóstico| / max(|real|, piso). Evita que un precio
+  # cercano a cero (o negativo) dispare el porcentaje. El piso está en COP/kWh.
+  mape_floor_cop: 50.0
+  # Horas de punta del SIN (demanda máxima de la tarde-noche), hora de Colombia.
+  peak_hours: [18, 19, 20, 21]
+  figures_subdir: "evaluacion"
+  # Gradientes integrados (src/visualization/visualize.py).
+  integrated_gradients_steps: 64
+  dpi: 300
 
 environment:
   nombre: "PRB"  # PRD
